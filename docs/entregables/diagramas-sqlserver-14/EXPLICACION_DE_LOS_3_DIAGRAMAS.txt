@@ -1,0 +1,573 @@
+﻿GESTERA — EXPLICACIÓN DE LOS TRES DIAGRAMAS
+============================================================================
+Base: SQL Server, modelo GESTERA_SQLSERVER_14_V2.
+Esquema: 14 tablas operativas, 102 columnas y 16 claves foráneas.
+Fuente: base-datos/sqlserver/esquema/01_tablas.sql.
+Las imágenes son PNG Full HD de 1920 × 1080 píxeles, sin fecha de creación.
+Este TXT usa UTF-8 con BOM y saltos de línea Windows para Bloc de notas.
+
+ALCANCE Y CORRESPONDENCIA CON LAS REFERENCIAS
+----------------------------------------------------------------------------
+Cada imagen sigue su propia referencia: primero normalización,
+después entidad-relación y finalmente clases UML. Los nombres y atributos
+corresponden a la base de datos de Gestera. sysdiagrams es metadato de
+SSMS y queda fuera de las 14 tablas operativas.
+No se añaden entidades ajenas al proyecto: entradas, salidas y ocupación
+son parte de estancias; limpieza es un estado de habitaciones. Reservas
+anticipadas, empleados y roles de usuario no forman parte de este esquema.
+
+1. DIAGRAMA DE NORMALIZACIÓN: 1FN, 2FN Y 3FN
+Archivo: 01_normalizacion_1FN_2FN_3FN.png
+============================================================================
+
+Qué representa
+Explica cómo separar datos de una operación hotelera para evitar listas
+en celdas, duplicación de cabeceras y dependencias entre entidades.
+La imagen utiliza tres paneles superiores con cabeceras azules. El tercer
+panel muestra las 14 tablas resumidas. En la franja inferior aparece
+el ER de las 14 entidades, con rombos y cardinalidades, como la referencia.
+Los dos primeros paneles son ejercicios didácticos: no se afirma que
+fueran versiones instaladas anteriormente. PEDIDO_2FN, LINEA_2FN y
+renglón son nombres de apoyo. El modelo final utiliza pedido_servicio_items
+con un identificador id generado por SQL Server.
+
+Primera Forma Normal (1FN)
+Cada columna contiene un valor y cada fila se identifica con una clave.
+Guardar «Agua ×2, Café ×1» como una sola lista impediría consultar y
+validar cada producto por separado. El ejemplo convierte esa lista en
+filas. La clave didáctica (pedido_id, renglón) identifica cada línea.
+En Gestera, pedido_servicio_items contiene cantidad, producto y precio
+unitario por línea; estancia_huespedes contiene una persona por fila.
+La 1FN todavía permite repetición de datos y dependencias incorrectas.
+
+Segunda Forma Normal (2FN)
+Además de 1FN, un atributo no primo debe depender de toda clave
+candidata y no solo de una parte de una clave compuesta.
+En la relación plana, pedido_id determina estado y estancia_id;
+repetirlos en cada renglón crea una dependencia parcial. Se separa
+la cabecera del pedido de su detalle. La cantidad corresponde a la
+línea completa. En el esquema final, pedidos_servicio guarda estado,
+estancia_id y observaciones; pedido_servicio_items referencia su pedido.
+Una clave artificial id no elimina por sí sola las dependencias:
+también se deben estudiar las claves candidatas del negocio.
+
+Tercera Forma Normal (3FN)
+Además de 2FN, se eliminan dependencias transitivas inadecuadas entre
+atributos no clave. Formalmente, en cada dependencia funcional X -> A,
+X debe ser superclave o A debe ser un atributo primo.
+En el catálogo, el nombre de la categoría depende de su identificador
+y no del producto que la utiliza. categorias_servicio almacena el nombre;
+productos_servicio conserva la FK compuesta a esa categoría.
+Igualmente, las tarifas vigentes se separan en secciones_tarifarias,
+las identidades de personas en huespedes y el pago en pagos_estancia.
+
+Decisiones físicas que requieren una explicación precisa
+El modelo aplica normalización, pero no se presenta como una prueba
+de 3FN estricta para cada relación física. habitaciones repite hotel_codigo
+aunque su sección tarifaria también determina el hotel. Es una redundancia
+controlada para validar pertenencia mediante la FK compuesta
+(seccion_tarifaria_id, hotel_codigo) y garantizar número único por hotel.
+Los snapshots no representan el valor actual del catálogo: registran
+nombre, código y precio que existían al vender. El cambio posterior
+del producto no debe modificar esos hechos históricos.
+habitacion_activa_id es una columna calculada persistida: SQL Server
+la deriva de estado y habitacion_id; Java no la escribe.
+
+Resultado y beneficio
+Los 14 cuadros del tercer panel resumen las entidades implementadas. Cambiar
+una tarifa o un producto afecta el catálogo vigente sin reescribir
+estancias o pedidos históricos. La relación N:M entre personas y visitas
+se resuelve con estancia_huespedes, sin repetir datos de identidad.
+
+2. DIAGRAMA ENTIDAD–RELACIÓN
+Archivo: 02_entidad_relacion.png
+============================================================================
+
+Qué representa y cómo leerlo
+Es el modelo físico: cada caja es una tabla y cada fila es una columna
+del DDL. Se conservan los 102 atributos, tipos SQL, claves y nulabilidad.
+La presentación utiliza fondo blanco, cabeceras y cuadrículas violetas,
+columnas tipo / atributo / clave, y conexiones ortogonales grises.
+PK identifica filas; FK referencia otra tabla; UQ indica unicidad de
+una columna; ? admite NULL; DER indica una columna calculada.
+Las PK compuestas se forman con todos los campos marcados PK en la caja.
+Una FK compuesta es una sola relación, aunque participe más de una columna.
+Los tipos NVARCHAR/VARCHAR conservan la longitud; DECIMAL conserva
+precisión y escala; DATETIME2 conserva la precisión temporal declarada.
+
+Cardinalidades: notación pata de cuervo
+Barra doble = exactamente uno; círculo + barra = cero o uno;
+círculo + pata = cero o muchos. El símbolo se lee junto a su tabla.
+Por ejemplo, en hoteles -> habitaciones una habitación referencia un
+hotel y un hotel puede tener cero o muchas habitaciones en el DDL.
+Una FK obligatoria impide hijos huérfanos; no obliga al padre a tener
+hijos. Por eso el mínimo del lado hijo se muestra como cero incluso
+cuando la instalación inicial agrega doce habitaciones por hotel.
+Un cruce de líneas sin punto no crea una relación adicional.
+
+RELACIONES REALES DEL ESQUEMA
+01. hoteles [1] -- [0..1] credenciales_hotel
+    FK credenciales_hotel(hotel_codigo)
+    -> hoteles(codigo).
+02. hoteles [1] -- [0..*] secciones_tarifarias
+    FK secciones_tarifarias(hotel_codigo)
+    -> hoteles(codigo).
+03. hoteles [1] -- [0..*] habitaciones
+    FK habitaciones(hotel_codigo)
+    -> hoteles(codigo).
+04. secciones_tarifarias [1] -- [0..*] habitaciones
+    FK habitaciones(seccion_tarifaria_id, hotel_codigo)
+    -> secciones_tarifarias(id, hotel_codigo).
+05. hoteles [1] -- [0..*] areas_comunes
+    FK areas_comunes(hotel_codigo)
+    -> hoteles(codigo).
+06. habitaciones [0..1] -- [0..*] estancias
+    FK estancias(habitacion_id)
+    -> habitaciones(id).
+07. areas_comunes [0..1] -- [0..*] estancias
+    FK estancias(area_comun_id)
+    -> areas_comunes(id).
+08. estancias [1] -- [0..*] estancia_huespedes
+    FK estancia_huespedes(estancia_id)
+    -> estancias(id).
+09. huespedes [1] -- [0..*] estancia_huespedes
+    FK estancia_huespedes(huesped_id)
+    -> huespedes(id).
+10. estancias [1] -- [0..1] pagos_estancia
+    FK pagos_estancia(estancia_id)
+    -> estancias(id).
+11. hoteles [1] -- [0..1] catalogos_servicio
+    FK catalogos_servicio(hotel_codigo)
+    -> hoteles(codigo).
+12. catalogos_servicio [1] -- [0..*] categorias_servicio
+    FK categorias_servicio(catalogo_id)
+    -> catalogos_servicio(id).
+13. categorias_servicio [1] -- [0..*] productos_servicio
+    FK productos_servicio(catalogo_id, categoria_codigo)
+    -> categorias_servicio(catalogo_id, codigo).
+14. estancias [1] -- [0..*] pedidos_servicio
+    FK pedidos_servicio(estancia_id)
+    -> estancias(id).
+15. pedidos_servicio [1] -- [0..*] pedido_servicio_items
+    FK pedido_servicio_items(pedido_id)
+    -> pedidos_servicio(id).
+16. productos_servicio [0..1] -- [0..*] pedido_servicio_items
+    FK pedido_servicio_items(producto_catalogo_id, producto_codigo_fk)
+    -> productos_servicio(catalogo_id, codigo).
+
+Claves candidatas y restricciones compuestas
+- habitaciones: UNIQUE(hotel_codigo, numero).
+- secciones_tarifarias: UNIQUE(hotel_codigo, codigo),
+  UNIQUE(hotel_codigo, nombre), UNIQUE(hotel_codigo, color_hex).
+- areas_comunes: UNIQUE(hotel_codigo, codigo) y UNIQUE(hotel_codigo, nombre).
+- huespedes: UNIQUE(tipo_documento, numero_documento).
+- categorias_servicio: PK(catalogo_id, codigo), UNIQUE(catalogo_id, nombre).
+- productos_servicio: PK(catalogo_id, codigo), UNIQUE(catalogo_id, nombre).
+- estancia_huespedes: PK(estancia_id, huesped_id), UNIQUE(estancia_id, orden).
+- credenciales_hotel usa hotel_codigo como PK y FK simultáneamente.
+- catalogos_servicio.hotel_codigo y pagos_estancia.estancia_id son únicos.
+
+Reglas que las cardinalidades, por sí solas, no expresan
+1) Ubicación XOR: una estancia usa habitacion_id O area_comun_id,
+   exactamente una, nunca ambas y nunca las dos NULL.
+2) El historial permite muchas estancias de una habitación, pero el
+   índice único filtrado permite solo una ACTIVA por habitación.
+3) Los índices filtrados impiden repetir entrada por habitación o área.
+4) La aplicación registra de uno a ocho huéspedes por estancia.
+   SQL valida orden de 1 a 8 y unicidad; la FK sola permite cero filas
+   durante la construcción de la transacción.
+5) Los pagos de alojamiento solo corresponden a estancias de habitación.
+   pagos_estancia representa un pago consolidado por estancia, no un
+   libro de múltiples abonos. El reporte suma pagos confirmados.
+6) Un pedido nuevo requiere estancia activa y habitación ocupada.
+7) Cada línea conserva precio/nombre/código históricos. Al eliminar
+   el producto actual, la FK opcional queda NULL (ON DELETE SET NULL).
+8) Los triggers impiden asociar productos de otro hotel o trasladar
+   una estancia con pagos o pedidos a otro recurso.
+9) Eliminar un pedido elimina sus líneas; eliminar una estancia elimina
+   sus asociaciones de personas, pero no borra la identidad del huésped.
+
+FUNCIÓN DE CADA TABLA
+01. hoteles: Identidad y ubicación de cada establecimiento.
+02. credenciales_hotel: Material PBKDF2 y versión de la llave independiente del hotel.
+03. secciones_tarifarias: Catálogo de colores y tarifas de seis y veinticuatro horas.
+04. habitaciones: Inventario permanente y estado operativo de cada cuarto.
+05. areas_comunes: Espacios disponibles para registrar visitas de cada hotel.
+06. huespedes: Identidad documental reutilizable de cada persona.
+07. estancias: Ocupaciones y visitas, con una ubicación exclusiva y sus datos históricos.
+08. estancia_huespedes: Relación N:M y orden de los participantes de la estancia.
+09. pagos_estancia: Pago consolidado opcional de una estancia de habitación.
+10. catalogos_servicio: Catálogo independiente por hotel y versión para concurrencia.
+11. categorias_servicio: Agrupación de productos dentro de un catálogo.
+12. productos_servicio: Productos vigentes y sus precios actuales.
+13. pedidos_servicio: Pedido asociado a una estancia concreta.
+14. pedido_servicio_items: Cantidades y snapshots históricos de los productos solicitados.
+
+3. DIAGRAMA UML DE CLASES
+Archivo: 03_diagrama_uml.png
+============================================================================
+
+Qué representa
+Es una vista conceptual UML de las 14 entidades persistentes del SQL.
+No es ingeniería inversa completa de todas las clases Java. Algunas
+tablas se gestionan con records, vistas y repositorios compartidos.Las cajas conservan la correspondencia de las entidades: por ejemplo Hotel / hoteles, Estancia / estancias y
+ItemPedidoServicio / pedido_servicio_items.
+Se incluyen los atributos esenciales. 
+La imagen ER y el anexo de este
+TXT detallan los 102 campos, incluidas las columnas técnicas y de auditoría.
+
+Notación UML utilizada
+- Cajas grises sobre fondo blanco, como la tercera referencia.
+- Compartimentos horizontales: nombre, atributos y operaciones.
+- El compartimento central contiene atributos privados, precedidos por -.
+- Los nombres se adaptan de snake_case a lowerCamelCase.
+- ? después del tipo indica que la columna correspondiente admite NULL.
+- El compartimento derecho muestra operaciones públicas, precedidas por +.
+- Las asociaciones llevan multiplicidades 1, 0..1 y 0..* en sus extremos.
+- No se inventan herencias: son entidades asociadas, no subclases.
+- Una asociación no implica por sí sola borrado en cascada o composición.
+
+Equivalencias de tipos
+BIGINT -> Long; INT/SMALLINT/TINYINT -> Integer; BIT -> Boolean;
+NVARCHAR/VARCHAR/CHAR -> String; VARBINARY -> byte[];
+DECIMAL -> BigDecimal; DATETIME2 -> LocalDateTime.
+Se usan envoltorios en esta vista conceptual para expresar nulabilidad.
+No se deben usar float/double para importes ni números para documentos.
+Los timestamps locales no llevan zona dentro de DATETIME2: la aplicación
+interpreta los de negocio en America/Lima y las auditorías en UTC.
+
+Operaciones mostradas
+PedidoServicio.total() suma los subtotales y
+ItemPedidoServicio.subtotal() multiplica precio unitario por cantidad.
+Estas operaciones representan el comportamiento implementado en los
+records reales PedidoServicio y LineaPedidoServicio respectivamente.
+ItemPedidoServicio es el nombre conceptual del ítem persistente;
+LineaPedidoServicio es la vista Java que usa la interfaz actual.
+Las demás operaciones son responsabilidades conceptuales del dominio:
+listarHabitaciones consulta el inventario; autenticar comprueba la llave;
+precio(tipo) selecciona una tarifa; montoTotal calcula el alojamiento;
+registrarVisita registra un área; validarDocumento comprueba la identidad;
+finalizar cierra una estancia; confirmarPago registra el pago; versionar
+protege cambios del catálogo; agregarProducto amplía una categoría;
+actualizarPrecio cambia el precio vigente. El código implementa estas
+responsabilidades en gestores, records y repositorios; no se afirma que
+los nombres conceptuales sean métodos de una clase Java por cada tabla.
+
+Vinculación con el código y los frameworks
+Spring Boot inicia y configura la aplicación; HikariCP administra el
+DataSource; Spring JDBC ejecuta SQL parametrizado. TransaccionesHotel
+coordina transacciones y serializa cambios por hotel con sp_getapplock.
+RepositorioInventarioJdbc administra habitaciones, secciones y ocupación.
+RepositorioCredencialesHotelJdbc guarda material PBKDF2 y su versión.
+RepositorioAreasComunesJdbc consulta espacios por hotel.
+RepositorioHuespedesJdbc gestiona huespedes, estancias y sus asociaciones.
+RepositorioIngresosHabitacionJdbc persiste pagos_estancia y alimenta
+los reportes; su nombre Java se conserva por compatibilidad.
+RepositorioCatalogoServicioJdbc administra catálogos, categorías y productos.
+RepositorioServicioHabitacionJdbc administra pedidos y sus líneas.
+Los gestores contienen validaciones de negocio y los controladores
+procesan formularios. La capa HTTP actual utiliza jdk.httpserver.
+
+Ejemplo de lectura conjunta de los tres diagramas
+Se elige una habitación y una tarifa, se crea la estancia y se asocian
+los huéspedes. Si se confirma el pago, pagos_estancia referencia esa
+misma estancia. Un pedido se vincula a ella y guarda líneas con sus
+precios históricos. Al finalizar la estancia se conserva su historial;
+la habitación puede entrar en limpieza y luego volver a estar disponible.
+La normalización explica por qué los datos se separan, el ER muestra
+las restricciones físicas y UML muestra la estructura conceptual.
+
+ANEXO: DICCIONARIO DE LOS 102 ATRIBUTOS
+============================================================================
+Además de las imágenes, se detalla cada campo para poder estudiarlo
+sin depender del tamaño del texto de los diagramas.
+
+HOTELES
+----------------------------------------------------------------------------
+codigo: NVARCHAR(80) | PK, UQ, NOT NULL.
+  Identificador estable usado por Java y los formularios.
+nombre: NVARCHAR(150) | UQ, NOT NULL.
+  Nombre visible en las pantallas.
+ubicacion: NVARCHAR(150) | NOT NULL.
+  Ubicación del establecimiento.
+iniciales: CHAR(2) | NOT NULL.
+  Dos caracteres mostrados en el selector de hoteles.
+activo: BIT | NOT NULL.
+  Permite mostrar el hotel en el catálogo operativo.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+CREDENCIALES_HOTEL
+----------------------------------------------------------------------------
+hotel_codigo: NVARCHAR(80) | PK, FK, UQ, NOT NULL.
+  Hotel propietario del registro.
+sal: VARBINARY(16) | NOT NULL.
+  Dato aleatorio usado al derivar la llave.
+  16 bytes aleatorios, distintos por credencial.
+hash_clave: VARBINARY(32) | NOT NULL.
+  Resultado de la derivación criptográfica de la llave.
+  32 bytes derivados; no contiene la llave en texto claro.
+algoritmo: VARCHAR(40) | NOT NULL.
+  Algoritmo de derivación admitido: PBKDF2WithHmacSHA256.
+iteraciones: INT | NOT NULL.
+  Costo de la derivación; entre 10000 y 10000000.
+version: BIGINT | NOT NULL.
+  Contador de cambios para controlar concurrencia.
+requiere_cambio: BIT | NOT NULL.
+  Indica que todavía se debe completar el cambio inicial de llave.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+SECCIONES_TARIFARIAS
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+hotel_codigo: NVARCHAR(80) | FK, NOT NULL.
+  Hotel propietario del registro.
+codigo: VARCHAR(60) | NOT NULL.
+  Identificador estable usado por Java y los formularios.
+nombre: NVARCHAR(40) | NOT NULL.
+  Nombre visible en las pantallas.
+color_hex: CHAR(7) | NOT NULL.
+  Color actual de la sección, en formato #RRGGBB.
+precio_seis_horas: DECIMAL(10,2) | NOT NULL.
+  Tarifa actual de alojamiento de seis horas, en PEN.
+precio_dia_completo: DECIMAL(10,2) | NOT NULL.
+  Tarifa actual de alojamiento de veinticuatro horas, en PEN.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+HABITACIONES
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+hotel_codigo: NVARCHAR(80) | FK, NOT NULL.
+  Hotel propietario del registro.
+numero: SMALLINT | NOT NULL.
+  Número visible de habitación, entre 1 y 50 dentro de su hotel.
+seccion_tarifaria_id: BIGINT | FK, NOT NULL.
+  Sección de tarifas asignada a la habitación.
+estado: VARCHAR(24) | NOT NULL.
+  DISPONIBLE, OCUPADA, LIMPIEZA_PENDIENTE, EN_LIMPIEZA o MANTENIMIENTO.
+tipo_servicio_preferido: VARCHAR(20) | NOT NULL.
+  Selección guardada: SEIS_HORAS o DIA_COMPLETO.
+  Conserva la selección de servicio incluso cuando el cuarto está disponible.
+activa: BIT | NOT NULL.
+  Incluye la habitación en el inventario actual.
+  Baja lógica: reducir el inventario conserva las referencias históricas.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+AREAS_COMUNES
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+hotel_codigo: NVARCHAR(80) | FK, NOT NULL.
+  Hotel propietario del registro.
+codigo: VARCHAR(60) | NOT NULL.
+  Identificador estable usado por Java y los formularios.
+nombre: NVARCHAR(80) | NOT NULL.
+  Nombre visible en las pantallas.
+descripcion: NVARCHAR(300) | NOT NULL.
+  Texto explicativo mostrado para el área común.
+activa: BIT | NOT NULL.
+  Incluye la habitación en el inventario actual.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+HUESPEDES
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+nombre_completo: NVARCHAR(100) | NOT NULL.
+  Nombres y apellidos del huésped; no es su identificador.
+tipo_documento: VARCHAR(20) | NOT NULL.
+  DNI, CARNET_EXTRANJERIA o PASAPORTE; valores canónicos en mayúsculas.
+numero_documento: VARCHAR(12) | NOT NULL.
+  Documento como texto para conservar ceros iniciales; único junto con su tipo.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+ESTANCIAS
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+habitacion_id: BIGINT | FK, NULL permitido.
+  Habitación de la estancia; NULL cuando se utiliza un área.
+area_comun_id: BIGINT | FK, NULL permitido.
+  Área visitada; NULL cuando se utiliza una habitación.
+tipo_servicio: VARCHAR(20) | NULL permitido.
+  Duración de alojamiento contratada; no se aplica a áreas.
+check_in: DATETIME2(0) | NOT NULL.
+  Fecha y hora de entrada del hecho operativo.
+  Entrada en hora local America/Lima; precisión de segundos.
+check_out: DATETIME2(0) | NOT NULL.
+  Fecha y hora de salida prevista o confirmada.
+  Salida calculada o ajustada; no anterior a la entrada.
+tarifa_aplicada: DECIMAL(10,2) | NULL permitido.
+  Precio de alojamiento registrado para esa estancia, independiente del catálogo actual.
+horas_adicionales: INT | NOT NULL.
+  Horas acumuladas de ampliación, entre 0 y 65535.
+monto_adicional: DECIMAL(12,2) | NOT NULL.
+  Importe acumulado de ampliaciones, en PEN.
+  Acumulado de ampliaciones. DECIMAL(12,2) evita limitar el total al máximo de un único cargo.
+color_historico: CHAR(7) | NULL permitido.
+  Color registrado para identificar históricamente la ocupación.
+estado: VARCHAR(12) | NOT NULL.
+  ACTIVA o FINALIZADA.
+origen: VARCHAR(10) | NOT NULL.
+  Distingue datos nuevos de históricos importados.
+  GESTERA para registros nuevos; IMPORTADA para historia V1 con tarifas desconocidas.
+habitacion_activa_id: BIGINT | calculado, NULL permitido.
+  Identificador derivado de la habitación cuando la estancia está activa.
+  Calculado; la exclusividad se garantiza con un índice único filtrado.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+ESTANCIA_HUESPEDES
+----------------------------------------------------------------------------
+estancia_id: BIGINT | PK, FK, NOT NULL.
+  Estancia concreta relacionada con participantes, pago o pedido.
+huesped_id: BIGINT | PK, FK, NOT NULL.
+  Identidad documental de una persona de la estancia.
+orden: TINYINT | NOT NULL.
+  Posición del huésped, entre 1 y 8; no se repite en la estancia.
+
+PAGOS_ESTANCIA
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+estancia_id: BIGINT | FK, UQ, NOT NULL.
+  Estancia concreta relacionada con participantes, pago o pedido.
+pagado_en: DATETIME2(7) | NOT NULL.
+  Fecha de confirmación del pago.
+  Fecha de negocio del pago, en America/Lima.
+monto: DECIMAL(12,2) | NOT NULL.
+  Importe consolidado confirmado del alojamiento, mayor que cero.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+CATALOGOS_SERVICIO
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+hotel_codigo: NVARCHAR(80) | FK, UQ, NOT NULL.
+  Hotel propietario del registro.
+version: BIGINT | NOT NULL.
+  Contador de cambios para controlar concurrencia.
+  Versión optimista: evita sobrescribir cambios de otra sesión.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+CATEGORIAS_SERVICIO
+----------------------------------------------------------------------------
+catalogo_id: BIGINT | PK, FK, NOT NULL.
+  Catálogo del hotel; delimita códigos de categorías y productos.
+codigo: VARCHAR(60) | PK, NOT NULL.
+  Identificador estable usado por Java y los formularios.
+nombre: NVARCHAR(60) | NOT NULL.
+  Nombre visible en las pantallas.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+PRODUCTOS_SERVICIO
+----------------------------------------------------------------------------
+catalogo_id: BIGINT | PK, FK, NOT NULL.
+  Catálogo del hotel; delimita códigos de categorías y productos.
+codigo: VARCHAR(60) | PK, NOT NULL.
+  Identificador estable usado por Java y los formularios.
+categoria_codigo: VARCHAR(60) | FK, NOT NULL.
+  Categoría del mismo catálogo al que pertenece el producto.
+nombre: NVARCHAR(120) | NOT NULL.
+  Nombre visible en las pantallas.
+precio: DECIMAL(10,2) | NOT NULL.
+  Precio unitario vigente del producto, entre 0.01 y 10000 PEN.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+PEDIDOS_SERVICIO
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+estancia_id: BIGINT | FK, NOT NULL.
+  Estancia concreta relacionada con participantes, pago o pedido.
+estado: VARCHAR(20) | NOT NULL.
+  PENDIENTE, EN_PREPARACION, ENTREGADO o CANCELADO.
+observaciones: NVARCHAR(300) | NOT NULL.
+  Indicaciones del pedido; cadena vacía si no se proporcionan.
+creado_en: DATETIME2(7) | NOT NULL.
+  Fecha de creación del registro.
+  Auditoría automática en UTC, salvo la fecha de negocio proporcionada para pedidos.
+actualizado_en: DATETIME2(7) | NOT NULL.
+  Fecha del último cambio del registro.
+  Auditoría UTC; en pedidos es la hora local del último cambio de estado.
+
+PEDIDO_SERVICIO_ITEMS
+----------------------------------------------------------------------------
+id: BIGINT | PK, UQ, NOT NULL.
+  Identificador interno generado por SQL Server.
+pedido_id: BIGINT | FK, NOT NULL.
+  Cabecera del pedido al que pertenece la línea.
+producto_catalogo_id: BIGINT | FK, NULL permitido.
+  Catálogo del producto vigente; puede quedar NULL al retirarlo.
+producto_codigo_fk: VARCHAR(60) | FK, NULL permitido.
+  Código del producto vigente; puede quedar NULL al retirarlo.
+producto_codigo_snapshot: NVARCHAR(60) | NOT NULL.
+  Código registrado al solicitar el producto; se conserva como historial.
+producto_nombre_snapshot: NVARCHAR(120) | NOT NULL.
+  Nombre registrado al solicitar el producto.
+precio_unitario_snapshot: DECIMAL(10,2) | NOT NULL.
+  Precio unitario aplicado al pedido, aunque cambie el precio actual.
+cantidad: TINYINT | NOT NULL.
+  Unidades solicitadas, entre 1 y 10 por línea.
+
+REPRODUCCIÓN
+============================================================================
+Comando desde la carpeta del proyecto:
+  python herramientas/generar-diagramas-sqlserver.py
+Requisito: Pillow. Fuentes: Segoe UI y Consolas en Windows, o DejaVu
+en sistemas compatibles. Se generan PNG deterministas desde el DDL.
+No se consulta ni modifica la base de datos para crear los diagramas.
+SHA-256 del DDL usado: 581A7AF442E81A1B06E4569FBE8E5D711F722E185B20AFC1CE0E8B46980BDE78
+

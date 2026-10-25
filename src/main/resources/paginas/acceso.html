@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>Llave de acceso | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--acceso">
+    <button class="selector-tema selector-tema--fijo" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+    <a class="saltar-contenido" href="#contenido">Saltar al acceso</a>
+    <main class="acceso" id="contenido">
+        <section class="presentacion" aria-labelledby="propuesta-titulo">
+            <div class="presentacion__contenido">
+                <header class="marca" aria-label="Gestera">
+                    <span class="marca__simbolo" aria-hidden="true">G</span>
+                    <span class="marca__nombre">GESTERA</span>
+                </header>
+                <div class="presentacion__texto">
+                    <p class="sobrelinea">GESTIÓN HOTELERA</p>
+                    <h1 id="propuesta-titulo">Control inteligente de tu hotel.</h1>
+                    <p>Centraliza reservas, habitaciones, huéspedes y servicios para mantener cada operación clara, ágil y organizada.</p>
+                </div>
+                <div class="beneficios" aria-label="Beneficios de Gestera">
+                    <article class="beneficio"><strong>Central</strong><span>Información integrada</span></article>
+                    <article class="beneficio"><strong>24/7</strong><span>Visibilidad operativa</span></article>
+                    <article class="beneficio"><strong>Ágil</strong><span>Atención eficiente</span></article>
+                </div>
+            </div>
+        </section>
+        <section class="zona-acceso" aria-labelledby="acceso-titulo">
+            <div class="zona-acceso__contenido">
+                <p class="sobrelinea">ACCESO AL SERVICIO</p>
+                <h2 id="acceso-titulo">LLAVE DE ACCESO</h2>
+                <p class="zona-acceso__introduccion">Bienvenido a Gestera. Introduce tu llave de acceso al servicio.</p>
+                <form class="formulario-acceso" action="/acceso" method="post">
+                    <div class="campo">
+                        <label for="llave">LLAVE DE ACCESO</label>
+                        <div class="campo-secreto">
+                            <input id="llave" name="llave" type="password" autocomplete="current-password"
+                                   autocapitalize="none" spellcheck="false" required autofocus
+                                   aria-describedby="ayuda-llave mensaje-error">
+                            <button class="alternar-llave" id="alternar-llave" type="button" hidden
+                                    aria-controls="llave" aria-pressed="false" aria-label="Mostrar llave de acceso">
+                                <span aria-hidden="true">Mostrar</span>
+                            </button>
+                        </div>
+                        <p class="ayuda-campo" id="ayuda-llave">La llave distingue entre mayúsculas y minúsculas.</p>
+                    </div>
+                    <p class="mensaje-error {{CLASE_ERROR}}" id="mensaje-error" role="alert" aria-live="polite">{{MENSAJE_ERROR}}</p>
+                    <button class="boton boton--principal" type="submit">
+                        <span>Ingresar al servicio</span><span aria-hidden="true">→</span>
+                    </button>
+                </form>
+                <p class="pie-acceso">Gestera · Gestión hotelera centralizada</p>
+            </div>
+        </section>
+    </main>
+    <script src="/publico/scripts/acceso.js" defer></script>
+</body>
+</html>

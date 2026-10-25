@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>Servicio al cuarto | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--panel pagina--servicio-habitacion">
+    <a class="saltar-contenido" href="#contenido">Saltar a servicio al cuarto</a>
+
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="/hotel" aria-label="Gestera, volver a la gestión del hotel">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <div class="acciones-cabecera">
+            <button class="selector-tema" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+            <a class="boton-configuracion" href="/hotel/configuracion"
+               aria-label="Abrir configuración del hotel" title="Configuración del hotel">
+                <span aria-hidden="true">&#9881;</span><span>Configuración</span>
+            </a>
+            <a class="boton boton--secundario" href="/hotel">Volver a gestión</a>
+            <form action="/salir" method="post">
+                <button class="boton boton--secundario" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="contenido-panel contenido-servicio" id="contenido">
+        <section class="encabezado-servicio" aria-labelledby="servicio-titulo">
+            <div>
+                <p class="sobrelinea">{{NOMBRE_HOTEL}}</p>
+                <h1 id="servicio-titulo">Servicio al cuarto</h1>
+                <p>Registra solicitudes y acompáñalas desde la recepción hasta la entrega.</p>
+            </div>
+            <div class="metricas-servicio" aria-label="Resumen de pedidos">
+                <article><strong>{{TOTAL_PEDIDOS_SERVICIO}}</strong><span>Total</span></article>
+                <article><strong>{{PENDIENTES_SERVICIO}}</strong><span>Pendientes</span></article>
+                <article><strong>{{PREPARACION_SERVICIO}}</strong><span>En preparación</span></article>
+            </div>
+        </section>
+
+        <p class="mensaje-error {{CLASE_ERROR_SERVICIO}}" role="alert" aria-live="polite">
+            {{MENSAJE_ERROR_SERVICIO}}
+        </p>
+
+        <div class="distribucion-servicio">
+            <section class="panel-nuevo-pedido" aria-labelledby="nuevo-pedido-titulo">
+                <p class="sobrelinea">NUEVA SOLICITUD</p>
+                <h2 id="nuevo-pedido-titulo">Registrar pedido</h2>
+                <p>Sólo se muestran habitaciones que actualmente están ocupadas.</p>
+                <form class="formulario-servicio" action="/hotel/servicio-habitacion/pedidos"
+                      method="post">
+                    <div class="campo campo--hotel">
+                        <label for="habitacion-servicio">HABITACIÓN</label>
+                        <select id="habitacion-servicio" name="numeroHabitacion" required>
+                            <option value="">Selecciona una habitación</option>
+                            {{OPCIONES_HABITACIONES_SERVICIO}}
+                        </select>
+                    </div>
+                    <div class="campo campo--hotel">
+                        <div class="cabecera-catalogo-servicio">
+                            <label for="producto-servicio">PRODUCTO</label>
+                            <button class="boton-editar-catalogo" type="button"
+                                    data-abrir-catalogo aria-haspopup="dialog"
+                                    aria-controls="modal-catalogo-servicio">
+                                Administrar catálogo
+                            </button>
+                        </div>
+                        <select id="producto-servicio" name="producto" required>
+                            {{OPCIONES_PRODUCTOS_SERVICIO}}
+                        </select>
+                    </div>
+                    <div class="campo campo--hotel">
+                        <label for="cantidad-servicio">CANTIDAD</label>
+                        <input id="cantidad-servicio" name="cantidad" type="number"
+                               min="1" max="10" step="1" value="1" required>
+                    </div>
+                    <div class="campo campo--hotel campo--ancho-completo">
+                        <label for="observaciones-servicio">OBSERVACIONES</label>
+                        <textarea id="observaciones-servicio" name="observaciones" maxlength="300"
+                                  rows="3" placeholder="Ej.: sin azúcar, entregar cubiertos"></textarea>
+                    </div>
+                    <div class="resumen-nuevo-pedido" aria-live="polite">
+                        <span>Total estimado</span><strong id="total-pedido-servicio">S/ 0.00</strong>
+                    </div>
+                    <button class="boton boton--principal" type="submit"
+                            {{BOTON_PEDIDO_DESHABILITADO}}>Crear pedido</button>
+                </form>
+                <p class="ayuda-estadia" {{AVISO_SIN_HABITACIONES_OCUPADAS}}>
+                    Ocupa una habitación antes de registrar solicitudes.
+                </p>
+                <p class="ayuda-estadia" {{AVISO_SIN_PRODUCTOS_SERVICIO}}>
+                    Agrega al menos un producto al catálogo antes de crear pedidos.
+                </p>
+            </section>
+
+            <section class="panel-pedidos-servicio" aria-labelledby="pedidos-servicio-titulo">
+                <div class="cabecera-pedidos-servicio">
+                    <div><p class="sobrelinea">COLA OPERATIVA</p><h2 id="pedidos-servicio-titulo">Pedidos</h2></div>
+                    <div class="filtros-pedidos-servicio" role="group" aria-label="Filtrar pedidos">
+                        <button type="button" class="activo" data-filtro-pedido="todos">Todos</button>
+                        <button type="button" data-filtro-pedido="pendiente">Pendientes</button>
+                        <button type="button" data-filtro-pedido="en_preparacion">Preparación</button>
+                        <button type="button" data-filtro-pedido="finalizados">Finalizados</button>
+                    </div>
+                </div>
+                <form class="busqueda-pedidos-servicio" action="/hotel/servicio-habitacion"
+                      method="get" aria-label="Buscar pedidos">
+                    <div class="campo campo--hotel">
+                        <label for="filtro-fecha-pedido">FECHA</label>
+                        <input id="filtro-fecha-pedido" name="fecha" type="date"
+                               value="{{FILTRO_FECHA_PEDIDO}}">
+                    </div>
+                    <div class="campo campo--hotel">
+                        <label for="filtro-hora-pedido">HORA EXACTA</label>
+                        <input id="filtro-hora-pedido" name="hora" type="time"
+                               value="{{FILTRO_HORA_PEDIDO}}">
+                    </div>
+                    <div class="campo campo--hotel">
+                        <label for="filtro-habitacion-pedido">HABITACI&Oacute;N</label>
+                        <input id="filtro-habitacion-pedido" name="habitacion" type="number"
+                               min="1" max="50" step="1"
+                               value="{{FILTRO_HABITACION_PEDIDO}}" placeholder="Ej.: 12">
+                    </div>
+                    <div class="busqueda-pedidos-servicio__acciones">
+                        <button class="boton boton--principal" type="submit">Buscar</button>
+                        <a class="boton boton--secundario" href="/hotel/servicio-habitacion">Limpiar</a>
+                    </div>
+                </form>
+                <p class="resumen-busqueda-pedidos" aria-live="polite">
+                    {{RESUMEN_FILTRO_PEDIDOS}}
+                </p>
+                <div class="lista-pedidos-servicio" id="lista-pedidos-servicio">
+                    {{PEDIDOS_SERVICIO}}
+                </div>
+                <p class="sin-pedidos-filtrados" id="sin-pedidos-filtrados" hidden>
+                    No hay pedidos con este estado.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <dialog class="modal-hotel modal-catalogo-servicio {{CLASE_MODAL_CATALOGO}}"
+            id="modal-catalogo-servicio" aria-modal="true"
+            aria-labelledby="modal-catalogo-titulo"
+            aria-describedby="modal-catalogo-descripcion">
+        <div class="modal-hotel__contenido">
+            <button class="modal-hotel__cerrar" type="button" data-cerrar-catalogo
+                    aria-label="Cerrar edición del catálogo">×</button>
+            <span class="modal-hotel__simbolo modal-catalogo-servicio__simbolo"
+                  aria-hidden="true">C</span>
+            <p class="sobrelinea">CATÁLOGO</p>
+            <h2 id="modal-catalogo-titulo">Administrar catálogo</h2>
+            <p id="modal-catalogo-descripcion">
+                Los cambios se aplicarán a los pedidos nuevos de este hotel.
+            </p>
+            <p class="mensaje-error {{CLASE_ERROR_SERVICIO}}" role="alert">
+                {{MENSAJE_ERROR_SERVICIO}}
+            </p>
+            <div class="administrador-catalogo-servicio">
+                <section class="bloque-catalogo-servicio" aria-labelledby="editar-producto-titulo">
+                    <div class="bloque-catalogo-servicio__cabecera">
+                        <p class="sobrelinea">PRODUCTOS ACTUALES</p>
+                        <h3 id="editar-producto-titulo">Editar o quitar producto</h3>
+                    </div>
+                    <form class="formulario-catalogo-servicio"
+                          action="/hotel/servicio-habitacion/catalogo" method="post">
+                        <div class="campo campo--hotel campo--ancho-completo">
+                            <label for="producto-catalogo">PRODUCTO</label>
+                            <select id="producto-catalogo" name="producto"
+                                    data-producto-catalogo required
+                                    {{CONTROLES_PRODUCTO_CATALOGO}}>
+                                {{OPCIONES_PRODUCTOS_SERVICIO}}
+                            </select>
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="nombre-producto-catalogo">NOMBRE</label>
+                            <input id="nombre-producto-catalogo" name="nombre" type="text"
+                                   maxlength="120" data-nombre-catalogo required
+                                   {{CONTROLES_PRODUCTO_CATALOGO}}>
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="categoria-producto-catalogo">CATEGORÍA</label>
+                            <select id="categoria-producto-catalogo" name="categoria"
+                                    data-categoria-catalogo required
+                                    {{CONTROLES_PRODUCTO_CATALOGO}}>
+                                {{OPCIONES_CATEGORIAS_SERVICIO}}
+                            </select>
+                        </div>
+                        <div class="campo campo--hotel campo--ancho-completo">
+                            <label for="precio-producto-catalogo">PRECIO (S/)</label>
+                            <input id="precio-producto-catalogo" name="precio" type="number"
+                                   min="0.01" max="10000" step="0.01"
+                                   data-precio-catalogo required
+                                   {{CONTROLES_PRODUCTO_CATALOGO}}>
+                        </div>
+                        <div class="acciones-producto-catalogo campo--ancho-completo">
+                            <button class="boton boton--peligro" type="submit"
+                                    formaction="/hotel/servicio-habitacion/catalogo/productos/eliminar"
+                                    formnovalidate data-eliminar-producto
+                                    {{CONTROLES_PRODUCTO_CATALOGO}}>
+                                Quitar producto
+                            </button>
+                            <button class="boton boton--principal" type="submit"
+                                    {{CONTROLES_PRODUCTO_CATALOGO}}>
+                                Guardar cambios
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="bloque-catalogo-servicio" aria-labelledby="agregar-producto-titulo">
+                    <div class="bloque-catalogo-servicio__cabecera">
+                        <p class="sobrelinea">NUEVO PRODUCTO</p>
+                        <h3 id="agregar-producto-titulo">Agregar al catálogo</h3>
+                    </div>
+                    <form class="formulario-catalogo-servicio"
+                          action="/hotel/servicio-habitacion/catalogo/productos" method="post">
+                        <div class="campo campo--hotel campo--ancho-completo">
+                            <label for="nombre-producto-nuevo">NOMBRE</label>
+                            <input id="nombre-producto-nuevo" name="nombre" type="text"
+                                   maxlength="120" required>
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="categoria-producto-nuevo">CATEGORÍA</label>
+                            <select id="categoria-producto-nuevo" name="categoria" required>
+                                {{OPCIONES_CATEGORIAS_SERVICIO}}
+                            </select>
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="precio-producto-nuevo">PRECIO (S/)</label>
+                            <input id="precio-producto-nuevo" name="precio" type="number"
+                                   min="0.01" max="10000" step="0.01" required>
+                        </div>
+                        <button class="boton boton--principal campo--ancho-completo" type="submit">
+                            Agregar producto
+                        </button>
+                    </form>
+                </section>
+
+                <section class="bloque-catalogo-servicio bloque-catalogo-servicio--categorias"
+                         aria-labelledby="categorias-catalogo-titulo">
+                    <div class="bloque-catalogo-servicio__cabecera">
+                        <p class="sobrelinea">CATEGORÍAS</p>
+                        <h3 id="categorias-catalogo-titulo">Organizar categorías</h3>
+                    </div>
+                    <div class="lista-categorias-catalogo">
+                        {{CATEGORIAS_CATALOGO_SERVICIO}}
+                    </div>
+                    <form class="formulario-nueva-categoria"
+                          action="/hotel/servicio-habitacion/catalogo/categorias" method="post">
+                        <div class="campo campo--hotel">
+                            <label for="categoria-catalogo-nueva">NUEVA CATEGORÍA</label>
+                            <input id="categoria-catalogo-nueva" name="categoria" type="text"
+                                   maxlength="60" required>
+                        </div>
+                        <button class="boton boton--principal" type="submit">
+                            Agregar categoría
+                        </button>
+                    </form>
+                </section>
+            </div>
+            <div class="modal-hotel__acciones modal-catalogo-servicio__acciones">
+                <button class="boton boton--secundario" type="button"
+                        data-cerrar-catalogo>Cerrar</button>
+            </div>
+        </div>
+    </dialog>
+    <script src="/publico/scripts/servicio-habitacion.js" defer></script>
+</body>
+</html>

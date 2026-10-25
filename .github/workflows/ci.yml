@@ -1,0 +1,20 @@
+name: Verificar Gestera
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - run: python3 herramientas/generar-instalador-sqlserver.py --verificar
+      - run: python3 herramientas/documentar-modelo-sqlserver.py --verificar
+      - run: mvn -B verify

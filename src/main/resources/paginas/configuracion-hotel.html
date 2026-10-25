@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>Configuración del hotel | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--panel pagina--configuracion-hotel">
+    <a class="saltar-contenido" href="#contenido">Saltar a la configuración</a>
+
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="/hotel" aria-label="Gestera, volver a la gestión del hotel">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <div class="acciones-cabecera">
+            <button class="selector-tema" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+            <a class="boton boton--secundario" href="/hotel/habitaciones">Ver habitaciones</a>
+            <a class="boton boton--secundario" href="/hotel">Volver a gestión</a>
+            <form action="/salir" method="post">
+                <button class="boton boton--secundario" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="contenido-panel contenido-configuracion" id="contenido">
+        <section class="encabezado-configuracion" aria-labelledby="configuracion-hotel-titulo">
+            <div>
+                <p class="sobrelinea">{{NOMBRE_HOTEL}}</p>
+                <h1 id="configuracion-hotel-titulo">Configuración del hotel</h1>
+                <p>Define la capacidad y las secciones tarifarias que usarás al registrar cada estadía.</p>
+            </div>
+            <span class="insignia-configuracion" aria-hidden="true">&#9881;</span>
+        </section>
+
+        <p class="mensaje-error mensaje-error--configuracion" id="mensaje-error-configuracion"
+           role="alert" aria-live="polite">{{MENSAJE_ERROR_CONFIGURACION}}</p>
+
+        <section class="panel-configuracion panel-configuracion--seguridad"
+                 aria-labelledby="seguridad-hotel-titulo">
+            <div>
+                <p class="sobrelinea">SEGURIDAD</p>
+                <h2 id="seguridad-hotel-titulo">Cambiar llave de acceso</h2>
+                <p>Actualiza la llave de este hotel. Las demás credenciales no se modificarán.</p>
+            </div>
+            {{FORMULARIO_CAMBIO_LLAVE_CONFIGURACION}}
+        </section>
+
+        <form class="formulario-configuracion-general" id="formulario-configuracion-general"
+              action="/hotel/configuracion/guardar" method="post"
+              data-formulario-configuracion-general novalidate>
+            <input name="cantidadSecciones" type="hidden"
+                   value="{{CANTIDAD_SECCIONES_TARIFARIAS}}">
+
+            <section class="panel-configuracion panel-configuracion--cantidad"
+                     aria-labelledby="cantidad-titulo">
+                <div>
+                    <p class="sobrelinea">CAPACIDAD</p>
+                    <h2 id="cantidad-titulo">Cantidad de habitaciones</h2>
+                    <p id="ayuda-cantidad">El hotel puede administrar entre 1 y 50 habitaciones.</p>
+                </div>
+                <div class="controles-cantidad">
+                    <label class="solo-lectores" for="cantidad-habitaciones">Cantidad de habitaciones</label>
+                    <input id="cantidad-habitaciones" name="cantidadHabitaciones" type="number"
+                           min="1" max="50" step="1" value="{{CANTIDAD_HABITACIONES}}" required
+                           aria-describedby="ayuda-cantidad mensaje-error-configuracion">
+                    <button class="boton boton--secundario boton--guardar-cantidad"
+                            type="button"
+                            data-ruta-guardado="/hotel/configuracion/habitaciones"
+                            data-guardar-cantidad>Guardar cantidad</button>
+                </div>
+            </section>
+
+            <section class="secciones-tarifarias" aria-labelledby="secciones-titulo">
+                <div class="secciones-tarifarias__cabecera">
+                    <div>
+                        <p class="sobrelinea">COLORES Y PRECIOS</p>
+                        <h2 id="secciones-titulo">Secciones tarifarias</h2>
+                        <p>Cada color puede tener un nombre propio y precios distintos para 6 o 24 horas.</p>
+                    </div>
+                    <span class="contador-secciones" id="contador-secciones"
+                          role="status" aria-live="polite"></span>
+                </div>
+
+                <div class="rejilla-secciones-tarifarias" id="rejilla-secciones-tarifarias">
+                    {{TARJETAS_SECCIONES_TARIFARIAS}}
+                </div>
+
+                <article class="tarjeta-seccion-tarifaria tarjeta-seccion-tarifaria--nueva"
+                         data-seccion-tarifaria data-es-nueva="true">
+                    <div class="formulario-seccion-tarifaria" data-formulario-seccion>
+                    <div class="tarjeta-seccion-tarifaria__cabecera">
+                        <span class="muestra-color-seccion" data-muestra-color aria-hidden="true"></span>
+                        <div>
+                            <p class="sobrelinea">NUEVA SECCIÓN</p>
+                            <h3 data-nombre-visible>Nueva sección</h3>
+                        </div>
+                    </div>
+                    <div class="campos-seccion">
+                        <div class="campo campo--hotel campo--color">
+                            <label for="nueva-seccion-color">COLOR</label>
+                            <input id="nueva-seccion-color" name="nuevaSeccion.color" type="color"
+                                   value="#22c55e" data-campo-seccion="color"
+                                   aria-describedby="ayuda-nombre-seccion error-nueva-seccion">
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="nueva-seccion-nombre">NOMBRE OPCIONAL</label>
+                            <input id="nueva-seccion-nombre" name="nuevaSeccion.nombre" type="text"
+                                   maxlength="40" data-campo-seccion="nombre"
+                                   placeholder="Ej.: Premium" aria-describedby="ayuda-nombre-seccion error-nueva-seccion">
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="nueva-seccion-precio-6">PRECIO POR 6 HORAS (S/)</label>
+                            <input id="nueva-seccion-precio-6" name="nuevaSeccion.precio6Horas"
+                                   type="number" min="1" max="10000" step="0.01"
+                                   inputmode="decimal" data-campo-seccion="precio6Horas"
+                                   aria-describedby="error-nueva-seccion">
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="nueva-seccion-precio-dia">PRECIO DÍA COMPLETO (S/)</label>
+                            <input id="nueva-seccion-precio-dia" name="nuevaSeccion.precioDiaCompleto"
+                                   type="number" min="1" max="10000" step="0.01"
+                                   inputmode="decimal" data-campo-seccion="precioDiaCompleto"
+                                   aria-describedby="error-nueva-seccion">
+                        </div>
+                    </div>
+                    <p class="ayuda-estadia" id="ayuda-nombre-seccion">
+                        Completa ambos precios para añadirla ahora o con el guardado general. Si dejas el nombre vacío,
+                        se usará “Color #RRGGBB” con el valor elegido.
+                    </p>
+                    <p class="aviso-limite-secciones" data-limite-secciones hidden>
+                        Ya registraste el máximo de 12 secciones. Edita o elimina una para poder añadir otra.
+                    </p>
+                    <p class="mensaje-error mensaje-error--seccion" id="error-nueva-seccion"
+                       data-error-seccion role="alert" aria-live="polite"></p>
+                    <div class="bloque-anadir-seccion" data-bloque-anadir-seccion>
+                        <div>
+                            <p class="sobrelinea">GUARDADO INMEDIATO</p>
+                            <p id="descripcion-anadir-seccion" data-descripcion-alta>
+                                Al añadirla, la nueva sección se guardará de inmediato y aparecerá como registrada.
+                            </p>
+                        </div>
+                        <button class="boton boton--principal boton--anadir-seccion"
+                                type="button"
+                                data-ruta-guardado="/hotel/configuracion/secciones/guardar"
+                                data-guardar-seccion disabled
+                                aria-label="Añadir nueva sección"
+                                aria-describedby="descripcion-anadir-seccion error-nueva-seccion">Añadir nueva sección</button>
+                    </div>
+                    </div>
+                </article>
+            </section>
+
+            <noscript>
+                <p class="aviso-javascript-configuracion">
+                    El botón “Añadir nueva sección” requiere JavaScript. Sin él, completa la tarjeta
+                    y usa “Guardar todos los cambios” para aplicar toda la configuración.
+                </p>
+            </noscript>
+
+            <footer class="acciones-configuracion-general">
+                <div>
+                    <p class="sobrelinea">GUARDADO GENERAL</p>
+                    <p id="estado-cambios-configuracion" role="status" aria-live="polite">
+                        La cantidad, los colores y las tarifas se guardarán en una sola operación.
+                    </p>
+                </div>
+                <button class="boton boton--principal boton--guardar-general"
+                        id="guardar-configuracion-general"
+                        type="submit">Guardar todos los cambios</button>
+            </footer>
+        </form>
+    </main>
+
+    <script src="/publico/scripts/configuracion-hotel.js" defer></script>
+    <script src="/publico/scripts/gestion.js" defer></script>
+</body>
+</html>

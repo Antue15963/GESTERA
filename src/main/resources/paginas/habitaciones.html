@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>{{TITULO_HABITACIONES}} | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--panel pagina--habitaciones modo-habitaciones--{{MODO_HABITACIONES}}"
+      data-modo="{{MODO_HABITACIONES}}">
+    <a class="saltar-contenido" href="#contenido">Saltar al listado de habitaciones</a>
+
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="/hotel" aria-label="Gestera, volver a la gestión del hotel">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <div class="acciones-cabecera">
+            <button class="selector-tema" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+            <button class="boton-alertas-checkout" id="abrir-alertas-checkout" type="button"
+                    aria-haspopup="dialog" aria-controls="modal-alertas-checkout"
+                    aria-label="Abrir alertas de check-out">
+                <span class="boton-alertas-checkout__campana" aria-hidden="true">🔔</span>
+                <span>Salidas</span>
+                <span class="boton-alertas-checkout__contador" id="contador-alertas-checkout"
+                      aria-label="0 alertas">0</span>
+            </button>
+            <a class="boton-configuracion" href="/hotel/configuracion"
+               aria-label="Abrir configuración del hotel" title="Configuración del hotel">
+                <span aria-hidden="true">&#9881;</span>
+                <span>Configuración</span>
+            </a>
+            <a class="boton boton--secundario" href="/hotel">Volver a gestión</a>
+            <form action="/salir" method="post">
+                <button class="boton boton--secundario" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="contenido-panel contenido-habitaciones" id="contenido">
+        <section class="encabezado-habitaciones" aria-labelledby="habitaciones-titulo">
+            <div>
+                <p class="sobrelinea">{{NOMBRE_HOTEL}}</p>
+                <h1 id="habitaciones-titulo">{{TITULO_HABITACIONES}}</h1>
+                <p>{{DESCRIPCION_HABITACIONES}}</p>
+            </div>
+            <span class="insignia-modo" id="insignia-modo"></span>
+        </section>
+
+        <nav class="selector-modo-habitaciones" aria-label="Vistas de habitaciones">
+            <a href="/hotel/habitaciones" data-modo-destino="normal">Todas las habitaciones</a>
+            <a href="/hotel/limpieza" data-modo-destino="limpieza">Vista de limpieza</a>
+        </nav>
+
+        <section class="segmentacion-habitaciones segmentacion-habitaciones--principal"
+                 aria-labelledby="segmentacion-titulo">
+            <div>
+                <p class="sobrelinea">SECCIONES TARIFARIAS</p>
+                <h2 id="segmentacion-titulo">Colores y servicios</h2>
+                <p>Filtra los cuartos por la sección de color configurada para el hotel.</p>
+            </div>
+            <div class="leyenda-habitaciones" id="leyenda-habitaciones"
+                 role="group" aria-label="Filtrar habitaciones por sección tarifaria"></div>
+        </section>
+
+        <section class="listado-habitaciones" aria-labelledby="listado-habitaciones-titulo">
+            <div class="listado-habitaciones__cabecera">
+                <div>
+                    <p class="sobrelinea">DISTRIBUCIÓN ACTUAL</p>
+                    <h2 id="listado-habitaciones-titulo">Cuartos registrados</h2>
+                </div>
+                <div class="contadores-habitaciones" role="status" aria-live="polite" aria-atomic="true">
+                    <p class="contador-habitaciones" id="contador-habitaciones"></p>
+                    <div class="contadores-habitaciones__estados">
+                        <p class="contador-habitaciones contador-habitaciones--disponibles"
+                           id="contador-habitaciones-disponibles"></p>
+                        <p class="contador-habitaciones contador-habitaciones--ocupadas"
+                           id="contador-habitaciones-ocupadas"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rejilla-habitaciones" id="rejilla-habitaciones">
+                {{TARJETAS_HABITACIONES}}
+            </div>
+
+            <div class="sin-resultados sin-resultados--habitaciones" id="sin-habitaciones" hidden>
+                <span aria-hidden="true">◇</span>
+                <h2>No hay habitaciones en esta vista</h2>
+                <p>Cambia la sección o vuelve a la vista general para consultar todos los cuartos.</p>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="modal-hotel modal-habitacion {{CLASE_MODAL_HABITACION}}" id="modal-habitacion"
+            aria-modal="true" aria-labelledby="modal-habitacion-titulo"
+            aria-describedby="modal-habitacion-descripcion">
+        <div class="modal-hotel__contenido">
+            <button class="modal-hotel__cerrar" type="button" data-cerrar-habitacion
+                    aria-label="Cerrar edición de habitación">×</button>
+            <span class="modal-hotel__simbolo" aria-hidden="true">H</span>
+            <p class="sobrelinea">DETALLE DEL CUARTO</p>
+            <h2 id="modal-habitacion-titulo">
+                Habitación <span id="numero-habitacion-titulo">{{NUMERO_HABITACION}}</span>
+            </h2>
+            <p id="modal-habitacion-descripcion">
+                Selecciona la sección y el servicio; Gestera calculará automáticamente la tarifa y los horarios.
+            </p>
+
+            <form class="formulario-habitacion" action="/hotel/habitaciones/actualizar" method="post" novalidate>
+                <input id="numero-habitacion" name="numeroHabitacion" type="hidden"
+                       value="{{NUMERO_HABITACION}}">
+                <input name="modo" type="hidden" value="{{MODO_HABITACIONES}}">
+
+                <fieldset class="grupo-formulario grupo-formulario--servicio">
+                    <legend>Tarifa y servicio</legend>
+                    <div class="campo campo--hotel">
+                        <label for="seccion-habitacion">SECCIÓN DE COLOR</label>
+                        <select id="seccion-habitacion" name="idSeccion" required
+                                data-valor-servidor="{{SECCION_TARIFARIA_HABITACION}}"
+                                aria-describedby="resumen-tarifa mensaje-error-habitacion">
+                            <option value="">Selecciona una sección</option>
+                            {{OPCIONES_SECCIONES_TARIFARIAS}}
+                        </select>
+                    </div>
+                    <div class="campo campo--hotel">
+                        <label for="tipo-servicio-habitacion">TIPO DE SERVICIO</label>
+                        <select id="tipo-servicio-habitacion" name="tipoServicio" required
+                                data-valor-servidor="{{TIPO_SERVICIO_HABITACION}}"
+                                aria-describedby="resumen-tarifa mensaje-error-habitacion">
+                            <option value="">Selecciona un servicio</option>
+                            <option value="seis_horas">6 horas</option>
+                            <option value="dia_completo">Día completo (24 horas)</option>
+                        </select>
+                    </div>
+                    <div class="resumen-tarifa" id="resumen-tarifa" aria-live="polite">
+                        <span class="resumen-tarifa__color" id="muestra-color-tarifa" aria-hidden="true"></span>
+                        <span>
+                            <strong id="nombre-tarifa">Selecciona una sección</strong>
+                            <small id="detalle-tarifa">El precio se completará automáticamente.</small>
+                        </span>
+                        <label class="resumen-tarifa__precio" for="precio-habitacion">
+                            PRECIO (S/)
+                            <input id="precio-habitacion" type="number" step="0.01"
+                                   value="{{PRECIO_HABITACION}}" readonly>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="grupo-formulario">
+                    <legend>Estado y estadía</legend>
+                    <div class="campo campo--hotel campo--estado-habitacion">
+                        <label for="estado-habitacion">ESTADO</label>
+                        <select id="estado-habitacion" name="estado" required
+                                data-valor-servidor="{{ESTADO_HABITACION}}"
+                                aria-describedby="ayuda-estadia mensaje-error-habitacion">
+                            <option value="disponible">Disponible</option>
+                            <option value="ocupada">Ocupada</option>
+                            <option value="limpieza_pendiente">Limpieza pendiente</option>
+                            <option value="en_limpieza">En limpieza</option>
+                            <option value="mantenimiento">Mantenimiento</option>
+                        </select>
+                    </div>
+                    <div class="campos-fecha">
+                        <div class="campo campo--hotel">
+                            <label for="checkin-habitacion">CHECK-IN AUTOMÁTICO</label>
+                            <input id="checkin-habitacion" type="datetime-local"
+                                   step="60" value="{{CHECKIN_HABITACION}}" readonly
+                                   aria-describedby="ayuda-estadia mensaje-error-habitacion">
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="checkout-habitacion">CHECK-OUT</label>
+                            <input id="checkout-habitacion" name="proximoCheckOut"
+                                   type="datetime-local"
+                                   step="60" value="{{CHECKOUT_HABITACION}}" readonly
+                                   aria-describedby="ayuda-estadia ayuda-ajuste-checkout mensaje-error-habitacion">
+                        </div>
+                    </div>
+                    <label class="control-ajuste-checkout" for="ajuste-manual-checkout">
+                        <input id="ajuste-manual-checkout" name="ajusteManualCheckOut"
+                               type="checkbox" value="true">
+                        <span>
+                            <strong>Cambiar hora para pruebas</strong>
+                            <small id="ayuda-ajuste-checkout">
+                                El check-out se calcula automáticamente al elegir 6 o 24 horas.
+                                Activa esta opción solo para ajustar la hora de salida.
+                            </small>
+                        </span>
+                    </label>
+                    <div class="campo campo--hotel">
+                        <label for="pago-habitacion">ESTADO DEL PAGO</label>
+                        <select id="pago-habitacion" name="pagado"
+                                data-valor-servidor="{{PAGADO_HABITACION}}"
+                                aria-describedby="ayuda-estadia mensaje-error-habitacion">
+                            <option value="false">No pagado</option>
+                            <option value="true">Pagado</option>
+                        </select>
+                    </div>
+                    <p class="ayuda-estadia" id="ayuda-estadia" aria-live="polite"></p>
+                </fieldset>
+
+                <fieldset class="grupo-formulario grupo-formulario--huespedes" id="grupo-huespedes"
+                          aria-describedby="ayuda-huespedes mensaje-error-habitacion">
+                    <legend>Huéspedes</legend>
+                    <div class="cabecera-huespedes">
+                        <p id="ayuda-huespedes">
+                            Registra a todas las personas que ocuparán la habitación.
+                            Se muestran dos huéspedes de forma predeterminada.
+                        </p>
+                        <button class="boton boton--secundario boton--compacto" id="agregar-huesped"
+                                type="button">Añadir huésped</button>
+                    </div>
+                    <input id="cantidad-huespedes" name="cantidadHuespedes" type="hidden"
+                           value="{{CANTIDAD_HUESPEDES}}">
+                    <div class="lista-huespedes" id="lista-huespedes">
+                        {{FILAS_HUESPEDES}}
+                    </div>
+                </fieldset>
+
+                <fieldset class="grupo-formulario grupo-formulario--ampliacion"
+                          id="ampliacion-estadia"
+                          data-monto-adicional-acumulado="{{MONTO_ADICIONAL_HABITACION}}"
+                          data-monto-total-actual="{{MONTO_TOTAL_HABITACION}}"
+                          data-horas-adicionales-acumuladas="{{HORAS_ADICIONALES_HABITACION}}"
+                          aria-describedby="ayuda-ampliacion-estadia">
+                    <legend>Ampliar estadía</legend>
+                    <p class="ayuda-ampliacion-estadia" id="ayuda-ampliacion-estadia"
+                       aria-live="polite">
+                        Esta opción está disponible cuando la habitación se encuentra ocupada.
+                    </p>
+                    <div class="opciones-ampliacion" role="radiogroup"
+                         aria-label="Horas adicionales">
+                        <label>
+                            <input type="radio" name="horasAdicionales" value="0" checked>
+                            <span>Sin ampliación</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="horasAdicionales" value="1">
+                            <span>+1 hora</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="horasAdicionales" value="2">
+                            <span>+2 horas</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="horasAdicionales" value="4">
+                            <span>+4 horas</span>
+                        </label>
+                    </div>
+                    <div class="ampliacion-estadia__contenido">
+                        <div class="campo campo--hotel campo--monto-adicional">
+                            <label for="monto-adicional-habitacion">NUEVO MONTO ADICIONAL (S/)</label>
+                            <input id="monto-adicional-habitacion" name="montoAdicional"
+                                   type="number" min="0.01" max="10000.00" step="0.01" inputmode="decimal"
+                                   placeholder="0.00" disabled
+                                   aria-describedby="ayuda-monto-adicional mensaje-error-habitacion">
+                            <small id="ayuda-monto-adicional">
+                                Selecciona +1, +2 o +4 horas e ingresa el cargo de esta ampliación.
+                            </small>
+                        </div>
+                        <div class="resumen-ampliacion" id="resumen-ampliacion" aria-live="polite">
+                            <p><span>Tarifa original</span><strong id="tarifa-original-ampliacion">S/ 0.00</strong></p>
+                            <p><span>Adicional acumulado</span><strong id="adicional-acumulado-ampliacion">S/ 0.00</strong></p>
+                            <p><span>Tiempo añadido acumulado</span><strong id="horas-acumuladas-ampliacion">0 h</strong></p>
+                            <p><span>Nuevo cargo</span><strong id="nuevo-cargo-ampliacion">S/ 0.00</strong></p>
+                            <p class="resumen-ampliacion__total"><span>Total a cobrar</span><strong id="total-ampliacion">S/ 0.00</strong></p>
+                            <p class="resumen-ampliacion__checkout"><span>Nuevo check-out</span><strong id="checkout-ampliacion">Sin ampliación</strong></p>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <p class="mensaje-error" id="mensaje-error-habitacion"
+                   role="alert" aria-live="polite">{{MENSAJE_ERROR_HABITACION}}</p>
+
+                <div class="modal-hotel__acciones">
+                    <button class="boton boton--secundario" type="button" data-cerrar-habitacion>Cancelar</button>
+                    <button class="boton boton--principal" type="submit">
+                        <span>Guardar habitación</span><span aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <dialog class="modal-hotel modal-alertas-checkout" id="modal-alertas-checkout"
+            aria-modal="true" aria-labelledby="alertas-checkout-titulo"
+            aria-describedby="alertas-checkout-descripcion">
+        <div class="modal-hotel__contenido">
+            <button class="modal-hotel__cerrar" type="button" data-cerrar-alertas-checkout
+                    aria-label="Cerrar alertas de check-out">×</button>
+            <span class="modal-hotel__simbolo modal-alertas-checkout__simbolo" aria-hidden="true">🔔</span>
+            <p class="sobrelinea">PRÓXIMAS SALIDAS</p>
+            <h2 id="alertas-checkout-titulo">Alertas de check-out</h2>
+            <p id="alertas-checkout-descripcion">
+                Se muestran habitaciones desde diez minutos antes de su salida.
+            </p>
+            <div class="leyenda-alertas-checkout" aria-label="Fases de las alertas">
+                <span class="leyenda-alertas-checkout__diez">10 minutos</span>
+                <span class="leyenda-alertas-checkout__cinco">5 minutos</span>
+                <span class="leyenda-alertas-checkout__vencida">Hora de salida</span>
+            </div>
+            <div class="alertas-checkout__lista" id="lista-alertas-checkout"></div>
+            <p class="sin-alertas-checkout" id="sin-alertas-checkout">
+                No hay habitaciones próximas al check-out.
+            </p>
+            <p class="solo-lectores" id="anuncio-alertas-checkout"
+               role="status" aria-live="assertive" aria-atomic="true"></p>
+        </div>
+    </dialog>
+
+    <dialog class="modal-hotel modal-checkout" id="modal-checkout"
+            aria-modal="true" aria-labelledby="modal-checkout-titulo"
+            aria-describedby="modal-checkout-descripcion">
+        <div class="modal-hotel__contenido">
+            <button class="modal-hotel__cerrar" type="button" data-cerrar-checkout
+                    aria-label="Cerrar confirmación de check-out">×</button>
+            <span class="modal-hotel__simbolo modal-checkout__simbolo" aria-hidden="true">✓</span>
+            <p class="sobrelinea">CONFIRMAR SALIDA</p>
+            <h2 id="modal-checkout-titulo">
+                Habitación <span id="numero-checkout-titulo"></span>
+            </h2>
+            <p id="modal-checkout-descripcion">
+                Confirma la salida para cambiar automáticamente la habitación a
+                <strong>Limpieza pendiente</strong>.
+            </p>
+
+            <div class="resumen-checkout">
+                <p>
+                    <span>HORA LÍMITE</span>
+                    <strong id="hora-limite-checkout"></strong>
+                </p>
+                <p>
+                    <span>ESTADO DEL PAGO</span>
+                    <strong id="estado-pago-checkout"></strong>
+                </p>
+                <p class="resumen-checkout__monto" id="resumen-monto-checkout" hidden>
+                    <span>MONTO TOTAL A COBRAR</span>
+                    <strong id="monto-total-checkout"></strong>
+                </p>
+            </div>
+            <p class="aviso-pago-checkout" id="aviso-pago-checkout" hidden>
+                Falta registrar el pago de esta habitación. Puedes confirmar el check-out,
+                pero el pago continuará pendiente.
+            </p>
+
+            <form class="formulario-checkout" action="/hotel/habitaciones/checkout"
+                  method="post">
+                <input id="numero-checkout" name="numeroHabitacion" type="hidden">
+                <input name="modo" type="hidden" value="{{MODO_HABITACIONES}}">
+                <label class="confirmacion-checkout" for="confirmacion-checkout">
+                    <input id="confirmacion-checkout" name="confirmado"
+                           type="checkbox" value="true" required>
+                    <span>Confirmo que se realizó el check-out de esta habitación.</span>
+                </label>
+
+                <div class="modal-hotel__acciones">
+                    <button class="boton boton--secundario" type="button"
+                            data-cerrar-checkout>Cancelar</button>
+                    <button class="boton boton--principal" type="submit">
+                        <span>Confirmar check-out</span><span aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <script src="/publico/scripts/habitaciones.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>Hoteles | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--panel pagina--hoteles">
+    <button class="selector-tema selector-tema--fijo" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+    <a class="saltar-contenido" href="#contenido">Saltar al listado de hoteles</a>
+
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="/panel" aria-label="Gestera, hoteles registrados">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <form action="/salir" method="post">
+            <button class="boton boton--secundario" type="submit">Cerrar sesión</button>
+        </form>
+    </header>
+
+    <main class="contenido-panel" id="contenido">
+        <section class="encabezado-directorio" aria-labelledby="hoteles-titulo">
+            <div>
+                <p class="sobrelinea">DIRECTORIO DE HOTELES</p>
+                <h1 id="hoteles-titulo">Elige el hotel que deseas gestionar.</h1>
+                <p>Consulta los establecimientos registrados y accede de forma segura a sus operaciones.</p>
+            </div>
+            <p class="contador-hoteles" id="contador-hoteles" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="seccion-hoteles" aria-labelledby="listado-titulo">
+            <h2 class="solo-lectores" id="listado-titulo">Hoteles registrados</h2>
+            <div class="buscador-hoteles" role="search">
+                <label for="buscar-hotel">Buscar hotel por nombre</label>
+                <div class="buscador-hoteles__control">
+                    <span class="buscador-hoteles__icono" aria-hidden="true"></span>
+                    <input id="buscar-hotel" type="search" placeholder="Ejemplo: Hotel El Sol"
+                           autocomplete="off" spellcheck="false" aria-controls="lista-hoteles">
+                    <button class="buscador-hoteles__limpiar" id="limpiar-busqueda" type="button" hidden>
+                        Limpiar
+                    </button>
+                </div>
+            </div>
+
+            <div class="rejilla-hoteles" id="lista-hoteles">
+                {{TARJETAS_HOTELES}}
+            </div>
+
+            <div class="sin-resultados" id="sin-resultados" hidden>
+                <span aria-hidden="true">⌕</span>
+                <h2>No encontramos ese hotel</h2>
+                <p>Prueba con otro nombre o limpia la búsqueda para ver todos los establecimientos.</p>
+            </div>
+        </section>
+    </main>
+
+    <dialog class="modal-hotel {{CLASE_MODAL_HOTEL}}" id="modal-hotel"
+            aria-modal="true" aria-labelledby="modal-hotel-titulo" aria-describedby="modal-hotel-descripcion">
+        <div class="modal-hotel__contenido">
+            <button class="modal-hotel__cerrar" type="button" data-cerrar-modal
+                    aria-label="Cerrar acceso al hotel">×</button>
+            <span class="modal-hotel__simbolo" aria-hidden="true">H</span>
+            <p class="sobrelinea">ACCESO AL ESTABLECIMIENTO</p>
+            <h2 id="modal-hotel-titulo">Llave de acceso del hotel</h2>
+            <p id="modal-hotel-descripcion">
+                Ingresa la llave asignada a <strong id="nombre-hotel-modal">{{NOMBRE_HOTEL}}</strong>.
+            </p>
+
+            <form class="formulario-hotel" action="/hotel/acceso" method="post">
+                <input id="codigo-hotel" name="hotel" type="hidden" value="{{CODIGO_HOTEL}}">
+                <div class="campo campo--hotel">
+                    <label for="llave-hotel">LLAVE DE ACCESO</label>
+                    <input id="llave-hotel" name="llaveHotel" type="password"
+                           autocomplete="current-password" autocapitalize="none"
+                           spellcheck="false" required aria-describedby="mensaje-error-hotel">
+                </div>
+                <p class="mensaje-error" id="mensaje-error-hotel" role="alert" aria-live="polite">{{MENSAJE_ERROR_HOTEL}}</p>
+                <div class="modal-hotel__acciones">
+                    <button class="boton boton--secundario" type="button" data-cerrar-modal>Cancelar</button>
+                    <button class="boton boton--principal" type="submit">
+                        <span>Acceder al hotel</span><span aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </dialog>
+
+    <script src="/publico/scripts/hoteles.js" defer></script>
+</body>
+</html>

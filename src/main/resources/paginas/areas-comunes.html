@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>Áreas comunes | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--panel pagina--areas-comunes">
+    <a class="saltar-contenido" href="#contenido">Saltar a las áreas comunes</a>
+
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="/hotel" aria-label="Gestera, volver a la gestión del hotel">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <div class="acciones-cabecera">
+            <button class="selector-tema" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+            <a class="boton-configuracion" href="/hotel/configuracion"
+               aria-label="Abrir configuración del hotel" title="Configuración del hotel">
+                <span aria-hidden="true">&#9881;</span><span>Configuración</span>
+            </a>
+            <a class="boton boton--secundario" href="/hotel">Volver a gestión</a>
+            <form action="/salir" method="post">
+                <button class="boton boton--secundario" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="contenido-panel contenido-areas-comunes" id="contenido">
+        <section class="encabezado-habitaciones" aria-labelledby="areas-comunes-titulo">
+            <div>
+                <p class="sobrelinea">{{NOMBRE_HOTEL}}</p>
+                <h1 id="areas-comunes-titulo">Áreas comunes</h1>
+                <p>Selecciona un espacio, define la hora de entrada y salida, y registra a sus visitantes.</p>
+            </div>
+            <span class="insignia-modo">Servicio independiente</span>
+        </section>
+
+        <section aria-labelledby="espacios-titulo">
+            <div class="encabezado-seccion-areas">
+                <p class="sobrelinea">ESPACIOS DISPONIBLES</p>
+                <h2 id="espacios-titulo">Elige un área común</h2>
+            </div>
+            <div class="rejilla-areas-comunes" role="radiogroup" aria-labelledby="espacios-titulo">
+                {{TARJETAS_AREAS_COMUNES}}
+            </div>
+        </section>
+
+        <section class="panel-reserva-area" aria-labelledby="reserva-area-titulo">
+            <div>
+                <p class="sobrelinea">REGISTRO DE USO</p>
+                <h2 id="reserva-area-titulo">Horario y visitantes</h2>
+                <p>La información se añadirá automáticamente al registro general de huéspedes.</p>
+            </div>
+
+            <form class="formulario-area-comun" action="/hotel/areas-comunes/registrar"
+                  method="post" novalidate>
+                <input id="area-comun" name="area" type="hidden" value="{{AREA_COMUN_SELECCIONADA}}">
+
+                <fieldset class="grupo-formulario grupo-formulario--horario-area">
+                    <legend>Horario de uso</legend>
+                    <div class="selector-duracion-area">
+                        <span class="selector-duracion-area__titulo">DURACIÓN RÁPIDA</span>
+                        <div class="opciones-duracion-area" role="radiogroup"
+                             aria-label="Duración del uso del área común">
+                            <label>
+                                <input type="radio" name="duracionHoras" value="1"
+                                       {{DURACION_UNA_HORA}}>
+                                <span><strong>1 h</strong><small>Una hora</small></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="duracionHoras" value="3"
+                                       {{DURACION_TRES_HORAS}}>
+                                <span><strong>3 h</strong><small>Tres horas</small></span>
+                            </label>
+                            <label>
+                                <input type="radio" name="duracionHoras" value="5"
+                                       {{DURACION_CINCO_HORAS}}>
+                                <span><strong>5 h</strong><small>Cinco horas</small></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="campos-fecha">
+                        <div class="campo campo--hotel">
+                            <label for="entrada-area">HORA DE ENTRADA (CHECK-IN)</label>
+                            <input id="entrada-area" name="entrada" type="datetime-local" step="60"
+                                   value="{{ENTRADA_AREA_COMUN}}" required
+                                   aria-describedby="ayuda-horario-area mensaje-error-area">
+                        </div>
+                        <div class="campo campo--hotel">
+                            <label for="salida-area">HORA DE SALIDA (CHECK-OUT)</label>
+                            <input id="salida-area" type="datetime-local" step="60"
+                                   value="{{SALIDA_AREA_COMUN}}" readonly
+                                   aria-describedby="ayuda-horario-area mensaje-error-area">
+                        </div>
+                    </div>
+                    <p class="zona-horaria-area">
+                        <strong>Zona horaria de Perú activa</strong>
+                        <span>America/Lima · UTC-5</span>
+                    </p>
+                    <p class="ayuda-estadia" id="ayuda-horario-area">
+                        El check-in muestra por defecto la hora actual de Perú. El check-out se
+                        calcula automáticamente sumando 1, 3 o 5 horas.
+                    </p>
+                </fieldset>
+
+                <fieldset class="grupo-formulario grupo-formulario--huespedes"
+                          aria-describedby="ayuda-visitantes-area mensaje-error-area">
+                    <legend>Visitantes</legend>
+                    <div class="cabecera-huespedes">
+                        <p id="ayuda-visitantes-area">
+                            Registra entre 1 y 8 personas. Se muestran dos visitantes de forma predeterminada.
+                        </p>
+                        <button class="boton boton--secundario boton--compacto" id="agregar-huesped"
+                                type="button">Añadir visitante</button>
+                    </div>
+                    <input id="cantidad-huespedes" name="cantidadHuespedes" type="hidden"
+                           value="{{CANTIDAD_HUESPEDES}}">
+                    <div class="lista-huespedes" id="lista-huespedes">
+                        {{FILAS_HUESPEDES}}
+                    </div>
+                </fieldset>
+
+                <p class="mensaje-error {{CLASE_ERROR_AREA}}" id="mensaje-error-area"
+                   role="alert" aria-live="polite">{{MENSAJE_ERROR_AREA}}</p>
+                <div class="acciones-formulario-area">
+                    <a class="boton boton--secundario" href="/hotel">Cancelar</a>
+                    <button class="boton boton--principal" type="submit">Registrar uso del área</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="/publico/scripts/areas-comunes.js" defer></script>
+</body>
+</html>

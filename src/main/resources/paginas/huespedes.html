@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>Huéspedes | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--panel pagina--huespedes">
+    <a class="saltar-contenido" href="#contenido">Saltar al registro de huéspedes</a>
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="/hotel" aria-label="Gestera, volver a la gestión del hotel">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <div class="acciones-cabecera">
+            <button class="selector-tema" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+            <a class="boton-configuracion" href="/hotel/configuracion"
+               aria-label="Abrir configuración del hotel" title="Configuración del hotel">
+                <span aria-hidden="true">&#9881;</span><span>Configuración</span>
+            </a>
+            <a class="boton boton--secundario" href="/hotel">Volver a gestión</a>
+            <form action="/salir" method="post">
+                <button class="boton boton--secundario" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </header>
+    <main class="contenido-panel contenido-huespedes" id="contenido">
+        <section class="encabezado-habitaciones" aria-labelledby="huespedes-titulo">
+            <div>
+                <p class="sobrelinea">{{NOMBRE_HOTEL}}</p>
+                <h1 id="huespedes-titulo">Registro de huéspedes</h1>
+                <p>Consulta visitantes actuales e históricos, con su documento y horarios de estadía.</p>
+            </div>
+            <span class="contador-huespedes">{{CANTIDAD_REGISTROS}} registros</span>
+        </section>
+        <section class="registro-huespedes" aria-labelledby="listado-huespedes-titulo">
+            <h2 class="solo-lectores" id="listado-huespedes-titulo">Visitantes registrados</h2>
+            <form class="filtros-huespedes" action="/hotel/huespedes" method="get">
+                <div class="filtros-huespedes__cabecera">
+                    <div>
+                        <p class="sobrelinea">BÚSQUEDA COMBINABLE</p>
+                        <h2>Filtrar huéspedes</h2>
+                        <p>Usa uno o varios criterios. El intervalo devuelve estancias que se cruzan con esas horas.</p>
+                    </div>
+                    <div class="filtros-huespedes__acciones">
+                        <a class="boton boton--secundario" href="/hotel/huespedes">Limpiar</a>
+                        <button class="boton boton--principal" type="submit">Buscar</button>
+                    </div>
+                </div>
+                <div class="filtros-huespedes__campos">
+                    <div class="campo campo--hotel">
+                        <label for="filtro-nombre">NOMBRES O APELLIDOS</label>
+                        <input id="filtro-nombre" name="nombre" type="search" maxlength="100"
+                               value="{{FILTRO_NOMBRE}}" placeholder="Ej.: Ana Torres">
+                    </div>
+                    <div class="campo campo--hotel">
+                        <label for="filtro-dia">DÍA VISITADO</label>
+                        <input id="filtro-dia" name="dia" type="date" value="{{FILTRO_DIA}}">
+                    </div>
+                    <div class="campo campo--hotel">
+                        <label for="filtro-desde">ESTUVO DESDE</label>
+                        <input id="filtro-desde" name="estuvoDesde" type="datetime-local"
+                               step="60" value="{{FILTRO_DESDE}}">
+                    </div>
+                    <div class="campo campo--hotel">
+                        <label for="filtro-hasta">ESTUVO HASTA</label>
+                        <input id="filtro-hasta" name="estuvoHasta" type="datetime-local"
+                               step="60" value="{{FILTRO_HASTA}}">
+                    </div>
+                    <div class="campo campo--hotel">
+                        <label for="filtro-color">COLOR DE HABITACIÓN</label>
+                        <select id="filtro-color" name="color">
+                            <option value="">Todos los colores</option>
+                            {{OPCIONES_COLORES_FILTRO}}
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <p class="resumen-filtros-huespedes" role="status" aria-live="polite">
+                {{RESUMEN_FILTROS}}
+            </p>
+            {{REGISTROS_HUESPEDES}}
+        </section>
+    </main>
+</body>
+</html>

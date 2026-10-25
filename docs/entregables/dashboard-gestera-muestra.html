@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard GESTERA — Muestra</title>
+    <link rel="stylesheet" href="../../src/main/resources/publico/estilos/gestera.css">
+    <style>
+        .pagina--panel { padding: 1.4rem; }
+        .contenido-panel { padding-block: 1.65rem; }
+        .contenido-reportes { gap: .9rem; }
+        .cabecera-panel { min-height: 4rem; }
+        .encabezado-reportes { padding: .1rem 0; }
+        .encabezado-reportes h1 { font-size: 2.65rem; }
+        .filtros-reportes { padding: 1rem 1.2rem; }
+        .metricas-dashboard { gap: .7rem; }
+        .kpi-dashboard { min-height: 7.75rem; padding: 1rem; }
+        .kpi-dashboard > strong, .kpi-dashboard--principal strong { font-size: 1.8rem; }
+        .panel-dashboard__cabecera { padding: 1rem 1.1rem .7rem; }
+        .grafico-ingresos { padding: .45rem 1.1rem .85rem; gap: .62rem; }
+        .grafico-ingresos__pista { height: .62rem; }
+        .panel-dashboard__pie { padding: .75rem 1.1rem; }
+        .anillo-ocupacion { width: 6.4rem; height: 6.4rem; }
+        .resumen-ocupacion { padding: .55rem 1rem .8rem; }
+        .estados-operacion { padding: 0 1rem .75rem; }
+        .estados-operacion li { padding: .43rem 0; }
+        .alerta-operativa { margin: 0 1rem 1rem; padding: .62rem .72rem; }
+        .mezcla-ingresos { padding: .5rem 1.1rem 1rem; gap: .85rem; }
+        .ranking-habitaciones { padding: .4rem 1.1rem 1rem; gap: .52rem; }
+        .muestra-datos {
+            display: inline-flex; align-items: center; gap: .45rem; padding: .45rem .7rem;
+            border: 1px solid rgb(85 198 242 / 35%); border-radius: 999px;
+            background: rgb(85 198 242 / 9%); color: #8edfff;
+            font-size: .68rem; font-weight: 850; letter-spacing: .06em;
+        }
+        .muestra-datos::before { width: .42rem; height: .42rem; border-radius: 50%; background: #55c6f2; content: ""; }
+    </style>
+</head>
+<body class="pagina pagina--panel pagina--reportes">
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="#" aria-label="Gestera">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <div class="acciones-cabecera">
+            <span class="muestra-datos">DATOS ILUSTRATIVOS</span>
+            <span class="boton-configuracion"><span aria-hidden="true">&#9881;</span><span>Configuración</span></span>
+            <span class="boton boton--secundario">Volver a gestión</span>
+        </div>
+    </header>
+
+    <main class="contenido-panel contenido-reportes">
+        <section class="encabezado-reportes">
+            <div>
+                <p class="sobrelinea">HOTEL EL SOL DE PUCUSANA · Reportes de ingresos</p>
+                <h1>Dashboard del hotel</h1>
+                <p>Ingresos confirmados, rendimiento por habitación y estado operativo en una sola vista.</p>
+            </div>
+            <p class="rango-reporte"><span>PERIODO ANALIZADO</span><strong>01/09/2026 - 30/09/2026</strong></p>
+        </section>
+
+        <section class="filtros-reportes" aria-label="Filtros aplicados">
+            <div class="campo campo--hotel"><label>PERIODO</label><select><option>Este mes</option></select></div>
+            <div class="campo campo--hotel"><label>FUENTE DE INGRESO</label><select><option>Todas las fuentes</option></select></div>
+            <div class="campo campo--hotel campos-personalizados-reporte campos-personalizados-reporte--inactivo"><label>DESDE</label><input type="date" value="2026-09-01" disabled></div>
+            <div class="campo campo--hotel campos-personalizados-reporte campos-personalizados-reporte--inactivo"><label>HASTA</label><input type="date" value="2026-09-30" disabled></div>
+            <span class="boton boton--principal">Actualizar dashboard</span>
+        </section>
+
+        <section class="metricas-dashboard" aria-label="Indicadores clave">
+            <article class="kpi-dashboard kpi-dashboard--principal">
+                <div class="kpi-dashboard__icono">S/</div>
+                <div><span>INGRESOS CONFIRMADOS</span><strong>S/ 18,740.00</strong><small>142 movimientos en el periodo</small></div>
+            </article>
+            <article class="kpi-dashboard">
+                <div class="kpi-dashboard__cabecera"><span>OCUPACIÓN ACTUAL</span><i>%</i></div>
+                <strong>75.0%</strong><small>9 de 12 habitaciones operativas</small>
+            </article>
+            <article class="kpi-dashboard">
+                <div class="kpi-dashboard__cabecera"><span>REVPAR</span><i>↗</i></div>
+                <strong>S/ 41.11</strong><small>Ingreso de habitaciones / noches disponibles</small>
+            </article>
+            <article class="kpi-dashboard">
+                <div class="kpi-dashboard__cabecera"><span>TARIFA PROMEDIO (ADR)</span><i>H</i></div>
+                <strong>S/ 154.17</strong><small>96 estancias pagadas</small>
+            </article>
+            <article class="kpi-dashboard">
+                <div class="kpi-dashboard__cabecera"><span>TICKET DE SERVICIO</span><i>S</i></div>
+                <strong>S/ 85.65</strong><small>46 pedidos entregados</small>
+            </article>
+            <article class="kpi-dashboard kpi-dashboard--alerta">
+                <div class="kpi-dashboard__cabecera"><span>POR COBRAR AHORA</span><i>!</i></div>
+                <strong>S/ 1,180.00</strong><small>5 estancias con pago pendiente</small>
+            </article>
+        </section>
+
+        <section class="rejilla-dashboard rejilla-dashboard--principal">
+            <article class="panel-dashboard panel-dashboard--evolucion">
+                <header class="panel-dashboard__cabecera">
+                    <div><p class="sobrelinea">RENDIMIENTO</p><h2>Evolución de ingresos</h2></div>
+                    <div class="leyenda-grafico"><span><i class="leyenda-grafico__habitaciones"></i>Habitaciones</span><span><i class="leyenda-grafico__servicios"></i>Servicio</span></div>
+                </header>
+                <div class="grafico-ingresos">
+                    <div class="grafico-ingresos__fila"><span class="grafico-ingresos__etiqueta">01 - 06 sep</span><div class="grafico-ingresos__pista"><i class="grafico-ingresos__habitaciones" style="--valor: 64%"></i><i class="grafico-ingresos__servicios" style="--valor: 17%"></i></div><strong>S/ 3,340.00</strong></div>
+                    <div class="grafico-ingresos__fila"><span class="grafico-ingresos__etiqueta">07 - 12 sep</span><div class="grafico-ingresos__pista"><i class="grafico-ingresos__habitaciones" style="--valor: 72%"></i><i class="grafico-ingresos__servicios" style="--valor: 18%"></i></div><strong>S/ 3,740.00</strong></div>
+                    <div class="grafico-ingresos__fila"><span class="grafico-ingresos__etiqueta">13 - 18 sep</span><div class="grafico-ingresos__pista"><i class="grafico-ingresos__habitaciones" style="--valor: 81%"></i><i class="grafico-ingresos__servicios" style="--valor: 19%"></i></div><strong>S/ 4,150.00</strong></div>
+                    <div class="grafico-ingresos__fila"><span class="grafico-ingresos__etiqueta">19 - 24 sep</span><div class="grafico-ingresos__pista"><i class="grafico-ingresos__habitaciones" style="--valor: 78%"></i><i class="grafico-ingresos__servicios" style="--valor: 22%"></i></div><strong>S/ 4,130.00</strong></div>
+                    <div class="grafico-ingresos__fila"><span class="grafico-ingresos__etiqueta">25 - 30 sep</span><div class="grafico-ingresos__pista"><i class="grafico-ingresos__habitaciones" style="--valor: 63%"></i><i class="grafico-ingresos__servicios" style="--valor: 18%"></i></div><strong>S/ 3,380.00</strong></div>
+                </div>
+                <footer class="panel-dashboard__pie"><span>Habitaciones <strong>S/ 14,800.00</strong></span><span>Servicio al cuarto <strong>S/ 3,940.00</strong></span></footer>
+            </article>
+
+            <article class="panel-dashboard panel-dashboard--operacion">
+                <header class="panel-dashboard__cabecera"><div><p class="sobrelinea">EN VIVO</p><h2>Estado operativo</h2></div><span class="indicador-en-vivo"><i></i>Actual</span></header>
+                <div class="resumen-ocupacion"><div class="anillo-ocupacion" style="--ocupacion: 75%"><strong>75.0%</strong><span>ocupación</span></div><div><strong>12</strong><span>habitaciones registradas</span></div></div>
+                <ul class="estados-operacion">
+                    <li><span><i class="estado-operacion--disponible"></i>Disponibles</span><strong>2</strong></li>
+                    <li><span><i class="estado-operacion--ocupada"></i>Ocupadas</span><strong>9</strong></li>
+                    <li><span><i class="estado-operacion--limpieza"></i>En flujo de limpieza</span><strong>1</strong></li>
+                    <li><span><i class="estado-operacion--mantenimiento"></i>Mantenimiento</span><strong>0</strong></li>
+                </ul>
+                <div class="alerta-operativa"><span><strong>4</strong> pedidos activos</span><span>Ver cola <b>→</b></span></div>
+            </article>
+        </section>
+
+        <section class="rejilla-dashboard rejilla-dashboard--secundaria">
+            <article class="panel-dashboard">
+                <header class="panel-dashboard__cabecera"><div><p class="sobrelinea">COMPOSICIÓN</p><h2>Mezcla de ingresos</h2></div><span class="etiqueta-periodo">Periodo filtrado</span></header>
+                <div class="mezcla-ingresos">
+                    <div class="mezcla-ingresos__fila"><div><span>Habitaciones</span><strong>79.0%</strong></div><div class="barra-mezcla"><i class="barra-mezcla--habitaciones" style="--participacion: 79%"></i></div><small>S/ 14,800.00</small></div>
+                    <div class="mezcla-ingresos__fila"><div><span>Servicio al cuarto</span><strong>21.0%</strong></div><div class="barra-mezcla"><i class="barra-mezcla--servicios" style="--participacion: 21%"></i></div><small>S/ 3,940.00</small></div>
+                </div>
+            </article>
+            <article class="panel-dashboard">
+                <header class="panel-dashboard__cabecera"><div><p class="sobrelinea">TOP 5</p><h2>Habitaciones por ingreso</h2></div><span class="etiqueta-periodo">Fuente filtrada</span></header>
+                <div class="ranking-habitaciones">
+                    <div class="ranking-habitaciones__fila"><span class="ranking-habitaciones__posicion">1</span><div><div class="ranking-habitaciones__datos"><strong>Habitación 08</strong><span>S/ 2,650.00</span></div><div class="ranking-habitaciones__barra"><i style="--valor:100%"></i></div><small>18 movimientos</small></div></div>
+                    <div class="ranking-habitaciones__fila"><span class="ranking-habitaciones__posicion">2</span><div><div class="ranking-habitaciones__datos"><strong>Habitación 05</strong><span>S/ 2,340.00</span></div><div class="ranking-habitaciones__barra"><i style="--valor:88%"></i></div><small>16 movimientos</small></div></div>
+                    <div class="ranking-habitaciones__fila"><span class="ranking-habitaciones__posicion">3</span><div><div class="ranking-habitaciones__datos"><strong>Habitación 11</strong><span>S/ 2,110.00</span></div><div class="ranking-habitaciones__barra"><i style="--valor:80%"></i></div><small>15 movimientos</small></div></div>
+                    <div class="ranking-habitaciones__fila"><span class="ranking-habitaciones__posicion">4</span><div><div class="ranking-habitaciones__datos"><strong>Habitación 03</strong><span>S/ 1,980.00</span></div><div class="ranking-habitaciones__barra"><i style="--valor:75%"></i></div><small>14 movimientos</small></div></div>
+                    <div class="ranking-habitaciones__fila"><span class="ranking-habitaciones__posicion">5</span><div><div class="ranking-habitaciones__datos"><strong>Habitación 02</strong><span>S/ 1,740.00</span></div><div class="ranking-habitaciones__barra"><i style="--valor:66%"></i></div><small>13 movimientos</small></div></div>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

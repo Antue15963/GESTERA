@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="5800" height="4200" viewBox="0 0 5800 4200">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="2900.0" y="52.0" font-family="'Segoe UI', Arial, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#6E5DDA">GESTERA · DIAGRAMA DE CLASES UML</text>
+<text x="2900.0" y="87.0" font-family="'Segoe UI', Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#706D83">Clases de dominio, servicios y puertos reales del código Java 17 · no es una copia tabla-a-clase</text>
+<rect x="50" y="110" width="5700" height="790" rx="18" fill="#FAF9FF" stroke="#E2DEFF" stroke-width="3"/>
+<text x="75.0" y="148.0" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#6E5DDA">ORQUESTACIÓN, HOTELES Y SEGURIDAD</text>
+<rect x="50" y="970" width="1740" height="3130" rx="18" fill="#FAF9FF" stroke="#E2DEFF" stroke-width="3"/>
+<text x="75.0" y="1008.0" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#6E5DDA">INVENTARIO Y LIMPIEZA</text>
+<rect x="1840" y="970" width="1660" height="3130" rx="18" fill="#FAF9FF" stroke="#E2DEFF" stroke-width="3"/>
+<text x="1865.0" y="1008.0" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#6E5DDA">HUÉSPEDES Y ÁREAS COMUNES</text>
+<rect x="3550" y="970" width="2200" height="1880" rx="18" fill="#FAF9FF" stroke="#E2DEFF" stroke-width="3"/>
+<text x="3575.0" y="1008.0" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#6E5DDA">SERVICIO AL CUARTO</text>
+<rect x="3550" y="2910" width="2200" height="1190" rx="18" fill="#FAF9FF" stroke="#E2DEFF" stroke-width="3"/>
+<text x="3575.0" y="2948.0" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" text-anchor="start" fill="#6E5DDA">REPORTES DE INGRESOS</text>
+<polyline points="900.0,373.4 970.0,373.4 970.0,416.0 1040.0,416.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="900.0,373.4 915.0,383.1 930.0,373.4 915.0,363.6" fill="#6E5DDA"/>
+<rect x="887.0" y="353.4" width="96" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="935.0" y="375.4" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">expone</text>
+<text x="910.0" y="363.4" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="1030.0" y="406.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">4</text>
+<polyline points="2350.0,438.0 1625.0,438.0 1625.0,418.6 900.0,418.6" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="1927.5" y="418.0" width="120" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="1987.5" y="440.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">coordina</text>
+<polyline points="3350.0,391.5 3500.0,391.5 3500.0,321.1 3650.0,321.1" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="3350.0,391.5 3365.0,401.2 3380.0,391.5 3365.0,381.7" fill="#6E5DDA"/>
+<rect x="3371.0" y="371.5" width="108" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3425.0" y="393.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">compone</text>
+<polyline points="3350.0,484.5 4035.0,484.5 4035.0,380.0 4720.0,380.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="3350.0,484.5 3365.0,494.3 3380.0,484.5 3365.0,474.8" fill="#6E5DDA"/>
+<rect x="3638.5" y="464.5" width="108" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3692.5" y="486.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">compone</text>
+<polyline points="3650.0,386.9 2725.0,386.9 2725.0,416.0 1800.0,416.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="3055.5" y="366.9" width="264" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3187.5" y="388.9" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">credencial por hotel</text>
+<text x="3660.0" y="376.9" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="1790.0" y="406.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..*</text>
+<polyline points="2622.0,656.0 2622.0,868.0 520.0,868.0 520.0,1080.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="2622.0,656.0 2612.2,671.0 2622.0,686.0 2631.8,671.0" fill="#6E5DDA"/>
+<rect x="1526.0" y="848.0" width="90" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="1571.0" y="870.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">usa</text>
+<polyline points="910.0,1234.0 945.0,1234.0 945.0,1234.0 980.0,1234.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="910.0,1234.0 925.0,1243.8 940.0,1234.0 925.0,1224.2" fill="#6E5DDA"/>
+<rect x="807.5" y="1214.0" width="240" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="927.5" y="1236.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">mantiene por hotel</text>
+<text x="920.0" y="1224.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="970.0" y="1224.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..*</text>
+<polyline points="1241.3,1388.0 1241.3,1644.0 520.0,1644.0 520.0,1900.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1241.3,1388.0 1231.6,1403.0 1241.3,1418.0 1251.1,1403.0" fill="#6E5DDA"/>
+<rect x="820.7" y="1624.0" width="120" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="880.7" y="1646.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">contiene</text>
+<text x="1251.3" y="1378.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="510.0" y="1890.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..50</text>
+<polyline points="1418.7,1388.0 1418.7,1664.0 1330.0,1664.0 1330.0,1940.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1418.7,1388.0 1408.9,1403.0 1418.7,1418.0 1428.4,1403.0" fill="#6E5DDA"/>
+<rect x="1358.7" y="1506.0" width="120" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="1418.7" y="1528.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">contiene</text>
+<text x="1428.7" y="1378.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="1320.0" y="1930.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..12</text>
+<polyline points="910.0,2134.0 945.0,2134.0 945.0,2094.0 980.0,2094.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="843.0" y="2094.0" width="204" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="945.0" y="2116.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">clasificada por</text>
+<text x="920.0" y="2124.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">0..*</text>
+<text x="970.0" y="2084.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1</text>
+<polyline points="2774.0,656.0 2774.0,868.0 2290.0,868.0 2290.0,1080.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="2774.0,656.0 2764.2,671.0 2774.0,686.0 2783.8,671.0" fill="#6E5DDA"/>
+<rect x="2487.0" y="848.0" width="90" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2532.0" y="870.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">usa</text>
+<polyline points="2640.0,1234.0 2680.0,1234.0 2680.0,1210.0 2720.0,1210.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="2640.0,1234.0 2655.0,1243.8 2670.0,1234.0 2655.0,1224.2" fill="#6E5DDA"/>
+<rect x="2612.0" y="1214.0" width="96" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2660.0" y="1236.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">ofrece</text>
+<text x="2650.0" y="1224.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="2710.0" y="1200.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">3</text>
+<polyline points="2290.0,1388.0 2290.0,1629.0 2290.0,1629.0 2290.0,1870.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="2290.0,1870.0 2282.3,1856.0 2297.7,1856.0" fill="#6E5DDA"/>
+<rect x="2182.0" y="1488.5" width="216" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2290.0" y="1510.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">registra visitas</text>
+<polyline points="2640.0,2024.0 2680.0,2024.0 2680.0,2000.0 2720.0,2000.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="2720.0,2000.0 2706.0,2007.7 2706.0,1992.3" fill="#6E5DDA"/>
+<rect x="2612.0" y="2004.0" width="96" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2660.0" y="2026.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">valida</text>
+<text x="2650.0" y="2014.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="2710.0" y="1990.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..8</text>
+<polyline points="2290.0,2178.0 2290.0,2469.0 2670.0,2469.0 2670.0,2760.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="2360.0" y="2449.0" width="240" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2480.0" y="2471.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">depende del puerto</text>
+<polyline points="2926.0,656.0 2926.0,868.0 4100.0,868.0 4100.0,1080.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="2926.0,656.0 2916.2,671.0 2926.0,686.0 2935.8,671.0" fill="#6E5DDA"/>
+<rect x="3468.0" y="848.0" width="90" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3513.0" y="870.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">usa</text>
+<polyline points="4550.0,1266.0 4635.0,1266.0 4635.0,1216.0 4720.0,1216.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="4550.0,1266.0 4565.0,1275.8 4580.0,1266.0 4565.0,1256.2" fill="#6E5DDA"/>
+<rect x="4466.5" y="1246.0" width="252" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4592.5" y="1268.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">administra catálogo</text>
+<text x="4560.0" y="1256.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="4710.0" y="1206.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="3986.0,1452.0 3986.0,1666.0 4100.0,1666.0 4100.0,1880.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="4100.0,1880.0 4092.3,1866.0 4107.7,1866.0" fill="#6E5DDA"/>
+<rect x="3866.0" y="1539.0" width="240" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3986.0" y="1561.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">crea y transiciona</text>
+<polyline points="4550.0,2082.0 4635.0,2082.0 4635.0,2048.0 4720.0,2048.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="4550.0,2082.0 4565.0,2091.8 4580.0,2082.0 4565.0,2072.2" fill="#6E5DDA"/>
+<rect x="4532.5" y="2062.0" width="120" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4592.5" y="2084.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">contiene</text>
+<text x="4560.0" y="2072.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="4710.0" y="2038.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..*</text>
+<polyline points="5145.0,1332.0 5145.0,1621.0 5145.0,1621.0 5145.0,1910.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="5145.0,1910.0 5137.3,1896.0 5152.7,1896.0" fill="#6E5DDA"/>
+<rect x="5037.0" y="1456.5" width="216" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="5145.0" y="1478.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">origina snapshot</text>
+<polyline points="4214.0,1452.0 4214.0,1971.0 4610.0,1971.0 4610.0,2490.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="4094.0" y="1691.5" width="240" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4214.0" y="1713.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">depende del puerto</text>
+<polyline points="4070.0,2612.0 3986.0,2612.0 3986.0,2284.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="3986.0,2284.0 3993.7,2298.0 3978.3,2298.0" fill="#6E5DDA"/>
+<rect x="3902.0" y="2428.0" width="168" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3986.0" y="2450.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">reconstituye</text>
+<polyline points="3078.0,656.0 3078.0,1838.0 3986.0,1838.0 3986.0,3020.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="3078.0,656.0 3068.2,671.0 3078.0,686.0 3087.8,671.0" fill="#6E5DDA"/>
+<rect x="3033.0" y="1227.0" width="90" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3078.0" y="1249.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">usa</text>
+<polyline points="4550.0,3128.6 4615.0,3128.6 4615.0,3158.0 4680.0,3158.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="4680.0,3158.0 4666.0,3165.7 4666.0,3150.3" fill="#6E5DDA"/>
+<rect x="4534.5" y="3108.6" width="96" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4582.5" y="3130.6" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">aplica</text>
+<polyline points="4214.0,3020.0 4214.0,2652.0 4214.0,2652.0 4214.0,2284.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="4214.0,2284.0 4221.7,2298.0 4206.3,2298.0" fill="#6E5DDA"/>
+<rect x="4082.0" y="2816.0" width="264" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4214.0" y="2838.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">consolida entregados</text>
+<polyline points="4550.0,3187.4 4615.0,3187.4 4615.0,3666.0 4680.0,3666.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="4495.0" y="3406.7" width="240" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4615.0" y="3428.7" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">depende del puerto</text>
+<polyline points="4680.0,3718.0 4615.0,3718.0 4615.0,3748.0 4550.0,3748.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="4550.0,3748.0 4564.0,3740.3 4564.0,3755.7" fill="#6E5DDA"/>
+<rect x="4587.5" y="3698.0" width="120" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4647.5" y="3720.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">persiste</text>
+<text x="4690.0" y="3708.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="4540.0" y="3738.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<rect x="2350" y="220" width="1000" height="436" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="2350" y="220" width="1000" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="2850.0" y="244.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«fachada HTTP»</text>
+<text x="2850.0" y="276.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">ServidorGestera</text>
+<text x="2368.0" y="328.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- habitacionesHoteles: GestorHabitacionesHoteles</text>
+<text x="2368.0" y="360.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- huespedesHoteles: GestorHuespedesHoteles</text>
+<text x="2368.0" y="392.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- servicioHabitacion: GestorServicioHabitacion</text>
+<text x="2368.0" y="424.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- reportes: GestorReportes</text>
+<text x="2368.0" y="456.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- sesiones: GestorSesiones</text>
+<line x1="2350" y1="490" x2="3350" y2="490" stroke="#E2DEFF" stroke-width="2"/>
+<text x="2368.0" y="521.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ crear(configuracion): ServidorGestera</text>
+<text x="2368.0" y="553.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ iniciar(): void</text>
+<text x="2368.0" y="585.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">- registrarRutas(): void</text>
+<text x="2368.0" y="617.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">- actualizarHabitacion(exchange): void</text>
+<text x="2368.0" y="649.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ close(): void</text>
+<rect x="140" y="290" width="760" height="212" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="140" y="290" width="760" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="520.0" y="339.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">CatalogoHoteles</text>
+<text x="158.0" y="398.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- HOTELES: List&lt;Hotel&gt;</text>
+<line x1="140" y1="432" x2="900" y2="432" stroke="#E2DEFF" stroke-width="2"/>
+<text x="158.0" y="463.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ todos(): List&lt;Hotel&gt;</text>
+<text x="158.0" y="495.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ buscarPorCodigo(codigo): Optional&lt;Hotel&gt;</text>
+<rect x="1040" y="300" width="760" height="232" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="1040" y="300" width="760" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="1420.0" y="324.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="1420.0" y="356.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">Hotel</text>
+<text x="1058.0" y="408.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ codigo: String</text>
+<text x="1058.0" y="440.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ nombre: String</text>
+<text x="1058.0" y="472.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ ubicacion: String</text>
+<text x="1058.0" y="504.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ iniciales: String</text>
+<rect x="3650" y="200" width="900" height="308" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="3650" y="200" width="900" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4100.0" y="249.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">GestorLlavesHoteles</text>
+<text x="3668.0" y="308.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- credenciales: Map&lt;String, CredencialHotel&gt;</text>
+<text x="3668.0" y="340.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- cerrado: AtomicBoolean</text>
+<line x1="3650" y1="374" x2="4550" y2="374" stroke="#E2DEFF" stroke-width="2"/>
+<text x="3668.0" y="405.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ autenticarConEstado(hotel, llave): ResultadoAcceso</text>
+<text x="3668.0" y="437.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ cambiar(hotel, version, nueva, confirmacion): ResultadoCambio</text>
+<text x="3668.0" y="469.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ versionActual(hotel): long</text>
+<text x="3668.0" y="501.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ requiereCambio(hotel): boolean</text>
+<rect x="4720" y="210" width="870" height="340" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4720" y="210" width="870" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="5155.0" y="259.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">GestorSesiones</text>
+<text x="4738.0" y="318.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- duracion: Duration</text>
+<text x="4738.0" y="350.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- sesiones: ConcurrentHashMap&lt;String, Sesion&gt;</text>
+<line x1="4720" y1="384" x2="5590" y2="384" stroke="#E2DEFF" stroke-width="2"/>
+<text x="4738.0" y="415.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ crear(): String</text>
+<text x="4738.0" y="447.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ autorizarHotel(token, hotel, version): boolean</text>
+<text x="4738.0" y="479.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ autorizacionHotel(token): Optional&lt;AutorizacionHotel&gt;</text>
+<text x="4738.0" y="511.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ revocarHotel(token): boolean</text>
+<text x="4738.0" y="543.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ cerrar(token): void</text>
+<rect x="130" y="1080" width="780" height="308" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="130" y="1080" width="780" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="520.0" y="1129.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">GestorHabitacionesHoteles</text>
+<text x="148.0" y="1188.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- inventarios: Map&lt;String, InventarioHotel&gt;</text>
+<text x="148.0" y="1220.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- reloj: Clock</text>
+<line x1="130" y1="1254" x2="910" y2="1254" stroke="#E2DEFF" stroke-width="2"/>
+<text x="148.0" y="1285.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ resumen(hotel): ResumenInventario</text>
+<text x="148.0" y="1317.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ guardarConfiguracion(hotel, cantidad, cambios): ResultadoOperacion</text>
+<text x="148.0" y="1349.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ actualizarHabitacion(...): ResultadoOperacion</text>
+<text x="148.0" y="1381.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ confirmarCheckOut(hotel, numero): ResultadoOperacion</text>
+<rect x="980" y="1080" width="700" height="308" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="980" y="1080" width="700" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="1330.0" y="1104.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«package-private»</text>
+<text x="1330.0" y="1136.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">InventarioHotel</text>
+<text x="998.0" y="1188.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- secciones: List&lt;SeccionTarifaria&gt;</text>
+<text x="998.0" y="1220.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- habitaciones: List&lt;Habitacion&gt;</text>
+<text x="998.0" y="1252.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- siguienteSeccion: int</text>
+<line x1="980" y1="1286" x2="1680" y2="1286" stroke="#E2DEFF" stroke-width="2"/>
+<text x="998.0" y="1317.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">~ guardarConfiguracion(...): ResultadoOperacion</text>
+<text x="998.0" y="1349.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">~ actualizar(...): ResultadoOperacion</text>
+<text x="998.0" y="1381.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">~ confirmarCheckOut(numero, ahora): ResultadoOperacion</text>
+<rect x="130" y="1900" width="780" height="468" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="130" y="1900" width="780" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="520.0" y="1924.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="520.0" y="1956.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">Habitacion</text>
+<text x="148.0" y="2008.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ numero: int</text>
+<text x="148.0" y="2040.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ seccion: SeccionTarifaria</text>
+<text x="148.0" y="2072.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ tipoServicio: TipoServicio</text>
+<text x="148.0" y="2104.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ precioAplicado: BigDecimal</text>
+<text x="148.0" y="2136.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ estado: EstadoHabitacion</text>
+<text x="148.0" y="2168.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ checkIn: LocalDateTime</text>
+<text x="148.0" y="2200.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ proximoCheckOut: LocalDateTime</text>
+<text x="148.0" y="2232.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ pagado: boolean</text>
+<text x="148.0" y="2264.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ horasAdicionales: int</text>
+<text x="148.0" y="2296.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ montoAdicional: BigDecimal</text>
+<line x1="130" y1="2330" x2="910" y2="2330" stroke="#E2DEFF" stroke-width="2"/>
+<text x="148.0" y="2361.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ montoTotal(): BigDecimal</text>
+<rect x="980" y="1940" width="700" height="308" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="980" y="1940" width="700" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="1330.0" y="1964.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="1330.0" y="1996.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">SeccionTarifaria</text>
+<text x="998.0" y="2048.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ id: String</text>
+<text x="998.0" y="2080.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ colorHex: String</text>
+<text x="998.0" y="2112.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ nombre: String</text>
+<text x="998.0" y="2144.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ precioSeisHoras: BigDecimal</text>
+<text x="998.0" y="2176.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ precioDiaCompleto: BigDecimal</text>
+<line x1="980" y1="2210" x2="1680" y2="2210" stroke="#E2DEFF" stroke-width="2"/>
+<text x="998.0" y="2241.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ precio(tipo): BigDecimal</text>
+<rect x="1940" y="1080" width="700" height="308" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="1940" y="1080" width="700" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="2290.0" y="1129.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">GestorAreasComunes</text>
+<text x="1958.0" y="1188.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- AREAS: List&lt;AreaComun&gt;</text>
+<text x="1958.0" y="1220.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- huespedes: GestorHuespedesHoteles</text>
+<text x="1958.0" y="1252.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- reloj: Clock</text>
+<line x1="1940" y1="1286" x2="2640" y2="1286" stroke="#E2DEFF" stroke-width="2"/>
+<text x="1958.0" y="1317.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ areas(): List&lt;AreaComun&gt;</text>
+<text x="1958.0" y="1349.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ registrar(hotel, area, entrada, duracion, visitantes): ResultadoOperacion</text>
+<text x="1958.0" y="1381.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ calcularSalida(entrada, horas): LocalDateTime</text>
+<rect x="2720" y="1110" width="650" height="200" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="2720" y="1110" width="650" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="3045.0" y="1134.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="3045.0" y="1166.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">AreaComun</text>
+<text x="2738.0" y="1218.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ codigo: String</text>
+<text x="2738.0" y="1250.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ nombre: String</text>
+<text x="2738.0" y="1282.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ descripcion: String</text>
+<rect x="1940" y="1870" width="700" height="308" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="1940" y="1870" width="700" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="2290.0" y="1919.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">GestorHuespedesHoteles</text>
+<text x="1958.0" y="1978.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- repositorio: RepositorioHuespedes</text>
+<line x1="1940" y1="2012" x2="2640" y2="2012" stroke="#E2DEFF" stroke-width="2"/>
+<text x="1958.0" y="2043.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ validar(huespedes): ResultadoValidacion</text>
+<text x="1958.0" y="2075.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ guardarEstancia(...): void</text>
+<text x="1958.0" y="2107.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ guardarVisita(...): void</text>
+<text x="1958.0" y="2139.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ finalizarEstancia(...): void</text>
+<text x="1958.0" y="2171.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ buscar(hotel, filtro): List&lt;RegistroHuesped&gt;</text>
+<rect x="2720" y="1900" width="650" height="200" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="2720" y="1900" width="650" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="3045.0" y="1924.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="3045.0" y="1956.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">DatosHuesped</text>
+<text x="2738.0" y="2008.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ nombreCompleto: String</text>
+<text x="2738.0" y="2040.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ tipoDocumento: TipoDocumento</text>
+<text x="2738.0" y="2072.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ numeroDocumento: String</text>
+<rect x="2220" y="2760" width="900" height="340" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="2220" y="2760" width="900" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="2670.0" y="2784.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«interface»</text>
+<text x="2670.0" y="2816.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">RepositorioHuespedes</text>
+<text x="2238.0" y="2868.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">Implementaciones:</text>
+<text x="2238.0" y="2900.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">RepositorioHuespedesJdbc</text>
+<text x="2238.0" y="2932.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">RepositorioHuespedesMemoria</text>
+<line x1="2220" y1="2966" x2="3120" y2="2966" stroke="#E2DEFF" stroke-width="2"/>
+<text x="2238.0" y="2997.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ guardarEstancia(...): void</text>
+<text x="2238.0" y="3029.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ finalizarEstancia(...): void</text>
+<text x="2238.0" y="3061.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ buscarPorHotel(...): List&lt;RegistroHuesped&gt;</text>
+<text x="2238.0" y="3093.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ listarActivosPorHabitacion(...): Map</text>
+<rect x="3650" y="1080" width="900" height="372" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="3650" y="1080" width="900" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4100.0" y="1129.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">GestorServicioHabitacion</text>
+<text x="3668.0" y="1188.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- repositorio: RepositorioServicioHabitacion</text>
+<text x="3668.0" y="1220.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- catalogosPorHotel: Map&lt;String, CatalogoHotel&gt;</text>
+<text x="3668.0" y="1252.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- reloj: Clock</text>
+<line x1="3650" y1="1286" x2="4550" y2="1286" stroke="#E2DEFF" stroke-width="2"/>
+<text x="3668.0" y="1317.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ catalogo(hotel): List&lt;ProductoServicio&gt;</text>
+<text x="3668.0" y="1349.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ crearPedido(...): ResultadoOperacion</text>
+<text x="3668.0" y="1381.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ cambiarEstado(...): ResultadoOperacion</text>
+<text x="3668.0" y="1413.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ actualizarProducto(...): ResultadoOperacion</text>
+<text x="3668.0" y="1445.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ agregarCategoria(...): ResultadoOperacion</text>
+<rect x="4720" y="1100" width="850" height="232" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4720" y="1100" width="850" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="5145.0" y="1124.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="5145.0" y="1156.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">ProductoServicio</text>
+<text x="4738.0" y="1208.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ codigo: String</text>
+<text x="4738.0" y="1240.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ nombre: String</text>
+<text x="4738.0" y="1272.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ categoria: String</text>
+<text x="4738.0" y="1304.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ precio: BigDecimal</text>
+<rect x="3650" y="1880" width="900" height="404" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="3650" y="1880" width="900" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4100.0" y="1904.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="4100.0" y="1936.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">PedidoServicio</text>
+<text x="3668.0" y="1988.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ id: long</text>
+<text x="3668.0" y="2020.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ codigoHotel: String</text>
+<text x="3668.0" y="2052.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ numeroHabitacion: int</text>
+<text x="3668.0" y="2084.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ estado: EstadoPedidoServicio</text>
+<text x="3668.0" y="2116.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ observaciones: String</text>
+<text x="3668.0" y="2148.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ creadoEn: LocalDateTime</text>
+<text x="3668.0" y="2180.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ actualizadoEn: LocalDateTime</text>
+<text x="3668.0" y="2212.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ lineas: List&lt;LineaPedidoServicio&gt;</text>
+<line x1="3650" y1="2246" x2="4550" y2="2246" stroke="#E2DEFF" stroke-width="2"/>
+<text x="3668.0" y="2277.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ total(): BigDecimal</text>
+<rect x="4720" y="1910" width="850" height="276" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4720" y="1910" width="850" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="5145.0" y="1934.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="5145.0" y="1966.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">LineaPedidoServicio</text>
+<text x="4738.0" y="2018.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ productoCodigo: String</text>
+<text x="4738.0" y="2050.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ productoNombre: String</text>
+<text x="4738.0" y="2082.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ precioUnitario: BigDecimal</text>
+<text x="4738.0" y="2114.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ cantidad: int</text>
+<line x1="4720" y1="2148" x2="5570" y2="2148" stroke="#E2DEFF" stroke-width="2"/>
+<text x="4738.0" y="2179.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ subtotal(): BigDecimal</text>
+<rect x="4070" y="2490" width="1080" height="244" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4070" y="2490" width="1080" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4610.0" y="2514.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«interface»</text>
+<text x="4610.0" y="2546.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">RepositorioServicioHabitacion</text>
+<text x="4088.0" y="2598.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">Implementaciones: Jdbc / Memoria</text>
+<line x1="4070" y1="2632" x2="5150" y2="2632" stroke="#E2DEFF" stroke-width="2"/>
+<text x="4088.0" y="2663.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ crear(...): void</text>
+<text x="4088.0" y="2695.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ listarPorHotel(hotel): List&lt;PedidoServicio&gt;</text>
+<text x="4088.0" y="2727.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ cambiarEstado(...): boolean</text>
+<rect x="3650" y="3020" width="900" height="276" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="3650" y="3020" width="900" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4100.0" y="3069.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">GestorReportes</text>
+<text x="3668.0" y="3128.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- repositorio: RepositorioIngresosHabitacion</text>
+<text x="3668.0" y="3160.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">- reloj: Clock</text>
+<line x1="3650" y1="3194" x2="4550" y2="3194" stroke="#E2DEFF" stroke-width="2"/>
+<text x="3668.0" y="3225.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ guardarPagoHabitacion(...): void</text>
+<text x="3668.0" y="3257.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ eliminarPagoHabitacion(...): void</text>
+<text x="3668.0" y="3289.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ generar(hotel, filtro, pedidos): ReporteIngresos</text>
+<rect x="4680" y="3020" width="900" height="276" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4680" y="3020" width="900" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="5130.0" y="3044.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="5130.0" y="3076.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">FiltroReporte</text>
+<text x="4698.0" y="3128.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ periodo: PeriodoReporte</text>
+<text x="4698.0" y="3160.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ tipoIngreso: TipoIngresoReporte</text>
+<text x="4698.0" y="3192.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ desde: LocalDate</text>
+<text x="4698.0" y="3224.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ hasta: LocalDate</text>
+<line x1="4680" y1="3258" x2="5580" y2="3258" stroke="#E2DEFF" stroke-width="2"/>
+<text x="4698.0" y="3289.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ crear(...): FiltroReporte</text>
+<rect x="3650" y="3600" width="900" height="296" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="3650" y="3600" width="900" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4100.0" y="3624.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«record»</text>
+<text x="4100.0" y="3656.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">IngresoHabitacion</text>
+<text x="3668.0" y="3708.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ id: long</text>
+<text x="3668.0" y="3740.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ codigoHotel: String</text>
+<text x="3668.0" y="3772.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ numeroHabitacion: int</text>
+<text x="3668.0" y="3804.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ checkIn: LocalDateTime</text>
+<text x="3668.0" y="3836.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ pagadoEn: LocalDateTime</text>
+<text x="3668.0" y="3868.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">+ monto: BigDecimal</text>
+<rect x="4680" y="3570" width="900" height="244" rx="5" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4680" y="3570" width="900" height="78" rx="5" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="5130.0" y="3594.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="400" text-anchor="middle" fill="#706D83">«interface»</text>
+<text x="5130.0" y="3626.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">RepositorioIngresosHabitacion</text>
+<text x="4698.0" y="3678.0" font-family="Consolas, monospace" font-size="19" font-weight="400" text-anchor="start" fill="#36344A">Implementaciones: Jdbc / Memoria</text>
+<line x1="4680" y1="3712" x2="5580" y2="3712" stroke="#E2DEFF" stroke-width="2"/>
+<text x="4698.0" y="3743.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ guardarPago(...): void</text>
+<text x="4698.0" y="3775.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ eliminarPago(...): void</text>
+<text x="4698.0" y="3807.0" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#36344A">+ listar(hotel, desde, hasta): List&lt;IngresoHabitacion&gt;</text>
+<text x="100.0" y="4130.0" font-family="'Segoe UI', Arial, sans-serif" font-size="20" font-weight="600" text-anchor="start" fill="#706D83">◆ composición / propiedad del ciclo de vida   ·   — asociación estable   ·   - - &gt; dependencia de uso   ·   Los repositorios tienen adaptadores JDBC y memoria intercambiables</text>
+</svg>

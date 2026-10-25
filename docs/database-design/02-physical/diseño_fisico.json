@@ -1,0 +1,60 @@
+{
+  "kind": "table",
+  "title": "GESTERA · DISEÑO FÍSICO MYSQL 8.0",
+  "subtitle": "Tipos, nulabilidad, claves, restricciones e índices principales · esquema objetivo gestera",
+  "width": 5550,
+  "height": 3820,
+  "row_height": 39,
+  "nodes": [
+    {"id":"hotel","title":"hoteles","x":2180,"y":145,"w":900,"rows":[
+      ["PK","codigo","VARCHAR(80) NOT NULL"],["UQ","nombre","VARCHAR(150) NOT NULL"],["","ubicacion","VARCHAR(150) NOT NULL"],["","iniciales","CHAR(2) NOT NULL"],["","activo","BOOLEAN NOT NULL DEFAULT TRUE"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"credencial","title":"credenciales_hotel","x":80,"y":100,"w":930,"rows":[
+      ["PK/FK","hotel_codigo","VARCHAR(80) NOT NULL"],["","sal","VARBINARY(16) NOT NULL"],["","hash_clave","VARBINARY(32) NOT NULL"],["","algoritmo","VARCHAR(40) DEFAULT PBKDF2..."],["CHK","iteraciones","INT UNSIGNED DEFAULT 65536"],["CHK","version","BIGINT UNSIGNED DEFAULT 1"],["","requiere_cambio","BOOLEAN DEFAULT TRUE"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"catalogo","title":"catalogos_servicio","x":4490,"y":120,"w":930,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["FK/UQ","hotel_codigo","VARCHAR(80) NOT NULL"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"seccion","title":"secciones_tarifarias","x":1060,"y":720,"w":940,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["FK","hotel_codigo","VARCHAR(80) NOT NULL"],["UQ","codigo","VARCHAR(60) NOT NULL · por hotel"],["UQ","nombre","VARCHAR(40) NOT NULL · por hotel"],["UQ/CHK","color_hex","CHAR(7) NOT NULL · #RRGGBB"],["CHK","precio_seis_horas","DECIMAL(10,2) UNSIGNED"],["CHK","precio_dia_completo","DECIMAL(10,2) UNSIGNED"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"habitacion","title":"habitaciones","x":2110,"y":780,"w":940,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["FK/UQ","hotel_codigo","VARCHAR(80) NOT NULL"],["UQ/CHK","numero","SMALLINT UNSIGNED · 1..50"],["FK","seccion_tarifaria_id","BIGINT UNSIGNED NOT NULL"],["IX","estado","ENUM(5 estados) DEFAULT DISPONIBLE"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"area","title":"areas_comunes","x":3160,"y":780,"w":940,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["FK/UQ","hotel_codigo","VARCHAR(80) NOT NULL"],["UQ","codigo","VARCHAR(60) NOT NULL · por hotel"],["UQ","nombre","VARCHAR(80) NOT NULL · por hotel"],["","descripcion","VARCHAR(300) DEFAULT ''"],["IX","activa","BOOLEAN DEFAULT TRUE"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"categoria","title":"categorias_servicio","x":4490,"y":710,"w":930,"rows":[
+      ["PK/FK","catalogo_id","BIGINT UNSIGNED NOT NULL"],["PK","codigo","VARCHAR(60) NOT NULL"],["UQ","nombre","VARCHAR(60) NOT NULL · por catálogo"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"producto","title":"productos_servicio","x":4490,"y":1260,"w":930,"rows":[
+      ["PK/FK","catalogo_id","BIGINT UNSIGNED NOT NULL"],["PK","codigo","VARCHAR(60) NOT NULL"],["FK","categoria_codigo","VARCHAR(60) NOT NULL"],["UQ","nombre","VARCHAR(120) NOT NULL · por catálogo"],["CHK","precio","DECIMAL(10,2) · 0.01..10000"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"huesped","title":"huespedes","x":80,"y":1810,"w":930,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["","nombre_completo","VARCHAR(100) NOT NULL"],["UQ/CHK","tipo_documento","ENUM(DNI, CE, PASAPORTE)"],["UQ/CHK","numero_documento","VARCHAR(12) ASCII BIN"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"],["IX","nombre_completo","Índice de búsqueda"]]},
+    {"id":"estancia_huesped","title":"estancia_huespedes","x":1060,"y":1930,"w":940,"rows":[
+      ["PK/FK","estancia_id","BIGINT UNSIGNED NOT NULL"],["PK/FK","huesped_id","BIGINT UNSIGNED NOT NULL"],["UQ/CHK","orden","TINYINT UNSIGNED · 1..8"],["IX","huesped_id","Índice inverso"]]},
+    {"id":"estancia","title":"estancias","x":2110,"y":1600,"w":940,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["FK?","habitacion_id","BIGINT UNSIGNED NULL"],["FK?","area_comun_id","BIGINT UNSIGNED NULL"],["","tipo_servicio","ENUM(6H, 24H) NULL"],["UQ/IX","check_in","DATETIME NOT NULL"],["CHK","check_out","DATETIME NOT NULL · >= check_in"],["CHK","tarifa_aplicada","DECIMAL(10,2) UNSIGNED NULL"],["","horas_adicionales","SMALLINT UNSIGNED DEFAULT 0"],["CHK","monto_adicional","DECIMAL(10,2) DEFAULT 0.00"],["CHK","color_historico","CHAR(7) NULL · #RRGGBB"],["","estado","ENUM(ACTIVA, FINALIZADA)"],["UQ","habitacion_activa_id","BIGINT GENERATED NULLABLE"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"]]},
+    {"id":"pago","title":"pagos_estancia","x":3160,"y":1890,"w":940,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["FK/UQ","estancia_id","BIGINT UNSIGNED NOT NULL"],["IX","pagado_en","DATETIME NOT NULL"],["CHK","monto","DECIMAL(10,2) UNSIGNED > 0"],["","creado_en","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"],["","actualizado_en","TIMESTAMP ON UPDATE"],["TRG","integridad","Sólo estancia de habitación"]]},
+    {"id":"pedido","title":"pedidos_servicio","x":3130,"y":2860,"w":970,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["FK","estancia_id","BIGINT UNSIGNED NOT NULL"],["IX","estado","ENUM(PENDIENTE, PREP., ENT., CANC.)"],["","observaciones","VARCHAR(300) DEFAULT ''"],["IX","creado_en","DATETIME NOT NULL"],["IX","actualizado_en","DATETIME NOT NULL"],["TRG","integridad","Estancia activa + habitación ocupada"]]},
+    {"id":"item","title":"pedido_servicio_items","x":4420,"y":2590,"w":1020,"rows":[
+      ["PK","id","BIGINT UNSIGNED AUTO_INCREMENT"],["FK","pedido_id","BIGINT UNSIGNED NOT NULL"],["FK?","producto_catalogo_id","BIGINT UNSIGNED NULL"],["FK?","producto_codigo_fk","VARCHAR(60) NULL"],["","producto_codigo_snapshot","VARCHAR(60) NOT NULL"],["","producto_nombre_snapshot","VARCHAR(120) NOT NULL"],["CHK","precio_unitario_snapshot","DECIMAL(10,2) · 0.01..10000"],["CHK","cantidad","TINYINT UNSIGNED · 1..10"]]}
+  ],
+  "edges": [
+    {"from":"hotel","to":"credencial","from_side":"left","to_side":"right","label":"FK CASCADE","from_card":"1","to_card":"0..1"},
+    {"from":"hotel","to":"seccion","from_side":"bottom","to_side":"top","label":"FK RESTRICT","from_card":"1","to_card":"1..12"},
+    {"from":"hotel","to":"habitacion","from_side":"bottom","to_side":"top","label":"FK RESTRICT","from_card":"1","to_card":"1..50"},
+    {"from":"hotel","to":"area","from_side":"bottom","to_side":"top","label":"FK RESTRICT","from_card":"1","to_card":"0..*"},
+    {"from":"hotel","to":"catalogo","from_side":"right","to_side":"left","label":"FK CASCADE","from_card":"1","to_card":"1"},
+    {"from":"seccion","to":"habitacion","from_side":"right","to_side":"left","label":"FK compuesta","from_card":"1","to_card":"0..*"},
+    {"from":"habitacion","to":"estancia","from_side":"bottom","to_side":"top","label":"FK RESTRICT","from_card":"1","to_card":"0..*"},
+    {"from":"area","to":"estancia","from_side":"bottom","to_side":"right","label":"FK RESTRICT","from_card":"1","to_card":"0..*"},
+    {"from":"huesped","to":"estancia_huesped","from_side":"right","to_side":"left","label":"FK RESTRICT","from_card":"1","to_card":"0..*"},
+    {"from":"estancia_huesped","to":"estancia","from_side":"right","to_side":"left","label":"FK CASCADE","from_card":"1..8","to_card":"1"},
+    {"from":"estancia","to":"pago","from_side":"right","to_side":"left","label":"FK RESTRICT + UQ","from_card":"1","to_card":"0..1"},
+    {"from":"estancia","to":"pedido","from_side":"bottom","to_side":"left","label":"FK RESTRICT","from_card":"1","to_card":"0..*"},
+    {"from":"catalogo","to":"categoria","from_side":"bottom","to_side":"top","label":"FK CASCADE","from_card":"1","to_card":"1..*"},
+    {"from":"categoria","to":"producto","from_side":"bottom","to_side":"top","label":"FK compuesta RESTRICT","from_card":"1","to_card":"0..*"},
+    {"from":"producto","to":"item","from_side":"bottom","to_side":"top","label":"FK opcional SET NULL","from_card":"0..1","to_card":"0..*","dashed":true},
+    {"from":"pedido","to":"item","from_side":"right","to_side":"left","label":"FK CASCADE","from_card":"1","to_card":"1..*"}
+  ],
+  "notes": [
+    {"x":80,"y":3480,"w":2550,"text":"ÍNDICES CLAVE · hotel/estado/fecha, ubicación/fecha, pago/fecha y pedido/estado/actualización."},
+    {"x":2780,"y":3480,"w":2660,"text":"INTEGRIDAD · XOR de ubicación, una estancia activa por habitación y snapshots históricos inmutables."}
+  ]
+}

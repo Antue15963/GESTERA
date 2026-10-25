@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GESTERA — Documento de KPIs del dashboard</title>
+    <style>
+        :root {
+            --azul: #0b1730;
+            --azul-claro: #172947;
+            --amarillo: #f4b51f;
+            --celeste: #2d9fd0;
+            --verde: #27875a;
+            --rojo: #b44747;
+            --tinta: #172033;
+            --suave: #627087;
+            --linea: #dbe1ea;
+            --fondo: #f5f7fa;
+        }
+        * { box-sizing: border-box; }
+        @page { size: A4; margin: 14mm 13mm 16mm; }
+        html { color: var(--tinta); background: white; font-family: "Segoe UI", Arial, sans-serif; }
+        body { margin: 0; font-size: 9.4pt; line-height: 1.48; }
+        h1, h2, h3, p { margin-top: 0; }
+        h1 { margin-bottom: 4mm; font-size: 27pt; letter-spacing: -.8pt; line-height: 1.05; }
+        h2 { margin: 0 0 4mm; color: var(--azul); font-size: 16pt; letter-spacing: -.2pt; }
+        h3 { margin-bottom: 2mm; color: var(--azul); font-size: 11pt; }
+        p { margin-bottom: 3mm; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 2.3mm 2.5mm; border: .25mm solid var(--linea); vertical-align: top; }
+        th { background: var(--azul); color: white; font-size: 8.2pt; letter-spacing: .15pt; text-align: left; }
+        td { font-size: 8.2pt; }
+        tr:nth-child(even) td { background: #f8fafc; }
+        code { padding: .35mm 1mm; border-radius: 1mm; background: #eef2f7; color: #263651; font-family: Consolas, monospace; font-size: 8pt; }
+        .portada {
+            display: grid; min-height: 258mm; align-content: center; padding: 18mm;
+            background: linear-gradient(145deg, var(--azul), #07101f 70%); color: white;
+            break-after: page;
+        }
+        .marca { display: flex; align-items: center; gap: 3mm; margin-bottom: 30mm; }
+        .marca__simbolo {
+            display: grid; width: 11mm; height: 11mm; place-items: center; border-radius: 3mm;
+            background: var(--amarillo); color: #201600; font-size: 15pt; font-weight: 900;
+        }
+        .marca__nombre { font-size: 14pt; font-weight: 900; letter-spacing: 1.3pt; }
+        .portada .sobrelinea { margin-bottom: 4mm; color: #f4c85c; font-size: 8pt; font-weight: 800; letter-spacing: 1.2pt; }
+        .portada h1 { max-width: 150mm; font-size: 35pt; }
+        .portada__bajada { max-width: 135mm; color: #bac5d7; font-size: 13pt; line-height: 1.45; }
+        .portada__datos {
+            display: grid; max-width: 135mm; margin-top: 18mm; grid-template-columns: repeat(3, 1fr);
+            gap: 5mm; padding-top: 6mm; border-top: .3mm solid rgba(255,255,255,.18);
+        }
+        .portada__datos span { display: block; color: #8391a8; font-size: 7pt; letter-spacing: .7pt; }
+        .portada__datos strong { display: block; margin-top: 1mm; font-size: 9pt; }
+        .pagina { break-before: page; }
+        .encabezado-doc {
+            display: flex; align-items: center; justify-content: space-between; margin-bottom: 7mm;
+            padding-bottom: 3mm; border-bottom: .5mm solid var(--amarillo);
+        }
+        .encabezado-doc strong { color: var(--azul); font-size: 10pt; letter-spacing: .5pt; }
+        .encabezado-doc span { color: var(--suave); font-size: 7.5pt; }
+        .resumen {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin: 5mm 0 7mm;
+        }
+        .resumen article { padding: 4mm; border: .25mm solid var(--linea); border-radius: 2.5mm; background: var(--fondo); }
+        .resumen strong { display: block; color: var(--azul); font-size: 18pt; }
+        .resumen span { color: var(--suave); font-size: 7.8pt; }
+        .nota {
+            margin: 4mm 0; padding: 3.5mm 4mm; border-left: 1.2mm solid var(--celeste);
+            background: #edf7fb; color: #29445a;
+        }
+        .nota--amarilla { border-left-color: var(--amarillo); background: #fff8e8; color: #57461d; }
+        .captura { margin: 5mm 0; padding: 2.5mm; border: .25mm solid var(--linea); border-radius: 2mm; background: #08111f; }
+        .captura img { display: block; width: 100%; height: auto; }
+        .pie-imagen { margin-top: 2mm; color: var(--suave); font-size: 7.5pt; text-align: center; }
+        .matriz th:nth-child(1) { width: 18%; }
+        .matriz th:nth-child(2) { width: 24%; }
+        .matriz th:nth-child(3) { width: 23%; }
+        .matriz th:nth-child(4) { width: 17%; }
+        .matriz th:nth-child(5) { width: 18%; }
+        .kpi-nombre { color: var(--azul); font-weight: 750; }
+        .tipo { display: inline-block; margin-top: 1mm; padding: .5mm 1.3mm; border-radius: 99mm; background: #e9eef5; color: #4d5e76; font-size: 6.8pt; font-weight: 700; }
+        .tipo--actual { background: #e5f4eb; color: #27704d; }
+        .formula { color: #243553; font-family: Consolas, monospace; font-size: 7.5pt; }
+        .semaforo { display: grid; gap: 1.5mm; }
+        .semaforo span { display: flex; align-items: center; gap: 1.5mm; font-size: 7.6pt; }
+        .punto { width: 2mm; height: 2mm; flex: 0 0 auto; border-radius: 50%; }
+        .punto--verde { background: var(--verde); }
+        .punto--amarillo { background: var(--amarillo); }
+        .punto--rojo { background: var(--rojo); }
+        .dos-columnas { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+        .tarjeta { padding: 4mm; border: .25mm solid var(--linea); border-radius: 2mm; break-inside: avoid; }
+        .tarjeta ul { margin: 0; padding-left: 5mm; }
+        .tarjeta li { margin-bottom: 1.5mm; }
+        .ejemplo {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 3mm; margin: 4mm 0;
+        }
+        .ejemplo article { padding: 3mm; border-radius: 2mm; background: var(--fondo); }
+        .ejemplo span { display: block; color: var(--suave); font-size: 7.2pt; }
+        .ejemplo strong { display: block; margin-top: 1mm; color: var(--azul); font-size: 11pt; }
+        .fuentes td:first-child { font-weight: 700; }
+        .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 2mm 5mm; padding: 0; list-style: none; }
+        .checklist li::before { margin-right: 2mm; color: var(--verde); font-weight: 900; content: "✓"; }
+        .salto-evitar { break-inside: avoid; }
+    </style>
+</head>
+<body>
+    <section class="portada">
+        <div class="marca"><span class="marca__simbolo">G</span><span class="marca__nombre">GESTERA</span></div>
+        <p class="sobrelinea">DOCUMENTACIÓN FUNCIONAL · DASHBOARD HOTELERO</p>
+        <h1>Indicadores clave de desempeño (KPIs)</h1>
+        <p class="portada__bajada">Definición de los indicadores financieros y operativos utilizados para evaluar el desempeño del hotel dentro de la plataforma GESTERA.</p>
+        <div class="portada__datos">
+            <div><span>VERSIÓN</span><strong>1.0</strong></div>
+            <div><span>FECHA</span><strong>28 de septiembre de 2026</strong></div>
+            <div><span>MÓDULO</span><strong>Dashboard y reportes</strong></div>
+        </div>
+    </section>
+
+    <section class="pagina">
+        <header class="encabezado-doc"><strong>GESTERA · DASHBOARD</strong><span>Documento de KPIs</span></header>
+        <h2>1. Propósito y alcance</h2>
+        <p>El dashboard permite evaluar, en una sola vista, el rendimiento económico y el estado operativo del hotel seleccionado. Solo reconoce como ingresos confirmados las estancias marcadas como <strong>Pagado</strong> y los pedidos de servicio al cuarto que alcanzaron el estado <strong>Entregado</strong>.</p>
+
+        <div class="resumen">
+            <article><strong>8</strong><span>KPIs principales presentados en tarjetas y gráficas</span></article>
+            <article><strong>5</strong><span>periodos disponibles: día, semana, mes, año y personalizado</span></article>
+            <article><strong>2</strong><span>perspectivas: histórica filtrada y operación actual</span></article>
+        </div>
+
+        <div class="nota"><strong>Separación temporal.</strong> Ingresos, movimientos, ADR, RevPAR, ticket promedio, mezcla de ingresos y ranking obedecen al periodo y la fuente seleccionados. Ocupación, disponibilidad, limpieza, mantenimiento, cobros pendientes y pedidos activos representan el estado actual.</div>
+
+        <h2>2. Vista general del dashboard</h2>
+        <div class="captura"><img src="dashboard-gestera.png" alt="Dashboard de GESTERA con indicadores hoteleros"></div>
+        <p class="pie-imagen">Figura 1. Muestra visual del dashboard. Las cifras son ilustrativas y no corresponden a datos reales de producción.</p>
+
+        <h3>Preguntas de negocio que responde</h3>
+        <ul class="checklist">
+            <li>¿Cuánto ingreso confirmado generó el hotel?</li>
+            <li>¿Qué proporción de habitaciones está ocupada?</li>
+            <li>¿Cuál es el rendimiento por habitación disponible?</li>
+            <li>¿Cuál es el valor promedio de una estancia pagada?</li>
+            <li>¿Cuánto consume en promedio un pedido entregado?</li>
+            <li>¿Qué montos continúan pendientes de cobro?</li>
+            <li>¿Qué fuente aporta más al ingreso total?</li>
+            <li>¿Qué habitaciones producen mayores ingresos?</li>
+        </ul>
+    </section>
+
+    <section class="pagina">
+        <header class="encabezado-doc"><strong>GESTERA · DASHBOARD</strong><span>Matriz de indicadores</span></header>
+        <h2>3. KPIs financieros del periodo</h2>
+        <table class="matriz">
+            <thead><tr><th>Indicador</th><th>Definición</th><th>Fórmula</th><th>Fuente</th><th>Interpretación</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><span class="kpi-nombre">Ingresos confirmados</span><span class="tipo">Periodo filtrado</span></td>
+                    <td>Suma del dinero efectivamente reconocido por estancias pagadas y pedidos entregados.</td>
+                    <td><span class="formula">Σ pagos de habitaciones + Σ pedidos entregados</span></td>
+                    <td><code>ingresos_habitacion</code> y pedidos con estado <code>ENTREGADO</code>.</td>
+                    <td>Mientras mayor sea, mayor es la generación de ingresos confirmados. No incluye saldos por cobrar.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Movimientos confirmados</span><span class="tipo">Periodo filtrado</span></td>
+                    <td>Cantidad de transacciones que componen el ingreso del periodo.</td>
+                    <td><span class="formula">estancias pagadas + pedidos entregados</span></td>
+                    <td>Detalle consolidado del reporte.</td>
+                    <td>Permite separar crecimiento por volumen de transacciones del crecimiento por valor promedio.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Tarifa promedio (ADR)</span><span class="tipo">Periodo filtrado</span></td>
+                    <td>Ingreso promedio generado por cada estancia pagada.</td>
+                    <td><span class="formula">ingresos de habitaciones ÷ estancias pagadas</span></td>
+                    <td>Pagos consolidados de habitaciones.</td>
+                    <td>Un aumento indica mayor ingreso medio por estancia. Debe leerse junto con ocupación.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">RevPAR</span><span class="tipo">Periodo filtrado</span></td>
+                    <td>Ingreso de habitaciones por unidad de capacidad operativa y día del periodo.</td>
+                    <td><span class="formula">ingresos habitaciones ÷ (habitaciones operativas actuales × días)</span></td>
+                    <td>Pagos de habitaciones e inventario actual.</td>
+                    <td>Combina precio y aprovechamiento de capacidad. Es cero si el filtro excluye habitaciones.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Ticket promedio de servicio</span><span class="tipo">Periodo filtrado</span></td>
+                    <td>Valor promedio de los pedidos de servicio al cuarto ya entregados.</td>
+                    <td><span class="formula">ingresos de servicio ÷ pedidos entregados</span></td>
+                    <td>Pedidos e ítems de servicio al cuarto.</td>
+                    <td>Ayuda a evaluar consumo adicional y oportunidades de venta complementaria.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Mezcla de ingresos</span><span class="tipo">Periodo filtrado</span></td>
+                    <td>Participación porcentual de habitaciones y servicio al cuarto.</td>
+                    <td><span class="formula">ingreso de la fuente ÷ ingreso total × 100</span></td>
+                    <td>Detalle consolidado por tipo de ingreso.</td>
+                    <td>Muestra la dependencia de cada línea de negocio y el nivel de diversificación.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Ranking de habitaciones</span><span class="tipo">Periodo filtrado</span></td>
+                    <td>Cinco habitaciones con mayor ingreso agregado, sumando las fuentes incluidas por el filtro.</td>
+                    <td><span class="formula">Σ ingreso por número de habitación; ordenar DESC</span></td>
+                    <td>Movimientos confirmados del reporte.</td>
+                    <td>Identifica habitaciones de alto rendimiento para comparar sección, tarifa o demanda.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="pagina">
+        <header class="encabezado-doc"><strong>GESTERA · DASHBOARD</strong><span>Indicadores operativos</span></header>
+        <h2>4. KPIs y métricas de operación actual</h2>
+        <table class="matriz">
+            <thead><tr><th>Indicador</th><th>Definición</th><th>Fórmula</th><th>Fuente</th><th>Interpretación</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><span class="kpi-nombre">Tasa de ocupación</span><span class="tipo tipo--actual">Estado actual</span></td>
+                    <td>Proporción de habitaciones operativas que se encuentran ocupadas.</td>
+                    <td><span class="formula">ocupadas ÷ (total − mantenimiento) × 100</span></td>
+                    <td>Inventario y estado actual de habitaciones.</td>
+                    <td>Mide uso de la capacidad vendible. Una tasa alta debe contrastarse con disponibilidad y ADR.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Disponibilidad</span><span class="tipo tipo--actual">Estado actual</span></td>
+                    <td>Número de habitaciones listas para ser asignadas.</td>
+                    <td><span class="formula">conteo estado = DISPONIBLE</span></td>
+                    <td>Inventario actual.</td>
+                    <td>Una disponibilidad muy baja puede limitar ventas; una muy alta junto con baja ocupación sugiere demanda débil.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Flujo de limpieza</span><span class="tipo tipo--actual">Estado actual</span></td>
+                    <td>Habitaciones pendientes de limpieza o actualmente en limpieza.</td>
+                    <td><span class="formula">LIMPIEZA_PENDIENTE + EN_LIMPIEZA</span></td>
+                    <td>Inventario actual.</td>
+                    <td>Indica cuánta capacidad está temporalmente fuera de venta por rotación operativa.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Mantenimiento</span><span class="tipo tipo--actual">Estado actual</span></td>
+                    <td>Habitaciones fuera de operación por mantenimiento.</td>
+                    <td><span class="formula">conteo estado = MANTENIMIENTO</span></td>
+                    <td>Inventario actual.</td>
+                    <td>Reduce el denominador de habitaciones operativas para ocupación y RevPAR.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Monto pendiente de cobro</span><span class="tipo tipo--actual">Estado actual</span></td>
+                    <td>Total de estancias vigentes o conservadas en limpieza cuyo pago aún no se registró.</td>
+                    <td><span class="formula">Σ monto total donde check-in existe y pagado = falso</span></td>
+                    <td>Inventario actual, tarifa aplicada y ampliaciones.</td>
+                    <td>Debe tender a cero. No forma parte de ingresos confirmados hasta registrar el pago.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Estancias pendientes</span><span class="tipo tipo--actual">Estado actual</span></td>
+                    <td>Cantidad de cuentas de habitación sin pago confirmado.</td>
+                    <td><span class="formula">conteo de estancias con pago pendiente</span></td>
+                    <td>Inventario actual.</td>
+                    <td>Complementa el monto pendiente: permite saber si el riesgo está concentrado o distribuido.</td>
+                </tr>
+                <tr>
+                    <td><span class="kpi-nombre">Pedidos activos</span><span class="tipo tipo--actual">Estado actual</span></td>
+                    <td>Pedidos que todavía requieren atención operativa.</td>
+                    <td><span class="formula">PENDIENTE + EN_PREPARACION</span></td>
+                    <td>Cola de servicio al cuarto.</td>
+                    <td>Un crecimiento sostenido puede indicar acumulación de trabajo; el dashboard enlaza directamente a la cola.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nota nota--amarilla"><strong>Importante:</strong> el sistema aún no conserva un historial diario de estados de habitación. Por ello, la tasa de ocupación no debe interpretarse como ocupación promedio histórica; es una fotografía del momento de la consulta.</div>
+
+        <h2>5. Semáforos de referencia</h2>
+        <p>Estos umbrales son una propuesta para análisis administrativo y <strong>no están codificados como metas obligatorias</strong>. Deben ajustarse al tipo de hotel, temporada y estrategia comercial.</p>
+        <div class="dos-columnas">
+            <article class="tarjeta">
+                <h3>Ocupación actual</h3>
+                <div class="semaforo"><span><i class="punto punto--verde"></i>≥ 75%: utilización alta</span><span><i class="punto punto--amarillo"></i>50%–74.9%: utilización media</span><span><i class="punto punto--rojo"></i>&lt; 50%: revisar demanda y disponibilidad</span></div>
+            </article>
+            <article class="tarjeta">
+                <h3>Cobros pendientes</h3>
+                <div class="semaforo"><span><i class="punto punto--verde"></i>S/ 0: sin deuda operativa</span><span><i class="punto punto--amarillo"></i>Saldo controlado: seguimiento activo</span><span><i class="punto punto--rojo"></i>Saldo creciente: priorizar regularización</span></div>
+            </article>
+        </div>
+    </section>
+
+    <section class="pagina">
+        <header class="encabezado-doc"><strong>GESTERA · DASHBOARD</strong><span>Lectura y gobierno del dato</span></header>
+        <h2>6. Ejemplo de cálculo</h2>
+        <p>La imagen utiliza un escenario ilustrativo de septiembre con 12 habitaciones operativas, 96 estancias pagadas, 46 pedidos entregados y S/ 18,740.00 de ingresos confirmados.</p>
+        <div class="ejemplo">
+            <article><span>ADR</span><strong>S/ 14,800 ÷ 96 = S/ 154.17</strong></article>
+            <article><span>RevPAR</span><strong>S/ 14,800 ÷ (12 × 30) = S/ 41.11</strong></article>
+            <article><span>Ticket de servicio</span><strong>S/ 3,940 ÷ 46 = S/ 85.65</strong></article>
+            <article><span>Participación habitaciones</span><strong>S/ 14,800 ÷ S/ 18,740 = 79.0%</strong></article>
+        </div>
+
+        <h2>7. Fuentes y actualización</h2>
+        <table class="fuentes">
+            <thead><tr><th>Dato</th><th>Origen dentro de GESTERA</th><th>Actualización</th><th>Persistencia</th></tr></thead>
+            <tbody>
+                <tr><td>Pagos de habitaciones</td><td>Registro consolidado por hotel, habitación y check-in.</td><td>Al marcar o modificar el pago.</td><td>MySQL mediante V005; memoria en ejecución local.</td></tr>
+                <tr><td>Pedidos entregados</td><td>Pedidos de servicio al cuarto y sus ítems.</td><td>Al cambiar el estado a Entregado.</td><td>MySQL cuando está configurado; memoria en local.</td></tr>
+                <tr><td>Estado de habitaciones</td><td>Inventario independiente de cada hotel.</td><td>Inmediata al guardar cambios o confirmar checkout.</td><td>Memoria durante la ejecución actual.</td></tr>
+                <tr><td>Pagos pendientes</td><td>Tarifa aplicada, ampliaciones y estado de pago de la estancia.</td><td>Inmediata.</td><td>Memoria durante la ejecución actual.</td></tr>
+            </tbody>
+        </table>
+
+        <h2>8. Reglas de lectura</h2>
+        <div class="dos-columnas">
+            <article class="tarjeta">
+                <h3>Buenas prácticas</h3>
+                <ul>
+                    <li>Comparar ingresos, ADR y RevPAR usando el mismo periodo.</li>
+                    <li>Revisar ADR junto con ocupación para evitar conclusiones parciales.</li>
+                    <li>Usar el detalle de movimientos para auditar cualquier total.</li>
+                    <li>Atender cobros pendientes antes de interpretar el flujo como ingreso realizado.</li>
+                </ul>
+            </article>
+            <article class="tarjeta">
+                <h3>Limitaciones actuales</h3>
+                <ul>
+                    <li>RevPAR usa la capacidad operativa actual en todo el intervalo seleccionado.</li>
+                    <li>No existe todavía ocupación promedio histórica por noche.</li>
+                    <li>Áreas comunes no aportan ingresos porque el módulo no registra precio ni pago.</li>
+                    <li>Pedidos activos miden cantidad, no tiempo de preparación ni SLA.</li>
+                </ul>
+            </article>
+        </div>
+
+        <div class="nota"><strong>Conclusión.</strong> El dashboard evalúa simultáneamente generación de ingresos, rendimiento de la capacidad, consumo complementario, cartera operativa y disponibilidad. Esta combinación permite tomar decisiones comerciales y operativas sin perder trazabilidad sobre los movimientos que originan cada cifra.</div>
+    </section>
+</body>
+</html>

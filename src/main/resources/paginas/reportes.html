@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>Dashboard del hotel | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--panel pagina--reportes">
+    <a class="saltar-contenido" href="#contenido">Saltar al dashboard</a>
+
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="/hotel" aria-label="Gestera, volver a la gestión del hotel">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <div class="acciones-cabecera">
+            <button class="selector-tema" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+            <a class="boton-configuracion" href="/hotel/configuracion"
+               aria-label="Abrir configuración del hotel" title="Configuración del hotel">
+                <span aria-hidden="true">&#9881;</span><span>Configuración</span>
+            </a>
+            <a class="boton boton--secundario" href="/hotel">Volver a gestión</a>
+            <form action="/salir" method="post">
+                <button class="boton boton--secundario" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="contenido-panel contenido-reportes" id="contenido">
+        <section class="encabezado-reportes" aria-labelledby="reportes-titulo">
+            <div>
+                <p class="sobrelinea">{{NOMBRE_HOTEL}} · Reportes de ingresos</p>
+                <h1 id="reportes-titulo">Dashboard del hotel</h1>
+                <p>Ingresos confirmados, rendimiento por habitación y estado operativo en una sola vista.</p>
+            </div>
+            <p class="rango-reporte">
+                <span>PERIODO ANALIZADO</span>
+                <strong>{{RANGO_REPORTE}}</strong>
+            </p>
+        </section>
+
+        <form class="filtros-reportes" action="/hotel/reportes" method="get" data-formulario-reportes>
+            <div class="campo campo--hotel">
+                <label for="periodo-reporte">PERIODO</label>
+                <select id="periodo-reporte" name="periodo" data-periodo-reporte>
+                    <option value="dia" {{PERIODO_DIA}}>Hoy</option>
+                    <option value="semana" {{PERIODO_SEMANA}}>Esta semana</option>
+                    <option value="mes" {{PERIODO_MES}}>Este mes</option>
+                    <option value="anio" {{PERIODO_ANIO}}>Este año</option>
+                    <option value="personalizado" {{PERIODO_PERSONALIZADO}}>Rango personalizado</option>
+                </select>
+            </div>
+            <div class="campo campo--hotel">
+                <label for="tipo-reporte">FUENTE DE INGRESO</label>
+                <select id="tipo-reporte" name="tipo">
+                    <option value="todos" {{TIPO_TODOS}}>Todas las fuentes</option>
+                    <option value="habitaciones" {{TIPO_HABITACIONES}}>Solo habitaciones</option>
+                    <option value="servicios" {{TIPO_SERVICIOS}}>Solo servicio al cuarto</option>
+                </select>
+            </div>
+            <div class="campo campo--hotel campos-personalizados-reporte">
+                <label for="desde-reporte">DESDE</label>
+                <input id="desde-reporte" name="desde" type="date" value="{{REPORTE_DESDE}}"
+                       data-fecha-personalizada>
+            </div>
+            <div class="campo campo--hotel campos-personalizados-reporte">
+                <label for="hasta-reporte">HASTA</label>
+                <input id="hasta-reporte" name="hasta" type="date" value="{{REPORTE_HASTA}}"
+                       data-fecha-personalizada>
+            </div>
+            <button class="boton boton--principal" type="submit" data-generar-reporte>
+                Actualizar dashboard
+            </button>
+        </form>
+
+        <section class="metricas-dashboard" aria-label="Indicadores clave del hotel">
+            <article class="kpi-dashboard kpi-dashboard--principal">
+                <div class="kpi-dashboard__icono" aria-hidden="true">S/</div>
+                <div>
+                    <span>INGRESOS CONFIRMADOS</span>
+                    <strong>S/ {{TOTAL_REPORTE}}</strong>
+                    <small>{{MOVIMIENTOS_REPORTE}} movimientos en el periodo</small>
+                </div>
+            </article>
+            <article class="kpi-dashboard">
+                <div class="kpi-dashboard__cabecera"><span>OCUPACIÓN ACTUAL</span><i aria-hidden="true">%</i></div>
+                <strong>{{TASA_OCUPACION}}%</strong>
+                <small>{{HABITACIONES_OCUPADAS}} de {{HABITACIONES_OPERATIVAS}} habitaciones operativas</small>
+            </article>
+            <article class="kpi-dashboard">
+                <div class="kpi-dashboard__cabecera"><span>REVPAR</span><i aria-hidden="true">↗</i></div>
+                <strong>S/ {{REVPAR_REPORTE}}</strong>
+                <small>Ingreso de habitaciones / noches disponibles</small>
+            </article>
+            <article class="kpi-dashboard">
+                <div class="kpi-dashboard__cabecera"><span>TARIFA PROMEDIO (ADR)</span><i aria-hidden="true">H</i></div>
+                <strong>S/ {{TARIFA_PROMEDIO_REPORTE}}</strong>
+                <small>{{ESTANCIAS_PAGADAS_REPORTE}} estancias pagadas</small>
+            </article>
+            <article class="kpi-dashboard">
+                <div class="kpi-dashboard__cabecera"><span>TICKET DE SERVICIO</span><i aria-hidden="true">S</i></div>
+                <strong>S/ {{TICKET_PROMEDIO_SERVICIO}}</strong>
+                <small>{{PEDIDOS_ENTREGADOS_REPORTE}} pedidos entregados</small>
+            </article>
+            <article class="kpi-dashboard kpi-dashboard--alerta">
+                <div class="kpi-dashboard__cabecera"><span>POR COBRAR AHORA</span><i aria-hidden="true">!</i></div>
+                <strong>S/ {{MONTO_PENDIENTE_COBRO}}</strong>
+                <small>{{PAGOS_PENDIENTES}} estancias con pago pendiente</small>
+            </article>
+        </section>
+
+        <section class="rejilla-dashboard rejilla-dashboard--principal">
+            <article class="panel-dashboard panel-dashboard--evolucion" aria-labelledby="evolucion-titulo">
+                <header class="panel-dashboard__cabecera">
+                    <div>
+                        <p class="sobrelinea">RENDIMIENTO</p>
+                        <h2 id="evolucion-titulo">Evolución de ingresos</h2>
+                    </div>
+                    <div class="leyenda-grafico" aria-label="Leyenda">
+                        <span><i class="leyenda-grafico__habitaciones"></i>Habitaciones</span>
+                        <span><i class="leyenda-grafico__servicios"></i>Servicio</span>
+                    </div>
+                </header>
+                <div class="grafico-ingresos" role="img"
+                     aria-label="Comparación de ingresos de habitaciones y servicio al cuarto por periodo">
+                    {{GRAFICO_INGRESOS}}
+                </div>
+                <footer class="panel-dashboard__pie">
+                    <span>Habitaciones <strong>S/ {{TOTAL_HABITACIONES_REPORTE}}</strong></span>
+                    <span>Servicio al cuarto <strong>S/ {{TOTAL_SERVICIOS_REPORTE}}</strong></span>
+                </footer>
+            </article>
+
+            <article class="panel-dashboard panel-dashboard--operacion" aria-labelledby="operacion-titulo">
+                <header class="panel-dashboard__cabecera">
+                    <div><p class="sobrelinea">EN VIVO</p><h2 id="operacion-titulo">Estado operativo</h2></div>
+                    <span class="indicador-en-vivo"><i></i>Actual</span>
+                </header>
+                <div class="resumen-ocupacion">
+                    <div class="anillo-ocupacion" style="--ocupacion: {{TASA_OCUPACION}}%"
+                         aria-label="Ocupación actual: {{TASA_OCUPACION}} por ciento">
+                        <strong>{{TASA_OCUPACION}}%</strong><span>ocupación</span>
+                    </div>
+                    <div>
+                        <strong>{{HABITACIONES_TOTAL}}</strong>
+                        <span>habitaciones registradas</span>
+                    </div>
+                </div>
+                <ul class="estados-operacion">
+                    <li><span><i class="estado-operacion--disponible"></i>Disponibles</span><strong>{{HABITACIONES_DISPONIBLES}}</strong></li>
+                    <li><span><i class="estado-operacion--ocupada"></i>Ocupadas</span><strong>{{HABITACIONES_OCUPADAS}}</strong></li>
+                    <li><span><i class="estado-operacion--limpieza"></i>En flujo de limpieza</span><strong>{{HABITACIONES_LIMPIEZA}}</strong></li>
+                    <li><span><i class="estado-operacion--mantenimiento"></i>Mantenimiento</span><strong>{{HABITACIONES_MANTENIMIENTO}}</strong></li>
+                </ul>
+                <a class="alerta-operativa" href="/hotel/servicio-habitacion">
+                    <span><strong>{{PEDIDOS_ACTIVOS}}</strong> pedidos activos</span>
+                    <span>Ver cola <b aria-hidden="true">→</b></span>
+                </a>
+            </article>
+        </section>
+
+        <section class="rejilla-dashboard rejilla-dashboard--secundaria">
+            <article class="panel-dashboard" aria-labelledby="mezcla-titulo">
+                <header class="panel-dashboard__cabecera">
+                    <div><p class="sobrelinea">COMPOSICIÓN</p><h2 id="mezcla-titulo">Mezcla de ingresos</h2></div>
+                    <span class="etiqueta-periodo">Periodo filtrado</span>
+                </header>
+                <div class="mezcla-ingresos">
+                    <div class="mezcla-ingresos__fila">
+                        <div><span>Habitaciones</span><strong>{{PARTICIPACION_HABITACIONES}}%</strong></div>
+                        <div class="barra-mezcla"><i class="barra-mezcla--habitaciones" style="--participacion: {{PARTICIPACION_HABITACIONES}}%"></i></div>
+                        <small>S/ {{TOTAL_HABITACIONES_REPORTE}}</small>
+                    </div>
+                    <div class="mezcla-ingresos__fila">
+                        <div><span>Servicio al cuarto</span><strong>{{PARTICIPACION_SERVICIOS}}%</strong></div>
+                        <div class="barra-mezcla"><i class="barra-mezcla--servicios" style="--participacion: {{PARTICIPACION_SERVICIOS}}%"></i></div>
+                        <small>S/ {{TOTAL_SERVICIOS_REPORTE}}</small>
+                    </div>
+                </div>
+            </article>
+
+            <article class="panel-dashboard" aria-labelledby="ranking-titulo">
+                <header class="panel-dashboard__cabecera">
+                    <div><p class="sobrelinea">TOP 5</p><h2 id="ranking-titulo">Habitaciones por ingreso</h2></div>
+                    <span class="etiqueta-periodo">Fuente filtrada</span>
+                </header>
+                <div class="ranking-habitaciones">
+                    {{RANKING_HABITACIONES}}
+                </div>
+            </article>
+        </section>
+
+        <details class="panel-reporte panel-reporte--resumen">
+            <summary>
+                <span><b>Resumen contable por periodo</b><small>Consulta los valores exactos detrás de la gráfica.</small></span>
+                <i aria-hidden="true">+</i>
+            </summary>
+            <div class="tabla-reporte" role="table" aria-label="Resumen de ingresos">
+                <div class="tabla-reporte__cabecera" role="row">
+                    <span role="columnheader">Periodo</span>
+                    <span role="columnheader">Habitaciones</span>
+                    <span role="columnheader">Servicio al cuarto</span>
+                    <span role="columnheader">Total</span>
+                </div>
+                {{FILAS_RESUMEN_REPORTE}}
+            </div>
+        </details>
+
+        <section class="panel-reporte" aria-labelledby="detalle-reporte-titulo">
+            <div class="panel-reporte__cabecera">
+                <div><p class="sobrelinea">TRAZABILIDAD</p><h2 id="detalle-reporte-titulo">Movimientos confirmados</h2></div>
+                <p>Solo incluye estancias pagadas y pedidos entregados.</p>
+            </div>
+            <div class="tabla-reporte tabla-reporte--detalles" role="table" aria-label="Detalle de ingresos">
+                <div class="tabla-reporte__cabecera tabla-reporte__cabecera--detalle" role="row">
+                    <span role="columnheader">Fecha y hora</span>
+                    <span role="columnheader">Origen</span>
+                    <span role="columnheader">Habitación</span>
+                    <span role="columnheader">Concepto</span>
+                    <span role="columnheader">Monto</span>
+                </div>
+                {{DETALLES_REPORTE}}
+            </div>
+        </section>
+
+        <aside class="nota-kpis" aria-label="Nota metodológica">
+            <strong>Cómo se calculan los indicadores</strong>
+            <p>ADR = ingresos de habitaciones / estancias pagadas. RevPAR = ingresos de habitaciones / (habitaciones operativas actuales × días del periodo). Ocupación, cobros pendientes y pedidos activos son una fotografía actual; los demás valores corresponden al periodo seleccionado.</p>
+        </aside>
+    </main>
+    <script src="/publico/scripts/reportes.js" defer></script>
+</body>
+</html>

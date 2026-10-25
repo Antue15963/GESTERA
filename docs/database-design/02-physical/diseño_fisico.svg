@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="5550" height="3820" viewBox="0 0 5550 3820">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text x="2775.0" y="52.0" font-family="'Segoe UI', Arial, sans-serif" font-size="38" font-weight="700" text-anchor="middle" fill="#6E5DDA">GESTERA · DISEÑO FÍSICO MYSQL 8.0</text>
+<text x="2775.0" y="87.0" font-family="'Segoe UI', Arial, sans-serif" font-size="21" font-weight="400" text-anchor="middle" fill="#706D83">Tipos, nulabilidad, claves, restricciones e índices principales · esquema objetivo gestera</text>
+<polyline points="2180.0,311.5 1595.0,311.5 1595.0,286.0 1010.0,286.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="1815.5" y="291.5" width="144" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="1887.5" y="313.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK CASCADE</text>
+<text x="2190.0" y="301.5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="1000.0" y="276.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..1</text>
+<polyline points="2459.0,478.0 2459.0,599.0 1530.0,599.0 1530.0,720.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="1916.5" y="579.0" width="156" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="1994.5" y="601.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK RESTRICT</text>
+<text x="2469.0" y="468.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="1520.0" y="710.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..12</text>
+<polyline points="2630.0,478.0 2630.0,629.0 2580.0,629.0 2580.0,780.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="2552.0" y="533.5" width="156" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2630.0" y="555.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK RESTRICT</text>
+<text x="2640.0" y="468.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="2570.0" y="770.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..50</text>
+<polyline points="2801.0,478.0 2801.0,629.0 3630.0,629.0 3630.0,780.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="3137.5" y="609.0" width="156" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3215.5" y="631.0" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK RESTRICT</text>
+<text x="2811.0" y="468.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="3620.0" y="770.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="3080.0,311.5 3785.0,311.5 3785.0,228.0 4490.0,228.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="3360.5" y="291.5" width="144" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3432.5" y="313.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK CASCADE</text>
+<text x="3090.0" y="301.5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="4480.0" y="218.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1</text>
+<polyline points="2000.0,925.5 2055.0,925.5 2055.0,946.5 2110.0,946.5" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="1943.5" y="905.5" width="168" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2027.5" y="927.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK compuesta</text>
+<text x="2010.0" y="915.5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="2100.0" y="936.5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="2580.0,1113.0 2580.0,1356.5 2580.0,1356.5 2580.0,1600.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="2502.0" y="1214.8" width="156" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2580.0" y="1236.8" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK RESTRICT</text>
+<text x="2590.0" y="1103.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="2570.0" y="1590.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="3630.0,1152.0 3630.0,1838.4 3050.0,1838.4" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="3552.0" y="1475.2" width="156" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3630.0" y="1497.2" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK RESTRICT</text>
+<text x="3640.0" y="1142.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="3040.0" y="1828.4" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="1010.0,1976.5 1035.0,1976.5 1035.0,2038.0 1060.0,2038.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="957.0" y="1987.2" width="156" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="1035.0" y="2009.2" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK RESTRICT</text>
+<text x="1020.0" y="1966.5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="1050.0" y="2028.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="2000.0,2038.0 2055.0,2038.0 2055.0,1903.0 2110.0,1903.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="1983.0" y="1950.5" width="144" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2055.0" y="1972.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK CASCADE</text>
+<text x="2010.0" y="2028.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1..8</text>
+<text x="2100.0" y="1893.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1</text>
+<polyline points="3050.0,1967.6 3105.0,1967.6 3105.0,2056.5 3160.0,2056.5" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="2997.0" y="1992.1" width="216" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="3105.0" y="2014.1" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK RESTRICT + UQ</text>
+<text x="3060.0" y="1957.6" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="3150.0" y="2046.5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..1</text>
+<polyline points="2580.0,2206.0 2580.0,3026.5 3130.0,3026.5" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="2502.0" y="2596.2" width="156" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="2580.0" y="2618.2" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK RESTRICT</text>
+<text x="2590.0" y="2196.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="3120.0" y="3016.5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="4955.0,336.0 4955.0,523.0 4955.0,523.0 4955.0,710.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="4883.0" y="409.5" width="144" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4955.0" y="431.5" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK CASCADE</text>
+<text x="4965.0" y="326.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="4945.0" y="700.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..*</text>
+<polyline points="4955.0,965.0 4955.0,1112.5 4955.0,1112.5 4955.0,1260.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="4817.0" y="1018.8" width="276" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4955.0" y="1040.8" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK compuesta RESTRICT</text>
+<text x="4965.0" y="955.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="4945.0" y="1250.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="4955.0,1593.0 4955.0,2091.5 4930.0,2091.5 4930.0,2590.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="4930.0,2590.0 4922.3,2576.0 4937.7,2576.0" fill="#6E5DDA"/>
+<rect x="4823.0" y="1822.2" width="264" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4955.0" y="1844.2" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK opcional SET NULL</text>
+<text x="4965.0" y="1583.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">0..1</text>
+<text x="4920.0" y="2580.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">0..*</text>
+<polyline points="4100.0,3026.5 4260.0,3026.5 4260.0,2776.0 4420.0,2776.0" fill="none" stroke="#8B7CF6" stroke-width="4" stroke-linejoin="round"/>
+<rect x="4188.0" y="2881.2" width="144" height="31" rx="10" fill="white" stroke="#E2DEFF"/>
+<text x="4260.0" y="2903.2" font-family="'Segoe UI', Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle" fill="#706D83">FK CASCADE</text>
+<text x="4110.0" y="3016.5" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="start" fill="#6E5DDA">1</text>
+<text x="4410.0" y="2766.0" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" text-anchor="end" fill="#6E5DDA">1..*</text>
+<rect x="2180" y="145" width="900" height="333" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="2180" y="145" width="900" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="2630.0" y="185.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">hoteles</text>
+<line x1="2180" y1="205" x2="3080" y2="205" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2192.0" y="232.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="2297.0" y="232.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">codigo</text>
+<text x="2627.0" y="232.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(80) NOT NULL</text>
+<rect x="2181" y="244" width="898" height="39" fill="#FBFAFF"/>
+<line x1="2180" y1="244" x2="3080" y2="244" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2192.0" y="271.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ</text>
+<text x="2297.0" y="271.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">nombre</text>
+<text x="2627.0" y="271.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(150) NOT NULL</text>
+<line x1="2180" y1="283" x2="3080" y2="283" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2192.0" y="310.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2297.0" y="310.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">ubicacion</text>
+<text x="2627.0" y="310.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(150) NOT NULL</text>
+<rect x="2181" y="322" width="898" height="39" fill="#FBFAFF"/>
+<line x1="2180" y1="322" x2="3080" y2="322" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2192.0" y="349.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2297.0" y="349.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">iniciales</text>
+<text x="2627.0" y="349.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">CHAR(2) NOT NULL</text>
+<line x1="2180" y1="361" x2="3080" y2="361" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2192.0" y="388.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2297.0" y="388.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">activo</text>
+<text x="2627.0" y="388.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BOOLEAN NOT NULL DEFAULT TRUE</text>
+<rect x="2181" y="400" width="898" height="39" fill="#FBFAFF"/>
+<line x1="2180" y1="400" x2="3080" y2="400" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2192.0" y="427.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2297.0" y="427.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="2627.0" y="427.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<line x1="2180" y1="439" x2="3080" y2="439" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2192.0" y="466.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2297.0" y="466.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="2627.0" y="466.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="2285" y1="205" x2="2285" y2="478" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="2615" y1="205" x2="2615" y2="478" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="80" y="100" width="930" height="372" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="80" y="100" width="930" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="545.0" y="140.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">credenciales_hotel</text>
+<line x1="80" y1="160" x2="1010" y2="160" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="187.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK/FK</text>
+<text x="197.0" y="187.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">hotel_codigo</text>
+<text x="527.0" y="187.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(80) NOT NULL</text>
+<rect x="81" y="199" width="928" height="39" fill="#FBFAFF"/>
+<line x1="80" y1="199" x2="1010" y2="199" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="226.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="197.0" y="226.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">sal</text>
+<text x="527.0" y="226.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARBINARY(16) NOT NULL</text>
+<line x1="80" y1="238" x2="1010" y2="238" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="265.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="197.0" y="265.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">hash_clave</text>
+<text x="527.0" y="265.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARBINARY(32) NOT NULL</text>
+<rect x="81" y="277" width="928" height="39" fill="#FBFAFF"/>
+<line x1="80" y1="277" x2="1010" y2="277" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="304.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="197.0" y="304.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">algoritmo</text>
+<text x="527.0" y="304.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(40) DEFAULT PBKDF2...</text>
+<line x1="80" y1="316" x2="1010" y2="316" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="343.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="197.0" y="343.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">iteraciones</text>
+<text x="527.0" y="343.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">INT UNSIGNED DEFAULT 65536</text>
+<rect x="81" y="355" width="928" height="39" fill="#FBFAFF"/>
+<line x1="80" y1="355" x2="1010" y2="355" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="382.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="197.0" y="382.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">version</text>
+<text x="527.0" y="382.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED DEFAULT 1</text>
+<line x1="80" y1="394" x2="1010" y2="394" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="421.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="197.0" y="421.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">requiere_cambio</text>
+<text x="527.0" y="421.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BOOLEAN DEFAULT TRUE</text>
+<rect x="81" y="433" width="928" height="39" fill="#FBFAFF"/>
+<line x1="80" y1="433" x2="1010" y2="433" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="460.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="197.0" y="460.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="527.0" y="460.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="185" y1="160" x2="185" y2="472" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="515" y1="160" x2="515" y2="472" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="4490" y="120" width="930" height="216" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4490" y="120" width="930" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4955.0" y="160.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">catalogos_servicio</text>
+<line x1="4490" y1="180" x2="5420" y2="180" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="207.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="4607.0" y="207.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="4937.0" y="207.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="4491" y="219" width="928" height="39" fill="#FBFAFF"/>
+<line x1="4490" y1="219" x2="5420" y2="219" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="246.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK/UQ</text>
+<text x="4607.0" y="246.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">hotel_codigo</text>
+<text x="4937.0" y="246.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(80) NOT NULL</text>
+<line x1="4490" y1="258" x2="5420" y2="258" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="285.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="4607.0" y="285.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="4937.0" y="285.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<rect x="4491" y="297" width="928" height="39" fill="#FBFAFF"/>
+<line x1="4490" y1="297" x2="5420" y2="297" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="324.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="4607.0" y="324.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="4937.0" y="324.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="4595" y1="180" x2="4595" y2="336" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="4925" y1="180" x2="4925" y2="336" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="1060" y="720" width="940" height="411" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="1060" y="720" width="940" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="1530.0" y="760.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">secciones_tarifarias</text>
+<line x1="1060" y1="780" x2="2000" y2="780" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="807.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="1177.0" y="807.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="1507.0" y="807.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="1061" y="819" width="938" height="39" fill="#FBFAFF"/>
+<line x1="1060" y1="819" x2="2000" y2="819" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="846.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK</text>
+<text x="1177.0" y="846.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">hotel_codigo</text>
+<text x="1507.0" y="846.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(80) NOT NULL</text>
+<line x1="1060" y1="858" x2="2000" y2="858" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="885.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ</text>
+<text x="1177.0" y="885.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">codigo</text>
+<text x="1507.0" y="885.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(60) NOT NULL · por hotel</text>
+<rect x="1061" y="897" width="938" height="39" fill="#FBFAFF"/>
+<line x1="1060" y1="897" x2="2000" y2="897" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="924.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ</text>
+<text x="1177.0" y="924.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">nombre</text>
+<text x="1507.0" y="924.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(40) NOT NULL · por hotel</text>
+<line x1="1060" y1="936" x2="2000" y2="936" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="963.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ/CHK</text>
+<text x="1177.0" y="963.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">color_hex</text>
+<text x="1507.0" y="963.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">CHAR(7) NOT NULL · #RRGGBB</text>
+<rect x="1061" y="975" width="938" height="39" fill="#FBFAFF"/>
+<line x1="1060" y1="975" x2="2000" y2="975" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="1002.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="1177.0" y="1002.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">precio_seis_horas</text>
+<text x="1507.0" y="1002.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DECIMAL(10,2) UNSIGNED</text>
+<line x1="1060" y1="1014" x2="2000" y2="1014" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="1041.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="1177.0" y="1041.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">precio_dia_completo</text>
+<text x="1507.0" y="1041.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DECIMAL(10,2) UNSIGNED</text>
+<rect x="1061" y="1053" width="938" height="39" fill="#FBFAFF"/>
+<line x1="1060" y1="1053" x2="2000" y2="1053" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="1080.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="1177.0" y="1080.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="1507.0" y="1080.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<line x1="1060" y1="1092" x2="2000" y2="1092" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="1119.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="1177.0" y="1119.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="1507.0" y="1119.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="1165" y1="780" x2="1165" y2="1131" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="1495" y1="780" x2="1495" y2="1131" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="2110" y="780" width="940" height="333" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="2110" y="780" width="940" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="2580.0" y="820.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">habitaciones</text>
+<line x1="2110" y1="840" x2="3050" y2="840" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="867.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="2227.0" y="867.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="2557.0" y="867.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="2111" y="879" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="879" x2="3050" y2="879" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="906.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK/UQ</text>
+<text x="2227.0" y="906.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">hotel_codigo</text>
+<text x="2557.0" y="906.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(80) NOT NULL</text>
+<line x1="2110" y1="918" x2="3050" y2="918" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="945.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ/CHK</text>
+<text x="2227.0" y="945.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">numero</text>
+<text x="2557.0" y="945.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">SMALLINT UNSIGNED · 1..50</text>
+<rect x="2111" y="957" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="957" x2="3050" y2="957" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="984.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK</text>
+<text x="2227.0" y="984.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">seccion_tarifaria_id</text>
+<text x="2557.0" y="984.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NOT NULL</text>
+<line x1="2110" y1="996" x2="3050" y2="996" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1023.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">IX</text>
+<text x="2227.0" y="1023.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">estado</text>
+<text x="2557.0" y="1023.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">ENUM(5 estados) DEFAULT DISPONIBLE</text>
+<rect x="2111" y="1035" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="1035" x2="3050" y2="1035" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1062.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2227.0" y="1062.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="2557.0" y="1062.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<line x1="2110" y1="1074" x2="3050" y2="1074" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1101.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2227.0" y="1101.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="2557.0" y="1101.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="2215" y1="840" x2="2215" y2="1113" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="2545" y1="840" x2="2545" y2="1113" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="3160" y="780" width="940" height="372" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="3160" y="780" width="940" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="3630.0" y="820.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">areas_comunes</text>
+<line x1="3160" y1="840" x2="4100" y2="840" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="867.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="3277.0" y="867.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="3607.0" y="867.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="3161" y="879" width="938" height="39" fill="#FBFAFF"/>
+<line x1="3160" y1="879" x2="4100" y2="879" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="906.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK/UQ</text>
+<text x="3277.0" y="906.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">hotel_codigo</text>
+<text x="3607.0" y="906.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(80) NOT NULL</text>
+<line x1="3160" y1="918" x2="4100" y2="918" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="945.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ</text>
+<text x="3277.0" y="945.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">codigo</text>
+<text x="3607.0" y="945.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(60) NOT NULL · por hotel</text>
+<rect x="3161" y="957" width="938" height="39" fill="#FBFAFF"/>
+<line x1="3160" y1="957" x2="4100" y2="957" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="984.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ</text>
+<text x="3277.0" y="984.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">nombre</text>
+<text x="3607.0" y="984.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(80) NOT NULL · por hotel</text>
+<line x1="3160" y1="996" x2="4100" y2="996" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="1023.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="3277.0" y="1023.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">descripcion</text>
+<text x="3607.0" y="1023.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(300) DEFAULT &#x27;&#x27;</text>
+<rect x="3161" y="1035" width="938" height="39" fill="#FBFAFF"/>
+<line x1="3160" y1="1035" x2="4100" y2="1035" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="1062.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">IX</text>
+<text x="3277.0" y="1062.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">activa</text>
+<text x="3607.0" y="1062.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BOOLEAN DEFAULT TRUE</text>
+<line x1="3160" y1="1074" x2="4100" y2="1074" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="1101.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="3277.0" y="1101.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="3607.0" y="1101.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<rect x="3161" y="1113" width="938" height="39" fill="#FBFAFF"/>
+<line x1="3160" y1="1113" x2="4100" y2="1113" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="1140.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="3277.0" y="1140.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="3607.0" y="1140.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="3265" y1="840" x2="3265" y2="1152" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="3595" y1="840" x2="3595" y2="1152" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="4490" y="710" width="930" height="255" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4490" y="710" width="930" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4955.0" y="750.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">categorias_servicio</text>
+<line x1="4490" y1="770" x2="5420" y2="770" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="797.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK/FK</text>
+<text x="4607.0" y="797.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">catalogo_id</text>
+<text x="4937.0" y="797.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NOT NULL</text>
+<rect x="4491" y="809" width="928" height="39" fill="#FBFAFF"/>
+<line x1="4490" y1="809" x2="5420" y2="809" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="836.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="4607.0" y="836.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">codigo</text>
+<text x="4937.0" y="836.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(60) NOT NULL</text>
+<line x1="4490" y1="848" x2="5420" y2="848" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="875.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ</text>
+<text x="4607.0" y="875.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">nombre</text>
+<text x="4937.0" y="875.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(60) NOT NULL · por catálogo</text>
+<rect x="4491" y="887" width="928" height="39" fill="#FBFAFF"/>
+<line x1="4490" y1="887" x2="5420" y2="887" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="914.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="4607.0" y="914.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="4937.0" y="914.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<line x1="4490" y1="926" x2="5420" y2="926" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="953.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="4607.0" y="953.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="4937.0" y="953.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="4595" y1="770" x2="4595" y2="965" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="4925" y1="770" x2="4925" y2="965" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="4490" y="1260" width="930" height="333" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4490" y="1260" width="930" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4955.0" y="1300.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">productos_servicio</text>
+<line x1="4490" y1="1320" x2="5420" y2="1320" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="1347.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK/FK</text>
+<text x="4607.0" y="1347.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">catalogo_id</text>
+<text x="4937.0" y="1347.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NOT NULL</text>
+<rect x="4491" y="1359" width="928" height="39" fill="#FBFAFF"/>
+<line x1="4490" y1="1359" x2="5420" y2="1359" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="1386.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="4607.0" y="1386.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">codigo</text>
+<text x="4937.0" y="1386.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(60) NOT NULL</text>
+<line x1="4490" y1="1398" x2="5420" y2="1398" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="1425.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK</text>
+<text x="4607.0" y="1425.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">categoria_codigo</text>
+<text x="4937.0" y="1425.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(60) NOT NULL</text>
+<rect x="4491" y="1437" width="928" height="39" fill="#FBFAFF"/>
+<line x1="4490" y1="1437" x2="5420" y2="1437" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="1464.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ</text>
+<text x="4607.0" y="1464.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">nombre</text>
+<text x="4937.0" y="1464.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(120) NOT NULL · por catálogo</text>
+<line x1="4490" y1="1476" x2="5420" y2="1476" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="1503.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="4607.0" y="1503.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">precio</text>
+<text x="4937.0" y="1503.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DECIMAL(10,2) · 0.01..10000</text>
+<rect x="4491" y="1515" width="928" height="39" fill="#FBFAFF"/>
+<line x1="4490" y1="1515" x2="5420" y2="1515" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="1542.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="4607.0" y="1542.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="4937.0" y="1542.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<line x1="4490" y1="1554" x2="5420" y2="1554" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4502.0" y="1581.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="4607.0" y="1581.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="4937.0" y="1581.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="4595" y1="1320" x2="4595" y2="1593" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="4925" y1="1320" x2="4925" y2="1593" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="80" y="1810" width="930" height="333" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="80" y="1810" width="930" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="545.0" y="1850.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">huespedes</text>
+<line x1="80" y1="1870" x2="1010" y2="1870" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="1897.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="197.0" y="1897.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="527.0" y="1897.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="81" y="1909" width="928" height="39" fill="#FBFAFF"/>
+<line x1="80" y1="1909" x2="1010" y2="1909" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="1936.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="197.0" y="1936.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">nombre_completo</text>
+<text x="527.0" y="1936.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(100) NOT NULL</text>
+<line x1="80" y1="1948" x2="1010" y2="1948" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="1975.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ/CHK</text>
+<text x="197.0" y="1975.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">tipo_documento</text>
+<text x="527.0" y="1975.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">ENUM(DNI, CE, PASAPORTE)</text>
+<rect x="81" y="1987" width="928" height="39" fill="#FBFAFF"/>
+<line x1="80" y1="1987" x2="1010" y2="1987" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="2014.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ/CHK</text>
+<text x="197.0" y="2014.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">numero_documento</text>
+<text x="527.0" y="2014.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(12) ASCII BIN</text>
+<line x1="80" y1="2026" x2="1010" y2="2026" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="2053.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="197.0" y="2053.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="527.0" y="2053.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<rect x="81" y="2065" width="928" height="39" fill="#FBFAFF"/>
+<line x1="80" y1="2065" x2="1010" y2="2065" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="2092.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="197.0" y="2092.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="527.0" y="2092.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="80" y1="2104" x2="1010" y2="2104" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="92.0" y="2131.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">IX</text>
+<text x="197.0" y="2131.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">nombre_completo</text>
+<text x="527.0" y="2131.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">Índice de búsqueda</text>
+<line x1="185" y1="1870" x2="185" y2="2143" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="515" y1="1870" x2="515" y2="2143" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="1060" y="1930" width="940" height="216" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="1060" y="1930" width="940" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="1530.0" y="1970.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">estancia_huespedes</text>
+<line x1="1060" y1="1990" x2="2000" y2="1990" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="2017.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK/FK</text>
+<text x="1177.0" y="2017.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">estancia_id</text>
+<text x="1507.0" y="2017.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NOT NULL</text>
+<rect x="1061" y="2029" width="938" height="39" fill="#FBFAFF"/>
+<line x1="1060" y1="2029" x2="2000" y2="2029" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="2056.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK/FK</text>
+<text x="1177.0" y="2056.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">huesped_id</text>
+<text x="1507.0" y="2056.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NOT NULL</text>
+<line x1="1060" y1="2068" x2="2000" y2="2068" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="2095.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ/CHK</text>
+<text x="1177.0" y="2095.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">orden</text>
+<text x="1507.0" y="2095.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TINYINT UNSIGNED · 1..8</text>
+<rect x="1061" y="2107" width="938" height="39" fill="#FBFAFF"/>
+<line x1="1060" y1="2107" x2="2000" y2="2107" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="1072.0" y="2134.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">IX</text>
+<text x="1177.0" y="2134.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">huesped_id</text>
+<text x="1507.0" y="2134.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">Índice inverso</text>
+<line x1="1165" y1="1990" x2="1165" y2="2146" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="1495" y1="1990" x2="1495" y2="2146" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="2110" y="1600" width="940" height="606" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="2110" y="1600" width="940" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="2580.0" y="1640.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">estancias</text>
+<line x1="2110" y1="1660" x2="3050" y2="1660" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1687.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="2227.0" y="1687.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="2557.0" y="1687.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="2111" y="1699" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="1699" x2="3050" y2="1699" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1726.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK?</text>
+<text x="2227.0" y="1726.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">habitacion_id</text>
+<text x="2557.0" y="1726.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NULL</text>
+<line x1="2110" y1="1738" x2="3050" y2="1738" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1765.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK?</text>
+<text x="2227.0" y="1765.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">area_comun_id</text>
+<text x="2557.0" y="1765.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NULL</text>
+<rect x="2111" y="1777" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="1777" x2="3050" y2="1777" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1804.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2227.0" y="1804.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">tipo_servicio</text>
+<text x="2557.0" y="1804.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">ENUM(6H, 24H) NULL</text>
+<line x1="2110" y1="1816" x2="3050" y2="1816" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1843.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ/IX</text>
+<text x="2227.0" y="1843.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">check_in</text>
+<text x="2557.0" y="1843.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DATETIME NOT NULL</text>
+<rect x="2111" y="1855" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="1855" x2="3050" y2="1855" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1882.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="2227.0" y="1882.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">check_out</text>
+<text x="2557.0" y="1882.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DATETIME NOT NULL · &gt;= check_in</text>
+<line x1="2110" y1="1894" x2="3050" y2="1894" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1921.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="2227.0" y="1921.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">tarifa_aplicada</text>
+<text x="2557.0" y="1921.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DECIMAL(10,2) UNSIGNED NULL</text>
+<rect x="2111" y="1933" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="1933" x2="3050" y2="1933" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1960.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2227.0" y="1960.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">horas_adicionales</text>
+<text x="2557.0" y="1960.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">SMALLINT UNSIGNED DEFAULT 0</text>
+<line x1="2110" y1="1972" x2="3050" y2="1972" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="1999.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="2227.0" y="1999.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">monto_adicional</text>
+<text x="2557.0" y="1999.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DECIMAL(10,2) DEFAULT 0.00</text>
+<rect x="2111" y="2011" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="2011" x2="3050" y2="2011" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="2038.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="2227.0" y="2038.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">color_historico</text>
+<text x="2557.0" y="2038.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">CHAR(7) NULL · #RRGGBB</text>
+<line x1="2110" y1="2050" x2="3050" y2="2050" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="2077.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2227.0" y="2077.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">estado</text>
+<text x="2557.0" y="2077.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">ENUM(ACTIVA, FINALIZADA)</text>
+<rect x="2111" y="2089" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="2089" x2="3050" y2="2089" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="2116.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">UQ</text>
+<text x="2227.0" y="2116.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">habitacion_activa_id</text>
+<text x="2557.0" y="2116.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT GENERATED NULLABLE</text>
+<line x1="2110" y1="2128" x2="3050" y2="2128" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="2155.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2227.0" y="2155.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="2557.0" y="2155.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<rect x="2111" y="2167" width="938" height="39" fill="#FBFAFF"/>
+<line x1="2110" y1="2167" x2="3050" y2="2167" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="2122.0" y="2194.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="2227.0" y="2194.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="2557.0" y="2194.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="2215" y1="1660" x2="2215" y2="2206" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="2545" y1="1660" x2="2545" y2="2206" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="3160" y="1890" width="940" height="333" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="3160" y="1890" width="940" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="3630.0" y="1930.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">pagos_estancia</text>
+<line x1="3160" y1="1950" x2="4100" y2="1950" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="1977.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="3277.0" y="1977.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="3607.0" y="1977.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="3161" y="1989" width="938" height="39" fill="#FBFAFF"/>
+<line x1="3160" y1="1989" x2="4100" y2="1989" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="2016.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK/UQ</text>
+<text x="3277.0" y="2016.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">estancia_id</text>
+<text x="3607.0" y="2016.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NOT NULL</text>
+<line x1="3160" y1="2028" x2="4100" y2="2028" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="2055.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">IX</text>
+<text x="3277.0" y="2055.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">pagado_en</text>
+<text x="3607.0" y="2055.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DATETIME NOT NULL</text>
+<rect x="3161" y="2067" width="938" height="39" fill="#FBFAFF"/>
+<line x1="3160" y1="2067" x2="4100" y2="2067" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="2094.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="3277.0" y="2094.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">monto</text>
+<text x="3607.0" y="2094.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DECIMAL(10,2) UNSIGNED &gt; 0</text>
+<line x1="3160" y1="2106" x2="4100" y2="2106" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="2133.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="3277.0" y="2133.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="3607.0" y="2133.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP DEFAULT CURRENT_TIMESTAMP</text>
+<rect x="3161" y="2145" width="938" height="39" fill="#FBFAFF"/>
+<line x1="3160" y1="2145" x2="4100" y2="2145" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="2172.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="3277.0" y="2172.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="3607.0" y="2172.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TIMESTAMP ON UPDATE</text>
+<line x1="3160" y1="2184" x2="4100" y2="2184" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3172.0" y="2211.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">TRG</text>
+<text x="3277.0" y="2211.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">integridad</text>
+<text x="3607.0" y="2211.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">Sólo estancia de habitación</text>
+<line x1="3265" y1="1950" x2="3265" y2="2223" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="3595" y1="1950" x2="3595" y2="2223" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="3130" y="2860" width="970" height="333" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="3130" y="2860" width="970" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="3615.0" y="2900.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">pedidos_servicio</text>
+<line x1="3130" y1="2920" x2="4100" y2="2920" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3142.0" y="2947.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="3247.0" y="2947.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="3577.0" y="2947.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="3131" y="2959" width="968" height="39" fill="#FBFAFF"/>
+<line x1="3130" y1="2959" x2="4100" y2="2959" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3142.0" y="2986.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK</text>
+<text x="3247.0" y="2986.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">estancia_id</text>
+<text x="3577.0" y="2986.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NOT NULL</text>
+<line x1="3130" y1="2998" x2="4100" y2="2998" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3142.0" y="3025.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">IX</text>
+<text x="3247.0" y="3025.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">estado</text>
+<text x="3577.0" y="3025.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">ENUM(PENDIENTE, PREP., ENT., CANC.)</text>
+<rect x="3131" y="3037" width="968" height="39" fill="#FBFAFF"/>
+<line x1="3130" y1="3037" x2="4100" y2="3037" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3142.0" y="3064.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="3247.0" y="3064.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">observaciones</text>
+<text x="3577.0" y="3064.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(300) DEFAULT &#x27;&#x27;</text>
+<line x1="3130" y1="3076" x2="4100" y2="3076" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3142.0" y="3103.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">IX</text>
+<text x="3247.0" y="3103.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">creado_en</text>
+<text x="3577.0" y="3103.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DATETIME NOT NULL</text>
+<rect x="3131" y="3115" width="968" height="39" fill="#FBFAFF"/>
+<line x1="3130" y1="3115" x2="4100" y2="3115" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3142.0" y="3142.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">IX</text>
+<text x="3247.0" y="3142.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">actualizado_en</text>
+<text x="3577.0" y="3142.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DATETIME NOT NULL</text>
+<line x1="3130" y1="3154" x2="4100" y2="3154" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="3142.0" y="3181.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">TRG</text>
+<text x="3247.0" y="3181.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">integridad</text>
+<text x="3577.0" y="3181.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">Estancia activa + habitación ocupada</text>
+<line x1="3235" y1="2920" x2="3235" y2="3193" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="3565" y1="2920" x2="3565" y2="3193" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="4420" y="2590" width="1020" height="372" fill="white" stroke="#8B7CF6" stroke-width="3"/>
+<rect x="4420" y="2590" width="1020" height="60" fill="#EFEDFF" stroke="#8B7CF6" stroke-width="3"/>
+<text x="4930.0" y="2630.0" font-family="'Segoe UI', Arial, sans-serif" font-size="25" font-weight="700" text-anchor="middle" fill="#6E5DDA">pedido_servicio_items</text>
+<line x1="4420" y1="2650" x2="5440" y2="2650" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4432.0" y="2677.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">PK</text>
+<text x="4537.0" y="2677.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">id</text>
+<text x="4867.0" y="2677.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED AUTO_INCREMENT</text>
+<rect x="4421" y="2689" width="1018" height="39" fill="#FBFAFF"/>
+<line x1="4420" y1="2689" x2="5440" y2="2689" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4432.0" y="2716.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK</text>
+<text x="4537.0" y="2716.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">pedido_id</text>
+<text x="4867.0" y="2716.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NOT NULL</text>
+<line x1="4420" y1="2728" x2="5440" y2="2728" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4432.0" y="2755.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK?</text>
+<text x="4537.0" y="2755.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">producto_catalogo_id</text>
+<text x="4867.0" y="2755.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">BIGINT UNSIGNED NULL</text>
+<rect x="4421" y="2767" width="1018" height="39" fill="#FBFAFF"/>
+<line x1="4420" y1="2767" x2="5440" y2="2767" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4432.0" y="2794.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">FK?</text>
+<text x="4537.0" y="2794.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">producto_codigo_fk</text>
+<text x="4867.0" y="2794.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(60) NULL</text>
+<line x1="4420" y1="2806" x2="5440" y2="2806" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4432.0" y="2833.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="4537.0" y="2833.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">producto_codigo_snapshot</text>
+<text x="4867.0" y="2833.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(60) NOT NULL</text>
+<rect x="4421" y="2845" width="1018" height="39" fill="#FBFAFF"/>
+<line x1="4420" y1="2845" x2="5440" y2="2845" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4432.0" y="2872.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA"></text>
+<text x="4537.0" y="2872.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">producto_nombre_snapshot</text>
+<text x="4867.0" y="2872.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">VARCHAR(120) NOT NULL</text>
+<line x1="4420" y1="2884" x2="5440" y2="2884" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4432.0" y="2911.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="4537.0" y="2911.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">precio_unitario_snapshot</text>
+<text x="4867.0" y="2911.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">DECIMAL(10,2) · 0.01..10000</text>
+<rect x="4421" y="2923" width="1018" height="39" fill="#FBFAFF"/>
+<line x1="4420" y1="2923" x2="5440" y2="2923" stroke="#E2DEFF" stroke-width="1.5"/>
+<text x="4432.0" y="2950.3" font-family="Consolas, monospace" font-size="19" font-weight="700" text-anchor="start" fill="#6E5DDA">CHK</text>
+<text x="4537.0" y="2950.3" font-family="Consolas, monospace" font-size="20" font-weight="600" text-anchor="start" fill="#36344A">cantidad</text>
+<text x="4867.0" y="2950.3" font-family="Consolas, monospace" font-size="18" font-weight="400" text-anchor="start" fill="#706D83">TINYINT UNSIGNED · 1..10</text>
+<line x1="4525" y1="2650" x2="4525" y2="2962" stroke="#E2DEFF" stroke-width="1.5"/>
+<line x1="4855" y1="2650" x2="4855" y2="2962" stroke="#E2DEFF" stroke-width="1.5"/>
+<rect x="80" y="3480" width="2550" height="85" rx="12" fill="#F5F2FF" stroke="#8B7CF6" stroke-width="2"/>
+<text x="102.0" y="3532.0" font-family="'Segoe UI', Arial, sans-serif" font-size="21" font-weight="600" text-anchor="start" fill="#36344A">ÍNDICES CLAVE · hotel/estado/fecha, ubicación/fecha, pago/fecha y pedido/estado/actualización.</text>
+<rect x="2780" y="3480" width="2660" height="85" rx="12" fill="#F5F2FF" stroke="#8B7CF6" stroke-width="2"/>
+<text x="2802.0" y="3532.0" font-family="'Segoe UI', Arial, sans-serif" font-size="21" font-weight="600" text-anchor="start" fill="#36344A">INTEGRIDAD · XOR de ubicación, una estancia activa por habitación y snapshots históricos inmutables.</text>
+</svg>

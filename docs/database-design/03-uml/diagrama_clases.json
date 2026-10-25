@@ -1,0 +1,82 @@
+{
+  "kind": "class",
+  "title": "GESTERA · DIAGRAMA DE CLASES UML",
+  "subtitle": "Clases de dominio, servicios y puertos reales del código Java 17 · no es una copia tabla-a-clase",
+  "width": 5800,
+  "height": 4200,
+  "groups": [
+    {"title":"ORQUESTACIÓN, HOTELES Y SEGURIDAD","x":50,"y":110,"w":5700,"h":790},
+    {"title":"INVENTARIO Y LIMPIEZA","x":50,"y":970,"w":1740,"h":3130},
+    {"title":"HUÉSPEDES Y ÁREAS COMUNES","x":1840,"y":970,"w":1660,"h":3130},
+    {"title":"SERVICIO AL CUARTO","x":3550,"y":970,"w":2200,"h":1880},
+    {"title":"REPORTES DE INGRESOS","x":3550,"y":2910,"w":2200,"h":1190}
+  ],
+  "nodes": [
+    {"id":"servidor","title":"ServidorGestera","x":2350,"y":220,"w":1000,"stereotype":"«fachada HTTP»","attributes":["- habitacionesHoteles: GestorHabitacionesHoteles","- huespedesHoteles: GestorHuespedesHoteles","- servicioHabitacion: GestorServicioHabitacion","- reportes: GestorReportes","- sesiones: GestorSesiones"],"methods":["+ crear(configuracion): ServidorGestera","+ iniciar(): void","- registrarRutas(): void","- actualizarHabitacion(exchange): void","+ close(): void"]},
+    {"id":"catalogo_hoteles","title":"CatalogoHoteles","x":140,"y":290,"w":760,"attributes":["- HOTELES: List<Hotel>"],"methods":["+ todos(): List<Hotel>","+ buscarPorCodigo(codigo): Optional<Hotel>"]},
+    {"id":"hotel","title":"Hotel","x":1040,"y":300,"w":760,"stereotype":"«record»","attributes":["+ codigo: String","+ nombre: String","+ ubicacion: String","+ iniciales: String"],"methods":[]},
+    {"id":"llaves","title":"GestorLlavesHoteles","x":3650,"y":200,"w":900,"attributes":["- credenciales: Map<String, CredencialHotel>","- cerrado: AtomicBoolean"],"methods":["+ autenticarConEstado(hotel, llave): ResultadoAcceso","+ cambiar(hotel, version, nueva, confirmacion): ResultadoCambio","+ versionActual(hotel): long","+ requiereCambio(hotel): boolean"]},
+    {"id":"sesiones","title":"GestorSesiones","x":4720,"y":210,"w":870,"attributes":["- duracion: Duration","- sesiones: ConcurrentHashMap<String, Sesion>"],"methods":["+ crear(): String","+ autorizarHotel(token, hotel, version): boolean","+ autorizacionHotel(token): Optional<AutorizacionHotel>","+ revocarHotel(token): boolean","+ cerrar(token): void"]},
+
+    {"id":"gestor_habitaciones","title":"GestorHabitacionesHoteles","x":130,"y":1080,"w":780,"attributes":["- inventarios: Map<String, InventarioHotel>","- reloj: Clock"],"methods":["+ resumen(hotel): ResumenInventario","+ guardarConfiguracion(hotel, cantidad, cambios): ResultadoOperacion","+ actualizarHabitacion(...): ResultadoOperacion","+ confirmarCheckOut(hotel, numero): ResultadoOperacion"]},
+    {"id":"inventario","title":"InventarioHotel","x":980,"y":1080,"w":700,"stereotype":"«package-private»","attributes":["- secciones: List<SeccionTarifaria>","- habitaciones: List<Habitacion>","- siguienteSeccion: int"],"methods":["~ guardarConfiguracion(...): ResultadoOperacion","~ actualizar(...): ResultadoOperacion","~ confirmarCheckOut(numero, ahora): ResultadoOperacion"]},
+    {"id":"habitacion_clase","title":"Habitacion","x":130,"y":1900,"w":780,"stereotype":"«record»","attributes":["+ numero: int","+ seccion: SeccionTarifaria","+ tipoServicio: TipoServicio","+ precioAplicado: BigDecimal","+ estado: EstadoHabitacion","+ checkIn: LocalDateTime","+ proximoCheckOut: LocalDateTime","+ pagado: boolean","+ horasAdicionales: int","+ montoAdicional: BigDecimal"],"methods":["+ montoTotal(): BigDecimal"]},
+    {"id":"seccion_clase","title":"SeccionTarifaria","x":980,"y":1940,"w":700,"stereotype":"«record»","attributes":["+ id: String","+ colorHex: String","+ nombre: String","+ precioSeisHoras: BigDecimal","+ precioDiaCompleto: BigDecimal"],"methods":["+ precio(tipo): BigDecimal"]},
+
+    {"id":"gestor_areas","title":"GestorAreasComunes","x":1940,"y":1080,"w":700,"attributes":["- AREAS: List<AreaComun>","- huespedes: GestorHuespedesHoteles","- reloj: Clock"],"methods":["+ areas(): List<AreaComun>","+ registrar(hotel, area, entrada, duracion, visitantes): ResultadoOperacion","+ calcularSalida(entrada, horas): LocalDateTime"]},
+    {"id":"area_clase","title":"AreaComun","x":2720,"y":1110,"w":650,"stereotype":"«record»","attributes":["+ codigo: String","+ nombre: String","+ descripcion: String"],"methods":[]},
+    {"id":"gestor_huespedes","title":"GestorHuespedesHoteles","x":1940,"y":1870,"w":700,"attributes":["- repositorio: RepositorioHuespedes"],"methods":["+ validar(huespedes): ResultadoValidacion","+ guardarEstancia(...): void","+ guardarVisita(...): void","+ finalizarEstancia(...): void","+ buscar(hotel, filtro): List<RegistroHuesped>"]},
+    {"id":"datos_huesped","title":"DatosHuesped","x":2720,"y":1900,"w":650,"stereotype":"«record»","attributes":["+ nombreCompleto: String","+ tipoDocumento: TipoDocumento","+ numeroDocumento: String"],"methods":[]},
+    {"id":"repo_huespedes","title":"RepositorioHuespedes","x":2220,"y":2760,"w":900,"stereotype":"«interface»","attributes":["Implementaciones:","RepositorioHuespedesJdbc","RepositorioHuespedesMemoria"],"methods":["+ guardarEstancia(...): void","+ finalizarEstancia(...): void","+ buscarPorHotel(...): List<RegistroHuesped>","+ listarActivosPorHabitacion(...): Map"]},
+
+    {"id":"gestor_servicio","title":"GestorServicioHabitacion","x":3650,"y":1080,"w":900,"attributes":["- repositorio: RepositorioServicioHabitacion","- catalogosPorHotel: Map<String, CatalogoHotel>","- reloj: Clock"],"methods":["+ catalogo(hotel): List<ProductoServicio>","+ crearPedido(...): ResultadoOperacion","+ cambiarEstado(...): ResultadoOperacion","+ actualizarProducto(...): ResultadoOperacion","+ agregarCategoria(...): ResultadoOperacion"]},
+    {"id":"producto_clase","title":"ProductoServicio","x":4720,"y":1100,"w":850,"stereotype":"«record»","attributes":["+ codigo: String","+ nombre: String","+ categoria: String","+ precio: BigDecimal"],"methods":[]},
+    {"id":"pedido_clase","title":"PedidoServicio","x":3650,"y":1880,"w":900,"stereotype":"«record»","attributes":["+ id: long","+ codigoHotel: String","+ numeroHabitacion: int","+ estado: EstadoPedidoServicio","+ observaciones: String","+ creadoEn: LocalDateTime","+ actualizadoEn: LocalDateTime","+ lineas: List<LineaPedidoServicio>"],"methods":["+ total(): BigDecimal"]},
+    {"id":"linea_clase","title":"LineaPedidoServicio","x":4720,"y":1910,"w":850,"stereotype":"«record»","attributes":["+ productoCodigo: String","+ productoNombre: String","+ precioUnitario: BigDecimal","+ cantidad: int"],"methods":["+ subtotal(): BigDecimal"]},
+    {"id":"repo_servicio","title":"RepositorioServicioHabitacion","x":4070,"y":2490,"w":1080,"stereotype":"«interface»","attributes":["Implementaciones: Jdbc / Memoria"],"methods":["+ crear(...): void","+ listarPorHotel(hotel): List<PedidoServicio>","+ cambiarEstado(...): boolean"]},
+
+    {"id":"gestor_reportes","title":"GestorReportes","x":3650,"y":3020,"w":900,"attributes":["- repositorio: RepositorioIngresosHabitacion","- reloj: Clock"],"methods":["+ guardarPagoHabitacion(...): void","+ eliminarPagoHabitacion(...): void","+ generar(hotel, filtro, pedidos): ReporteIngresos"]},
+    {"id":"filtro_reporte","title":"FiltroReporte","x":4680,"y":3020,"w":900,"stereotype":"«record»","attributes":["+ periodo: PeriodoReporte","+ tipoIngreso: TipoIngresoReporte","+ desde: LocalDate","+ hasta: LocalDate"],"methods":["+ crear(...): FiltroReporte"]},
+    {"id":"ingreso","title":"IngresoHabitacion","x":3650,"y":3600,"w":900,"stereotype":"«record»","attributes":["+ id: long","+ codigoHotel: String","+ numeroHabitacion: int","+ checkIn: LocalDateTime","+ pagadoEn: LocalDateTime","+ monto: BigDecimal"],"methods":[]},
+    {"id":"repo_ingresos","title":"RepositorioIngresosHabitacion","x":4680,"y":3570,"w":900,"stereotype":"«interface»","attributes":["Implementaciones: Jdbc / Memoria"],"methods":["+ guardarPago(...): void","+ eliminarPago(...): void","+ listar(hotel, desde, hasta): List<IngresoHabitacion>"]}
+  ],
+  "edges": [
+    {"from":"catalogo_hoteles","to":"hotel","from_side":"right","to_side":"left","label":"expone","from_card":"1","to_card":"4","type":"composition"},
+    {"from":"servidor","to":"catalogo_hoteles","from_side":"left","to_side":"right","label":"coordina","type":"association"},
+    {"from":"servidor","to":"llaves","from_side":"right","to_side":"left","label":"compone","type":"composition"},
+    {"from":"servidor","to":"sesiones","from_side":"right","to_side":"left","label":"compone","type":"composition"},
+    {"from":"llaves","to":"hotel","from_side":"left","to_side":"right","label":"credencial por hotel","from_card":"1","to_card":"1..*","type":"association"},
+
+    {"from":"servidor","to":"gestor_habitaciones","from_side":"bottom","to_side":"top","label":"usa","type":"composition"},
+    {"from":"gestor_habitaciones","to":"inventario","from_side":"right","to_side":"left","label":"mantiene por hotel","from_card":"1","to_card":"1..*","type":"composition"},
+    {"from":"inventario","to":"habitacion_clase","from_side":"bottom","to_side":"top","label":"contiene","from_card":"1","to_card":"1..50","type":"composition"},
+    {"from":"inventario","to":"seccion_clase","from_side":"bottom","to_side":"top","label":"contiene","from_card":"1","to_card":"1..12","type":"composition"},
+    {"from":"habitacion_clase","to":"seccion_clase","from_side":"right","to_side":"left","label":"clasificada por","from_card":"0..*","to_card":"1","type":"association"},
+
+    {"from":"servidor","to":"gestor_areas","from_side":"bottom","to_side":"top","label":"usa","type":"composition"},
+    {"from":"gestor_areas","to":"area_clase","from_side":"right","to_side":"left","label":"ofrece","from_card":"1","to_card":"3","type":"composition"},
+    {"from":"gestor_areas","to":"gestor_huespedes","from_side":"bottom","to_side":"top","label":"registra visitas","type":"dependency","dashed":true},
+    {"from":"gestor_huespedes","to":"datos_huesped","from_side":"right","to_side":"left","label":"valida","from_card":"1","to_card":"1..8","type":"dependency","dashed":true},
+    {"from":"gestor_huespedes","to":"repo_huespedes","from_side":"bottom","to_side":"top","label":"depende del puerto","type":"association"},
+
+    {"from":"servidor","to":"gestor_servicio","from_side":"bottom","to_side":"top","label":"usa","type":"composition"},
+    {"from":"gestor_servicio","to":"producto_clase","from_side":"right","to_side":"left","label":"administra catálogo","from_card":"1","to_card":"0..*","type":"composition"},
+    {"from":"gestor_servicio","to":"pedido_clase","from_side":"bottom","to_side":"top","label":"crea y transiciona","type":"dependency","dashed":true},
+    {"from":"pedido_clase","to":"linea_clase","from_side":"right","to_side":"left","label":"contiene","from_card":"1","to_card":"1..*","type":"composition"},
+    {"from":"producto_clase","to":"linea_clase","from_side":"bottom","to_side":"top","label":"origina snapshot","type":"dependency","dashed":true},
+    {"from":"gestor_servicio","to":"repo_servicio","from_side":"bottom","to_side":"top","label":"depende del puerto","type":"association"},
+    {"from":"repo_servicio","to":"pedido_clase","from_side":"left","to_side":"bottom","label":"reconstituye","type":"dependency","dashed":true},
+
+    {"from":"servidor","to":"gestor_reportes","from_side":"bottom","to_side":"top","label":"usa","type":"composition"},
+    {"from":"gestor_reportes","to":"filtro_reporte","from_side":"right","to_side":"left","label":"aplica","type":"dependency","dashed":true},
+    {"from":"gestor_reportes","to":"pedido_clase","from_side":"top","to_side":"bottom","label":"consolida entregados","type":"dependency","dashed":true},
+    {"from":"gestor_reportes","to":"repo_ingresos","from_side":"right","to_side":"left","label":"depende del puerto","type":"association"},
+    {"from":"repo_ingresos","to":"ingreso","from_side":"left","to_side":"right","label":"persiste","from_card":"1","to_card":"0..*","type":"dependency","dashed":true}
+  ],
+  "legend": [
+    "◆ composición / propiedad del ciclo de vida",
+    "— asociación estable",
+    "- - > dependencia de uso",
+    "Los repositorios tienen adaptadores JDBC y memoria intercambiables"
+  ]
+}

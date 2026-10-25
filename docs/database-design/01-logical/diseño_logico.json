@@ -1,0 +1,59 @@
+{
+  "kind": "table",
+  "title": "GESTERA · DISEÑO LÓGICO DE DATOS",
+  "subtitle": "Modelo normalizado del dominio real · PK/FK, entidades asociativas y cardinalidades",
+  "width": 4300,
+  "height": 2800,
+  "nodes": [
+    {"id":"hotel","title":"HOTEL","x":1800,"y":145,"w":700,"rows":[
+      ["PK","codigo","Identificador estable"],["","nombre","Nombre comercial"],["","ubicacion","Ciudad / dirección"],["","iniciales","Sigla visual"],["","activo","Disponibilidad operativa"]]},
+    {"id":"credencial","title":"CREDENCIAL_HOTEL","x":120,"y":120,"w":690,"rows":[
+      ["PK/FK","hotel_codigo","Hotel autenticado"],["","hash_clave","Derivado seguro"],["","sal","Sal criptográfica"],["","version","Revoca autorizaciones"],["","requiere_cambio","Configuración inicial"]]},
+    {"id":"seccion","title":"SECCION_TARIFARIA","x":780,"y":600,"w":700,"rows":[
+      ["PK","id","Identificador"],["FK","hotel_codigo","Hotel propietario"],["AK","codigo","Código en el hotel"],["AK","nombre","Nombre visible"],["AK","color_hex","Color único"],["","precio_6_horas","Tarifa PEN"],["","precio_24_horas","Tarifa PEN"]]},
+    {"id":"habitacion","title":"HABITACION","x":1680,"y":650,"w":700,"rows":[
+      ["PK","id","Identificador"],["FK","hotel_codigo","Hotel propietario"],["FK","seccion_tarifaria_id","Segmento vigente"],["AK","numero","Único por hotel"],["","estado","Operación / limpieza"]]},
+    {"id":"area","title":"AREA_COMUN","x":2580,"y":650,"w":700,"rows":[
+      ["PK","id","Identificador"],["FK","hotel_codigo","Hotel propietario"],["AK","codigo","Único por hotel"],["AK","nombre","Nombre visible"],["","descripcion","Detalle del espacio"],["","activa","Disponibilidad"]]},
+    {"id":"catalogo","title":"CATALOGO_SERVICIO","x":3480,"y":150,"w":700,"rows":[
+      ["PK","id","Identificador"],["FK/AK","hotel_codigo","Un catálogo por hotel"]]},
+    {"id":"categoria","title":"CATEGORIA_SERVICIO","x":3480,"y":610,"w":700,"rows":[
+      ["PK/FK","catalogo_id","Catálogo propietario"],["PK","codigo","Código local"],["AK","nombre","Nombre local único"]]},
+    {"id":"producto","title":"PRODUCTO_SERVICIO","x":3480,"y":1060,"w":700,"rows":[
+      ["PK/FK","catalogo_id","Catálogo propietario"],["PK","codigo","Código local"],["FK","categoria_codigo","Categoría del catálogo"],["AK","nombre","Nombre local único"],["","precio","Precio vigente PEN"]]},
+    {"id":"huesped","title":"HUESPED","x":100,"y":1570,"w":700,"rows":[
+      ["PK","id","Identificador"],["","nombre_completo","Nombre normalizado"],["AK","tipo_documento","DNI / CE / pasaporte"],["AK","numero_documento","Identidad única"]]},
+    {"id":"estancia_huesped","title":"ESTANCIA_HUESPED","x":850,"y":1650,"w":700,"rows":[
+      ["PK/FK","estancia_id","Estancia o visita"],["PK/FK","huesped_id","Persona registrada"],["AK","orden","Posición 1..8"]]},
+    {"id":"estancia","title":"ESTANCIA","x":1650,"y":1350,"w":780,"rows":[
+      ["PK","id","Identificador"],["FK?","habitacion_id","Origen exclusivo"],["FK?","area_comun_id","Origen exclusivo"],["","tipo_servicio","6 h / 24 h"],["","check_in","Entrada autorizada"],["","check_out","Salida calculada"],["","tarifa_aplicada","Instantánea histórica"],["","horas_adicionales","Acumulado"],["","monto_adicional","Acumulado PEN"],["","color_historico","Instantánea de sección"],["","estado","Activa / finalizada"]]},
+    {"id":"pago","title":"PAGO_ESTANCIA","x":2630,"y":1590,"w":700,"rows":[
+      ["PK","id","Identificador"],["FK/AK","estancia_id","Máximo uno por estancia"],["","pagado_en","Fecha de confirmación"],["","monto","Total consolidado PEN"]]},
+    {"id":"pedido","title":"PEDIDO_SERVICIO","x":2570,"y":2200,"w":700,"rows":[
+      ["PK","id","Identificador"],["FK","estancia_id","Habitación ocupada"],["","estado","Flujo del pedido"],["","observaciones","Nota operativa"],["","creado_en","Alta"],["","actualizado_en","Última transición"]]},
+    {"id":"item","title":"ITEM_PEDIDO_SERVICIO","x":3480,"y":2020,"w":700,"rows":[
+      ["PK","id","Identificador"],["FK","pedido_id","Cabecera"],["FK?","producto","Referencia opcional"],["","codigo_snapshot","Código histórico"],["","nombre_snapshot","Nombre histórico"],["","precio_snapshot","Precio histórico"],["","cantidad","Unidades 1..10"]]}
+  ],
+  "edges": [
+    {"from":"hotel","to":"credencial","from_side":"left","to_side":"right","label":"protege","from_card":"1","to_card":"0..1"},
+    {"from":"hotel","to":"seccion","from_side":"bottom","to_side":"top","label":"define","from_card":"1","to_card":"1..12"},
+    {"from":"hotel","to":"habitacion","from_side":"bottom","to_side":"top","label":"posee","from_card":"1","to_card":"1..50"},
+    {"from":"hotel","to":"area","from_side":"bottom","to_side":"top","label":"ofrece","from_card":"1","to_card":"0..*"},
+    {"from":"hotel","to":"catalogo","from_side":"right","to_side":"left","label":"configura","from_card":"1","to_card":"1"},
+    {"from":"seccion","to":"habitacion","from_side":"right","to_side":"left","label":"clasifica","from_card":"1","to_card":"0..*"},
+    {"from":"habitacion","to":"estancia","from_side":"bottom","to_side":"top","label":"aloja","from_card":"1","to_card":"0..*"},
+    {"from":"area","to":"estancia","from_side":"bottom","to_side":"right","label":"recibe visita","from_card":"1","to_card":"0..*"},
+    {"from":"huesped","to":"estancia_huesped","from_side":"right","to_side":"left","label":"participa","from_card":"1","to_card":"0..*"},
+    {"from":"estancia_huesped","to":"estancia","from_side":"right","to_side":"left","label":"integra","from_card":"1..8","to_card":"1"},
+    {"from":"estancia","to":"pago","from_side":"right","to_side":"left","label":"se liquida con","from_card":"1","to_card":"0..1"},
+    {"from":"estancia","to":"pedido","from_side":"bottom","to_side":"left","label":"origina","from_card":"1","to_card":"0..*"},
+    {"from":"catalogo","to":"categoria","from_side":"bottom","to_side":"top","label":"organiza","from_card":"1","to_card":"1..*"},
+    {"from":"categoria","to":"producto","from_side":"bottom","to_side":"top","label":"agrupa","from_card":"1","to_card":"0..*"},
+    {"from":"producto","to":"item","from_side":"bottom","to_side":"top","label":"origina snapshot","from_card":"0..1","to_card":"0..*","dashed":true},
+    {"from":"pedido","to":"item","from_side":"right","to_side":"left","label":"contiene","from_card":"1","to_card":"1..*"}
+  ],
+  "notes": [
+    {"x":100,"y":2530,"w":2250,"text":"REGLA XOR · Cada estancia apunta a una habitación o a un área común, nunca a ambas."},
+    {"x":2450,"y":2530,"w":1730,"text":"N:M RESUELTA · ESTANCIA_HUESPED limita cada registro a 1..8 personas."}
+  ]
+}

@@ -1,0 +1,34 @@
+<form class="formulario-cambio-llave" action="{{ACCION_CAMBIO_LLAVE}}" method="post" novalidate>
+    <div class="campos-cambio-llave">
+        <div class="campo campo--hotel">
+            <label for="nueva-llave">NUEVA LLAVE</label>
+            <input id="nueva-llave" name="nuevaLlave" type="password"
+                   autocomplete="new-password" autocapitalize="none" spellcheck="false"
+                   minlength="8" maxlength="15" required
+                   aria-describedby="reglas-cambio-llave mensaje-error-cambio-llave">
+        </div>
+        <div class="campo campo--hotel">
+            <label for="confirmacion-llave">CONFIRMA LA NUEVA LLAVE</label>
+            <input id="confirmacion-llave" name="confirmacionLlave" type="password"
+                   autocomplete="new-password" autocapitalize="none" spellcheck="false"
+                   minlength="8" maxlength="15" required
+                   aria-describedby="reglas-cambio-llave mensaje-error-cambio-llave">
+        </div>
+    </div>
+    <div class="reglas-cambio-llave" id="reglas-cambio-llave">
+        <p>La llave debe contener:</p>
+        <ul>
+            <li>Entre 8 y 15 caracteres</li>
+            <li>Al menos una letra mayúscula</li>
+            <li>Al menos un número</li>
+        </ul>
+    </div>
+    <p class="mensaje-error" id="mensaje-error-cambio-llave"
+       role="alert" aria-live="polite">{{MENSAJE_ERROR_CAMBIO_LLAVE}}</p>
+    <div class="modal-hotel__acciones">
+        {{ACCION_CANCELAR_CAMBIO_LLAVE}}
+        <button class="boton boton--principal" type="submit">
+            <span>Guardar nueva llave</span><span aria-hidden="true">→</span>
+        </button>
+    </div>
+</form>

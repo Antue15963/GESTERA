@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#091122">
+    <title>Gestión del hotel | Gestera</title>
+    <script src="/publico/scripts/tema.js"></script>
+    <link rel="stylesheet" href="/publico/estilos/gestera.css">
+</head>
+<body class="pagina pagina--panel pagina--gestion">
+    <a class="saltar-contenido" href="#contenido">Saltar a las opciones de gestión</a>
+
+    <header class="cabecera-panel">
+        <a class="marca marca--enlace" href="/panel" aria-label="Gestera, volver a hoteles">
+            <span class="marca__simbolo" aria-hidden="true">G</span>
+            <span class="marca__nombre">GESTERA</span>
+        </a>
+        <div class="acciones-cabecera">
+            <button class="selector-tema" type="button" data-alternar-tema aria-label="Cambiar tema" title="Cambiar tema"><span aria-hidden="true">☀</span></button>
+            <a class="boton-configuracion" href="/hotel/configuracion"
+               aria-label="Abrir configuración del hotel" title="Configuración del hotel">
+                <span aria-hidden="true">&#9881;</span>
+                <span>Configuración</span>
+            </a>
+            <a class="boton boton--secundario" href="/panel">Cambiar de hotel</a>
+            <form action="/salir" method="post">
+                <button class="boton boton--secundario" type="submit">Cerrar sesión</button>
+            </form>
+        </div>
+    </header>
+
+    <main class="contenido-panel" id="contenido">
+        <section class="encabezado-gestion" aria-labelledby="gestion-titulo">
+            <div>
+                <p class="sobrelinea">PANEL DE GESTIÓN</p>
+                <h1 id="gestion-titulo">{{NOMBRE_HOTEL}}</h1>
+                <p>Selecciona el área que deseas administrar.</p>
+            </div>
+            <p class="estado-acceso"><span aria-hidden="true"></span>Hotel conectado</p>
+        </section>
+
+        {{CONFIGURACION_LLAVE_REQUERIDA}}
+
+        <section class="rejilla-gestion" aria-labelledby="opciones-titulo">
+            <h2 class="solo-lectores" id="opciones-titulo">Opciones de gestión del hotel</h2>
+
+            <a class="opcion-gestion opcion-gestion--enlace" href="/hotel/limpieza">
+                <span class="modulo-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m14 3 4 2-6 10-4-2zM8 13l-5 6c3 3 7 3 10 0l-1-4M5 18l3 3"/></svg></span>
+                <span class="opcion-gestion__numero" aria-hidden="true">01</span>
+                <div><h2>Limpieza de habitaciones</h2><p>Organiza los cuartos pendientes y en proceso de limpieza.</p></div>
+                <span class="opcion-gestion__accion">Abrir módulo <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="opcion-gestion opcion-gestion--enlace" href="/hotel/habitaciones">
+                <span class="modulo-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18V7m18 11V7M3 14h18v6M6 14V9h5v5m2 0V9h5v5"/></svg></span>
+                <span class="opcion-gestion__numero" aria-hidden="true">02</span>
+                <div><h2>Habitaciones</h2><p>Consulta la disponibilidad y el estado de cada habitación.</p></div>
+                <span class="opcion-gestion__accion">Abrir módulo <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="opcion-gestion opcion-gestion--enlace" href="/hotel/huespedes">
+                <span class="modulo-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M2 21v-3a7 7 0 0 1 14 0v3M17 5a3 3 0 0 1 0 6m2 3c3 1 3 4 3 7"/></svg></span>
+                <span class="opcion-gestion__numero" aria-hidden="true">03</span>
+                <div><h2>Huéspedes</h2><p>Mantén centralizada la información de los huéspedes.</p></div>
+                <span class="opcion-gestion__accion">Abrir módulo <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="opcion-gestion opcion-gestion--enlace" href="/hotel/servicio-habitacion">
+                <span class="modulo-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 18h18M5 16a7 7 0 0 1 14 0M12 5v3M2 21h20"/></svg></span>
+                <span class="opcion-gestion__numero" aria-hidden="true">04</span>
+                <div><h2>Servicio al cuarto</h2><p>Da seguimiento a las solicitudes realizadas por habitación.</p></div>
+                <span class="opcion-gestion__accion">Abrir módulo <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="opcion-gestion opcion-gestion--enlace" href="/hotel/areas-comunes">
+                <span class="modulo-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6M4 10v9h16v-9M6 19v2m12-2v2M4 15h16"/></svg></span>
+                <span class="opcion-gestion__numero" aria-hidden="true">05</span>
+                <div><h2>Áreas comunes</h2><p>Registra horarios y visitantes del jacuzzi, sauna y área de juegos.</p></div>
+                <span class="opcion-gestion__accion">Abrir módulo <span aria-hidden="true">→</span></span>
+            </a>
+            <a class="opcion-gestion opcion-gestion--enlace" href="/hotel/reportes">
+                <span class="modulo-icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V13h3v8m4 0V8h3v13m4 0V3h3v18"/></svg></span>
+                <span class="opcion-gestion__numero" aria-hidden="true">06</span>
+                <div><h2>Reportes de ingresos</h2><p>Analiza ganancias de habitaciones y servicio al cuarto por periodo.</p></div>
+                <span class="opcion-gestion__accion">Abrir módulo <span aria-hidden="true">→</span></span>
+            </a>
+        </section>
+    </main>
+
+    <script src="/publico/scripts/gestion.js" defer></script>
+</body>
+</html>
