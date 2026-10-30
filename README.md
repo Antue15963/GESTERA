@@ -1,5 +1,7 @@
 # Gestera
 
+**Versión actual: 1.1.0.** Consulta el [historial de cambios](CHANGELOG.md) y la [guía de versionamiento](docs/desarrollo/VERSIONAMIENTO.md).
+
 El código está separado en **[frontend](frontend/README.md)** y **[backend](backend/README.md)**. Para encontrar una función y ver sus capas, consulta el **[mapa de funciones y arquitectura MVC](docs/desarrollo/ESTRUCTURA_Y_MVC.md)**. La **[guía de exposición](docs/GUIA_EXPOSICION_GESTERA.md)** utiliza esta organización.
 
 Gestera es un módulo web de acceso y selección para una plataforma de gestión hotelera. Utiliza llaves de acceso en dos etapas, sin campos de usuario, contraseña ni credenciales de evaluación visibles en la interfaz. El backend utiliza Java 17, Spring Boot, Spring JDBC y HikariCP con Microsoft SQL Server. SSMS administra e instala la base.

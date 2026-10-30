@@ -15,6 +15,13 @@ jobs:
           distribution: temurin
           java-version: '17'
           cache: maven
+      - name: Verificar versionamiento
+        run: |
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            python3 herramientas/verificar-version.py --etiqueta "$GITHUB_REF_NAME"
+          else
+            python3 herramientas/verificar-version.py
+          fi
       - run: python3 herramientas/generar-instalador-sqlserver.py --verificar
       - run: python3 herramientas/documentar-modelo-sqlserver.py --verificar
       - run: mvn -B verify
