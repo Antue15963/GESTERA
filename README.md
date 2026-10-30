@@ -1,5 +1,7 @@
 # Gestera
 
+El código está separado en **[frontend](frontend/README.md)** y **[backend](backend/README.md)**. Para encontrar una función y ver sus capas, consulta el **[mapa de funciones y arquitectura MVC](docs/desarrollo/ESTRUCTURA_Y_MVC.md)**. La **[guía de exposición](docs/GUIA_EXPOSICION_GESTERA.md)** utiliza esta organización.
+
 Gestera es un módulo web de acceso y selección para una plataforma de gestión hotelera. Utiliza llaves de acceso en dos etapas, sin campos de usuario, contraseña ni credenciales de evaluación visibles en la interfaz. El backend utiliza Java 17, Spring Boot, Spring JDBC y HikariCP con Microsoft SQL Server. SSMS administra e instala la base.
 
 La captura entregada se utilizó únicamente como referencia conceptual para la distribución, la paleta oscura y el acento amarillo; la aplicación no depende de esa imagen ni de recursos web externos.
@@ -227,21 +229,39 @@ Maven Wrapper descarga Maven y las dependencias declaradas en `pom.xml`. El JAR 
 
 ## Estructura
 
+```text
 gestera/
-├── src/
+├── frontend/
+│   ├── vistas/
+│   │   ├── paginas/               Pantallas HTML
+│   │   └── fragmentos/            HTML reutilizable
+│   └── publico/
+│       ├── estilos/               CSS
+│       ├── scripts/               JavaScript
+│       └── imagenes/              Imágenes
+├── backend/src/
 │   ├── main/
-│   │   ├── java/com/gestera/      Código Java por responsabilidades
-│   │   └── resources/             Páginas, fragmentos y recursos públicos
-│   └── test/java/com/gestera/     Pruebas automatizadas
-├── base-datos/sqlserver/        Instalador T-SQL para SSMS y archivo histórico
-├── docs/                          Documentación del sistema
+│   │   ├── java/com/gestera/
+│   │   │   ├── modelo/            Datos y reglas por función del hotel
+│   │   │   ├── controladores/     Coordinación de solicitudes
+│   │   │   ├── vistas/            Renderizado HTML desde Java
+│   │   │   ├── repositorios/      Contratos DAO y adaptadores JDBC/memoria
+│   │   │   ├── seguridad/         Autenticación y sesiones
+│   │   │   └── infraestructura/   Configuración, HTTP y transacciones
+│   │   └── resources/             Configuración de Spring y registros
+│   └── test/java/com/gestera/      Pruebas organizadas por capas
+├── base-datos/                    SQL Server vigente y archivo histórico
+├── docs/                          Documentación, diagramas y exposición
 ├── herramientas/                  Compilación, ejecución y pruebas
-├── distribucion/                  JAR y librerías para ejecutar
+├── distribucion/                  JAR ejecutable generado
 ├── .mvn/                          Configuración de Maven Wrapper
-├── pom.xml                        Dependencias, compilación y pruebas
+├── pom.xml                        Compila backend y empaqueta frontend
 ├── mvnw.cmd                       Lanzador de Maven Wrapper para Windows
 ├── COMPILAR_GESTERA.cmd
 └── INICIAR_GESTERA.cmd
+```
+
+`modelo`, `vistas` y `controladores` identifican las responsabilidades MVC. Los gestores del modelo aplican las reglas de negocio; los repositorios separan las operaciones de datos y sus implementaciones. Maven incorpora las plantillas y los recursos del frontend al mismo JAR del backend, conservando las direcciones web existentes.
 
 
 Las clases públicas `GestorHabitacionesHoteles`, `ServidorGestera` y
@@ -291,28 +311,28 @@ Las sesiones duran 30 minutos y utilizan una cookie `HttpOnly` con `SameSite=Str
 
 ## Personalización
 
-- Textos y estructura: `src/main/resources/paginas/`.
-- Colores, medidas y adaptación móvil: `src/main/resources/publico/estilos/gestera.css`; las variables están al inicio del archivo.
-- Mostrar u ocultar la llave: `src/main/resources/publico/scripts/acceso.js`.
-- Búsqueda y apertura del cuadro de acceso a hoteles: `src/main/resources/publico/scripts/hoteles.js`.
-- Interacción y validación previa del cambio de llave: `src/main/resources/publico/scripts/gestion.js`.
-- API, límites y validación de habitaciones: `src/main/java/com/gestera/habitaciones/GestorHabitacionesHoteles.java`.
-- Estado y reglas internas de cada inventario: `src/main/java/com/gestera/habitaciones/InventarioHotel.java`.
-- Reglas y puertos de persistencia de huéspedes: `src/main/java/com/gestera/huespedes/`.
-- Catálogo y reglas de áreas comunes: `src/main/java/com/gestera/areas/GestorAreasComunes.java`.
-- Reglas y adaptadores de servicio al cuarto: `src/main/java/com/gestera/servicios/`.
-- Reglas, agregación y adaptadores de reportes: `src/main/java/com/gestera/reportes/`.
+- Textos y estructura: `frontend/vistas/paginas/`.
+- Colores, medidas y adaptación móvil: `frontend/publico/estilos/gestera.css`; las variables están al inicio del archivo.
+- Mostrar u ocultar la llave: `frontend/publico/scripts/acceso.js`.
+- Búsqueda y apertura del cuadro de acceso a hoteles: `frontend/publico/scripts/hoteles.js`.
+- Interacción y validación previa del cambio de llave: `frontend/publico/scripts/gestion.js`.
+- API, límites y validación de habitaciones: `backend/src/main/java/com/gestera/modelo/habitaciones/GestorHabitacionesHoteles.java`.
+- Estado y reglas internas de cada inventario: `backend/src/main/java/com/gestera/modelo/habitaciones/InventarioHotel.java`.
+- Reglas de huéspedes: `backend/src/main/java/com/gestera/modelo/huespedes/`; contratos y adaptadores de datos: `backend/src/main/java/com/gestera/repositorios/huespedes/`.
+- Catálogo y reglas de áreas comunes: `backend/src/main/java/com/gestera/modelo/areas/GestorAreasComunes.java`.
+- Reglas de servicio al cuarto: `backend/src/main/java/com/gestera/modelo/servicios/`; adaptadores: `backend/src/main/java/com/gestera/repositorios/servicios/`.
+- Reglas y agregación de reportes: `backend/src/main/java/com/gestera/modelo/reportes/`; adaptadores: `backend/src/main/java/com/gestera/repositorios/reportes/`.
 - Esquema vigente: base-datos/sqlserver/CREAR_GESTERA_SQLSERVER.sql.
-- Estructura de las vistas de habitaciones y limpieza: `src/main/resources/paginas/habitaciones.html`.
-- Formulario de configuración y guardado general: `src/main/resources/paginas/configuracion-hotel.html`.
-- Segmentación, selección de servicio y vista previa de horarios: `src/main/resources/publico/scripts/habitaciones.js`.
-- Vista previa y filtros de pedidos: `src/main/resources/publico/scripts/servicio-habitacion.js`.
-- Activación del rango personalizado de reportes: `src/main/resources/publico/scripts/reportes.js`.
-- Selección, visitantes y validación de horarios de áreas comunes: `src/main/resources/publico/scripts/areas-comunes.js`.
-- Interacción de la página de configuración: `src/main/resources/publico/scripts/configuracion-hotel.js`.
-- Nombres, ubicaciones e identificadores de los cuatro hoteles: `src/main/java/com/gestera/hoteles/CatalogoHoteles.java`.
-- Credenciales independientes, versiones y reglas de cambio: `src/main/java/com/gestera/hoteles/GestorLlavesHoteles.java`.
-- Llaves, dirección, puerto y cookie segura: `src/main/java/com/gestera/configuracion/ConfiguracionAplicacion.java` o las opciones de configuración anteriores.
+- Estructura de las vistas de habitaciones y limpieza: `frontend/vistas/paginas/habitaciones.html`.
+- Formulario de configuración y guardado general: `frontend/vistas/paginas/configuracion-hotel.html`.
+- Segmentación, selección de servicio y vista previa de horarios: `frontend/publico/scripts/habitaciones.js`.
+- Vista previa y filtros de pedidos: `frontend/publico/scripts/servicio-habitacion.js`.
+- Activación del rango personalizado de reportes: `frontend/publico/scripts/reportes.js`.
+- Selección, visitantes y validación de horarios de áreas comunes: `frontend/publico/scripts/areas-comunes.js`.
+- Interacción de la página de configuración: `frontend/publico/scripts/configuracion-hotel.js`.
+- Nombres, ubicaciones e identificadores de los cuatro hoteles: `backend/src/main/java/com/gestera/modelo/hoteles/CatalogoHoteles.java`.
+- Credenciales independientes, versiones y reglas de cambio: `backend/src/main/java/com/gestera/modelo/hoteles/GestorLlavesHoteles.java`.
+- Llaves, dirección, puerto y cookie segura: `backend/src/main/java/com/gestera/infraestructura/configuracion/ConfiguracionAplicacion.java` o las opciones de configuración anteriores.
 
 Después de modificar recursos, vuelve a ejecutar `./herramientas/compilar.ps1` para incorporarlos al JAR.
 

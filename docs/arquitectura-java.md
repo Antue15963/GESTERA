@@ -1,5 +1,7 @@
 > Referencia histórica anterior al modelo SQL Server V2. El esquema implementado, sus 14 tablas y atributos se describen en [SQLSERVER_14_TABLAS.md](database-design/SQLSERVER_14_TABLAS.md).
 
+> La organización vigente de frontend, backend y las capas MVC se describe en [ESTRUCTURA_Y_MVC.md](desarrollo/ESTRUCTURA_Y_MVC.md). Este documento conserva la arquitectura de la etapa anterior.
+
 # Arquitectura Java de Gestera
 
 Gestera usa Java 17 y separa la aplicación en módulos de dominio, controladores HTTP, vistas, servicios de aplicación y adaptadores de persistencia. El servidor usa el `HttpServer` incluido en el JDK; no requiere un framework web para arrancar.
@@ -30,7 +32,7 @@ Los DAO JDBC reciben `ProveedorConexiones`, en lugar de crear conexiones por su 
 
 ## TDD y pruebas
 
-Las pruebas están en `src/test/java/` y se ejecutan con `herramientas/probar.ps1`. Maven compila y ejecuta `TodasLasPruebas` durante la fase `test`; las nuevas pruebas siguen el ciclo **rojo, verde y refactor**: describen primero el comportamiento, se implementa hasta pasar y luego se simplifica con la regresión cubierta.
+Las pruebas están en `backend/src/test/java/` y se ejecutan con `herramientas/probar.ps1`. Maven compila y ejecuta `TodasLasPruebas` durante la fase `test`; las nuevas pruebas siguen el ciclo **rojo, verde y refactor**: describen primero el comportamiento, se implementa hasta pasar y luego se simplifica con la regresión cubierta.
 
 `RepositorioIngresosHabitacionJdbcPrueba` comprueba que un DAO usa el proveedor inyectado, traduce un error JDBC a una excepción de persistencia y conserva la causa original, sin requerir una instancia MySQL.
 

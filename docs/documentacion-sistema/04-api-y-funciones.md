@@ -385,7 +385,7 @@ Este ejemplo modifica sólo el inventario. En el flujo HTTP real, `ServidorGeste
 
 ## 11. Referencias de implementación
 
-- Rutas: `src/main/java/com/gestera/servidor/RutasGestera.java`.
+- Rutas: `backend/src/main/java/com/gestera/infraestructura/servidor/RutasGestera.java`.
 - Lectura de parámetros: `SolicitudesHttp.java`.
 - Coordinación y códigos HTTP: `ServidorGestera.java` y `RespuestasHttp.java`.
 - Funciones públicas: sitio incluido en `01-javadoc-gestera.zip`.

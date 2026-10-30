@@ -7,7 +7,8 @@ import re
 import json
 
 ROOT = Path(__file__).resolve().parents[1]
-RES = ROOT / 'src/main/resources'
+FRONTEND = ROOT / 'frontend'
+VISTAS = FRONTEND / 'vistas'
 OUT = ROOT / '.compilacion/temas'
 OUT.mkdir(parents=True, exist_ok=True)
 CHECK = '''
@@ -50,8 +51,8 @@ class Handler(SimpleHTTPRequestHandler):
             tipo = 'text/javascript'
         elif route.startswith('/vista/'):
             name = route.rsplit('/', 1)[1]
-            text = (RES / 'paginas' / name).read_text(encoding='utf-8')
-            fragment = (RES / 'fragmentos/configuracion-llave.html').read_text(encoding='utf-8')
+            text = (VISTAS / 'paginas' / name).read_text(encoding='utf-8')
+            fragment = (VISTAS / 'fragmentos/configuracion-llave.html').read_text(encoding='utf-8')
             text = text.replace('{{CONFIGURACION_LLAVE_REQUERIDA}}', fragment)
             text = text.replace('{{NOMBRE_HOTEL}}', 'Hotel El Sol de Pucusana')
             text = re.sub(r'\{\{[A-Z_]+\}\}', '', text)
@@ -59,7 +60,7 @@ class Handler(SimpleHTTPRequestHandler):
             text = text.replace('<script src="/publico/scripts/tema.js">', '<script src="/setup.js"></script><script src="/publico/scripts/tema.js">')
             data, tipo = text.encode(), 'text/html; charset=utf-8'
         elif route.startswith('/publico/'):
-            path = RES / route.lstrip('/')
+            path = FRONTEND / route.lstrip('/')
             if not path.is_file(): self.send_error(404); return
             data = path.read_bytes()
             tipo = 'text/css' if path.suffix == '.css' else 'text/javascript' if path.suffix == '.js' else 'image/png'
@@ -75,7 +76,7 @@ threading.Thread(target=server.serve_forever, daemon=True).start()
 chrome = r'C:\Program Files\Google\Chrome\Application\chrome.exe'
 results = []
 try:
-    for page in sorted((RES / 'paginas').glob('*.html')):
+    for page in sorted((VISTAS / 'paginas').glob('*.html')):
         for width in (390, 1440):
             for theme in ('light', 'dark'):
                 args = [chrome, '--headless', '--no-sandbox', '--disable-gpu', '--no-first-run',

@@ -1,5 +1,7 @@
 # Frameworks y arquitectura de desarrollo
 
+El [mapa de funciones y MVC](ESTRUCTURA_Y_MVC.md) relaciona las carpetas `frontend` y `backend` con cada operación. El backend separa `modelo`, `controladores`, `vistas`, `repositorios`, `seguridad` e `infraestructura`.
+
 ## Componentes activos
 
 | Componente | Versión / origen | Responsabilidad |
@@ -28,18 +30,20 @@ GesteraAplicacion inicia Spring. InfraestructuraSpring crea el pool, comprueba e
 
 ## Dónde continuar
 
+Las rutas Java abreviadas parten de `backend/src/main/java/com/gestera/`.
+
 | Cambio | Archivo o carpeta |
 |---|---|
-| Conexión y pool | configuracion/ConfiguracionSqlServer.java, InfraestructuraSpring.java, application-sqlserver.properties. |
-| Reglas de personas y estancias | huespedes/GestorHuespedesHoteles.java. |
-| SQL de personas y estancias | huespedes/RepositorioHuespedesJdbc.java. |
-| Pedidos y estados | servicios/. |
-| Pagos y reportes | reportes/. |
-| Rutas y formularios | servidor/RutasGestera.java, SolicitudesHttp.java, controladores/. |
-| Pantallas | src/main/resources/paginas, fragmentos y publico. |
+| Conexión y pool | infraestructura/configuracion/ConfiguracionSqlServer.java, InfraestructuraSpring.java; backend/src/main/resources/application-sqlserver.properties. |
+| Reglas de personas y estancias | modelo/huespedes/GestorHuespedesHoteles.java. |
+| SQL de personas y estancias | repositorios/huespedes/RepositorioHuespedesJdbc.java. |
+| Pedidos y estados | modelo/servicios/ y repositorios/servicios/. |
+| Pagos y reportes | modelo/reportes/ y repositorios/reportes/. |
+| Rutas y formularios | infraestructura/servidor/RutasGestera.java, SolicitudesHttp.java y controladores/. |
+| Pantallas | frontend/vistas/paginas/, frontend/vistas/fragmentos/ y frontend/publico/. |
 | Esquema vigente | base-datos/sqlserver/CREAR_GESTERA_SQLSERVER.sql. |
-| Pruebas normales | src/test/java y herramientas/probar.ps1. |
-| Integración SQL real | persistencia/SqlServerIntegracionTest.java. |
+| Pruebas normales | backend/src/test/java y herramientas/probar.ps1. |
+| Integración SQL real | backend/src/test/java/com/gestera/infraestructura/persistencia/SqlServerIntegracionTest.java. |
 | Integración continua | .github/workflows/ci.yml, JDK 17 y Maven. |
 | Limpieza | herramientas/limpiar.ps1, con vista previa -WhatIf. |
 
@@ -56,9 +60,9 @@ GesteraAplicacion inicia Spring. InfraestructuraSpring crea el pool, comprueba e
 
 ## Persistencia del modelo de 14 tablas
 
-El [modelo vigente y diccionario](../database-design/SQLSERVER_14_TABLAS.md) corresponde al instalador y a los repositorios Java. Habitaciones/RepositorioInventarioJdbc persiste secciones, recursos y ocupación; hoteles/RepositorioCredencialesHotelJdbc conserva las credenciales PBKDF2; servicios/RepositorioCatalogoServicioJdbc conserva catálogo, categorías y productos. Los repositorios de huéspedes, pagos y pedidos utilizan las FK de la nueva estancia.
+El [modelo vigente y diccionario](../database-design/SQLSERVER_14_TABLAS.md) corresponde al instalador y a los repositorios Java. repositorios/habitaciones/RepositorioInventarioJdbc persiste secciones, recursos y ocupación; repositorios/hoteles/RepositorioCredencialesHotelJdbc conserva las credenciales PBKDF2; repositorios/servicios/RepositorioCatalogoServicioJdbc conserva catálogo, categorías y productos. Los repositorios de huéspedes, pagos y pedidos utilizan las FK de la nueva estancia.
 
-persistencia/TransaccionesHotel comparte la transacción Spring y bloquea por hotel mediante sp_getapplock con propietario Transaction. El controlador de habitaciones confirma el conjunto habitación/estancia/personas/pago después de guardarlo completo. Un fallo revierte el conjunto; el navegador recibe la confirmación después del commit. Catálogo y credenciales incorporan versiones para detectar conflictos. El historial utiliza instantáneas y las habitaciones retiradas se desactivan.
+infraestructura/persistencia/TransaccionesHotel comparte la transacción Spring y bloquea por hotel mediante sp_getapplock con propietario Transaction. El controlador de habitaciones confirma el conjunto habitación/estancia/personas/pago después de guardarlo completo. Un fallo revierte el conjunto; el navegador recibe la confirmación después del commit. Catálogo y credenciales incorporan versiones para detectar conflictos. El historial utiliza instantáneas y las habitaciones retiradas se desactivan.
 
 Las fuentes T-SQL viven en base-datos/sqlserver/esquema; herramientas/generar-instalador-sqlserver.py genera el archivo único para SSMS. La migración V1 a V2 es transaccional y se verifica con fixtures históricos y una prueba de rollback. herramientas/respaldar-sqlserver.ps1 genera y verifica el respaldo previo.
 

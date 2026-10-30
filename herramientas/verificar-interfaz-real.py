@@ -124,7 +124,7 @@ def main():
         post('/hotel/acceso', dict(hotel='sol-pucusana', llaveHotel=hotel_key))
         for path in ['/publico/estilos/gestera.css', '/publico/scripts/tema.js', '/publico/imagenes/hotel-costa.png']:
             data = client.open(base + path).read()
-            assert data == (ROOT / 'src/main/resources' / path.lstrip('/')).read_bytes(), path
+            assert data == (ROOT / 'frontend' / path.lstrip('/')).read_bytes(), path
         chrome = subprocess.Popen([str(CHROME), '--headless', '--no-sandbox', '--disable-gpu', '--no-first-run',
                                    '--no-default-browser-check', f'--remote-debugging-port={debug_port}',
                                    f'--user-data-dir={OUT / ("perfil-" + uuid.uuid4().hex)}', 'about:blank'],

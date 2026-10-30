@@ -4,19 +4,19 @@ La presentación comparte dos paletas: azul marino, azul eléctrico y cian en mo
 
 ## Archivos
 
-- `src/main/resources/paginas/`: las nueve páginas incorporan el selector accesible y cargan `tema.js` antes del CSS. Gestión incorpora iconos SVG locales.
-- `src/main/resources/publico/estilos/gestera.css`: tokens globales, colores de componentes, tarjetas, formularios, tablas, estados, reportes, diálogos y adaptación a pantallas pequeñas.
-- `src/main/resources/publico/scripts/tema.js`: preferencia `gestera.tema` en localStorage, detección del sistema operativo, restauración inicial, sincronización entre pestañas y cambio sin recarga.
-- `src/main/java/com/gestera/vistas/RecursosWeb.java`: registro de los nuevos recursos dentro del catálogo cerrado existente.
-- `src/main/resources/publico/imagenes/hotel-costa.png`: imagen generada con la herramienta integrada mediante la habilidad imagegen. Prompt: fotografía arquitectónica panorámica de un hotel costero de categoría premium cerca de Pucusana, terraza frente al Pacífico, atardecer cálido, edificio a la derecha, sin personas, textos ni logotipos. El CSS aplica superposiciones distintas según el tema; no es una fotografía documental del establecimiento.
+- `frontend/vistas/paginas/`: las nueve páginas incorporan el selector accesible y cargan `tema.js` antes del CSS. Gestión incorpora iconos SVG locales.
+- `frontend/publico/estilos/gestera.css`: tokens globales, colores de componentes, tarjetas, formularios, tablas, estados, reportes, diálogos y adaptación a pantallas pequeñas.
+- `frontend/publico/scripts/tema.js`: preferencia `gestera.tema` en localStorage, detección del sistema operativo, restauración inicial, sincronización entre pestañas y cambio sin recarga.
+- `backend/src/main/java/com/gestera/vistas/RecursosWeb.java`: registro de los nuevos recursos dentro del catálogo cerrado existente.
+- `frontend/publico/imagenes/hotel-costa.png`: imagen generada con la herramienta integrada mediante la habilidad imagegen. Prompt: fotografía arquitectónica panorámica de un hotel costero de categoría premium cerca de Pucusana, terraza frente al Pacífico, atardecer cálido, edificio a la derecha, sin personas, textos ni logotipos. El CSS aplica superposiciones distintas según el tema; no es una fotografía documental del establecimiento.
 - `herramientas/verificar-temas.py`: comprobación en Chrome headless, sin dependencias Python adicionales.
-- `src/main/java/com/gestera/vistas/PlantillasWeb.java`: URLs de CSS y JavaScript con una versión SHA-256 derivada del contenido para evitar recursos obsoletos en caché.
-- `src/main/resources/fragmentos/configuracion-llave.html`: icono de llave SVG, coherente con los módulos.
+- `backend/src/main/java/com/gestera/vistas/PlantillasWeb.java`: URLs de CSS y JavaScript con una versión SHA-256 derivada del contenido para evitar recursos obsoletos en caché.
+- `frontend/vistas/fragmentos/configuracion-llave.html`: icono de llave SVG, coherente con los módulos.
 - `herramientas/ejecutar.ps1`: comprueba el puerto antes de compilar e iniciar y explica cuándo sigue abierto un servidor anterior. Imprime el paquete y la huella de la interfaz que inicia.
 - `INICIAR_GESTERA.cmd`: se retiró una línea de URL suelta después de `exit`.
 - `herramientas/reiniciar-servidor.ps1`: sustitución explícita de una instancia de este proyecto, validando el PID y el JAR antes de detenerla. Reiniciar cierra sesiones y elimina los registros que solo existan en memoria.
 - `herramientas/verificar-interfaz-real.py`: inicia una instancia aislada del JAR y comprueba los módulos en Chrome mediante CDP, sin dependencias externas.
-- `src/test/java/com/gestera/vistas/PlantillasWebPrueba.java`: regresión para comprobar las versiones de los recursos, el orden de carga y la publicación de la imagen.
+- `backend/src/test/java/com/gestera/vistas/PlantillasWebPrueba.java`: regresión para comprobar las versiones de los recursos, el orden de carga y la publicación de la imagen.
 
 ## Por qué no se veían los cambios
 

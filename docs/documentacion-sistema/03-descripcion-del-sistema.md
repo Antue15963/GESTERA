@@ -156,7 +156,7 @@ flowchart TB
 
 ### 8.1 Presentación
 
-Las plantillas de `src/main/resources/paginas/` contienen marcadores que `PlantillasWeb` reemplaza por contenido escapado o componentes generados. JavaScript mejora la interacción —modales, filtros visuales, cálculos de vista previa y alertas—, pero las decisiones finales se vuelven a validar en el servidor.
+Las plantillas de `frontend/vistas/paginas/` contienen marcadores que `PlantillasWeb` reemplaza por contenido escapado o componentes generados. JavaScript mejora la interacción —modales, filtros visuales, cálculos de vista previa y alertas—, pero las decisiones finales se vuelven a validar en el servidor.
 
 ### 8.2 Aplicación HTTP
 

@@ -49,7 +49,7 @@ Copy-Item -LiteralPath $JarGestera -Destination $JarEjecucion
 
 Write-Output 'Iniciando Gestera...'
 Write-Output ("Paquete: {0}" -f $JarGestera)
-Write-Output ("Interfaz: {0}" -f (Get-FileHash -LiteralPath (Join-Path $RaizProyecto 'src\main\resources\publico\estilos\gestera.css') -Algorithm SHA256).Hash.Substring(0, 12))
+Write-Output ("Interfaz: {0}" -f (Get-FileHash -LiteralPath (Join-Path $RaizProyecto 'frontend\publico\estilos\gestera.css') -Algorithm SHA256).Hash.Substring(0, 12))
 try {
     & $Java "-Djava.library.path=$BibliotecasNativas" @OpcionesJava -jar $JarEjecucion @ArgumentosAplicacion
     if ($LASTEXITCODE -ne 0) { throw "Gestera termino con codigo $LASTEXITCODE." }

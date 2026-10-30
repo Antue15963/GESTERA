@@ -1,5 +1,7 @@
 > Referencia histórica anterior al modelo SQL Server V2. El esquema implementado, sus 14 tablas y atributos se describen en [SQLSERVER_14_TABLAS.md](../database-design/SQLSERVER_14_TABLAS.md).
 
+> Para encontrar las carpetas actuales, consulta el [mapa de frontend, backend y MVC](../desarrollo/ESTRUCTURA_Y_MVC.md). El árbol y la ficha técnica de este documento pertenecen a la versión histórica.
+
 # Gestera — documentación técnica en Markdown
 
 ## 1. Propósito de este documento
@@ -206,9 +208,9 @@ Estas medidas no convierten al servidor integrado en una plataforma lista para I
 ## 12. Fuentes internas revisadas
 
 - `README.md` y scripts de `herramientas/`.
-- Los 55 archivos de `src/main/java/`.
+- Los 55 archivos de `backend/src/main/java/`.
 - Plantillas, fragmentos, CSS y JavaScript de `src/main/resources/`.
-- Los 16 archivos de `src/test/java/`.
+- Los 16 archivos de `backend/src/test/java/`.
 - Migraciones `base-datos/migraciones/V001..V005`.
 - Diagramas, SQL objetivo y memoria técnica de `docs/database-design/`.
 
